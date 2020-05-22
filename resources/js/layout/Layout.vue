@@ -1,5 +1,8 @@
 <template>
+
+
     <div class="container">
+         <navbar></navbar>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -10,14 +13,21 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
+          <DashboardFooter></DashboardFooter>
     </div>
+
+ 
 </template>
 
+
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+import Navbar from "../navigation/Navbar";
+import Footer from "../navigation/Footer";
+export default {
+  components: {
+    Navbar,
+    DashboardFooter: Footer
+  }
+};
 </script>
