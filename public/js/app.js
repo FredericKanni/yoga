@@ -2008,23 +2008,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -38430,167 +38413,108 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm._v("\n      navbar\n\n\n\n\n       "),
       _c(
-        "v-row",
-        { attrs: { align: "center" } },
+        "v-toolbar",
+        { attrs: { color: "indigo", dark: "", fixed: "", app: "" } },
         [
+          _c("v-toolbar-title", [_vm._v("Yoga")]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
           _c(
-            "v-col",
-            { staticClass: "text-center", attrs: { cols: "12", sm: "4" } },
+            "v-toolbar-items",
+            { staticClass: "hidden-sm-and-down" },
             [
               _c(
-                "div",
-                { staticClass: "my-2" },
+                "router-link",
+                { staticClass: "my-auto mx-1", attrs: { to: "/accueil" } },
                 [
                   _c("v-btn", { attrs: { depressed: "", small: "" } }, [
-                    _vm._v("Normal")
+                    _vm._v("Accueil")
                   ])
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "my-2" },
+                "router-link",
+                { staticClass: "my-auto mx-1", attrs: { to: "/dashboard" } },
                 [
-                  _c(
-                    "v-btn",
-                    { attrs: { depressed: "", small: "", color: "primary" } },
-                    [_vm._v("Primary")]
-                  )
+                  _c("v-btn", { attrs: { depressed: "", small: "" } }, [
+                    _vm._v("Dashboard")
+                  ])
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "my-2" },
+                "router-link",
+                { staticClass: "my-auto mx-1", attrs: { to: "/profil" } },
                 [
-                  _c(
-                    "v-btn",
-                    { attrs: { depressed: "", small: "", color: "error" } },
-                    [_vm._v("Error")]
-                  )
+                  _c("v-btn", { attrs: { depressed: "", small: "" } }, [
+                    _vm._v("Profil")
+                  ])
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "my-2" },
+                "router-link",
+                {
+                  staticClass: "my-auto mx-1",
+                  attrs: { to: "/mesprestations" }
+                },
                 [
-                  _c(
-                    "v-btn",
-                    { attrs: { depressed: "", small: "", disabled: "" } },
-                    [_vm._v("Disabled")]
-                  )
+                  _c("v-btn", { attrs: { depressed: "", small: "" } }, [
+                    _vm._v("Mes Prestations")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                { staticClass: "my-auto mx-1", attrs: { to: "/prestations" } },
+                [
+                  _c("v-btn", { attrs: { depressed: "", small: "" } }, [
+                    _vm._v("Toutes Les Prestations")
+                  ])
                 ],
                 1
               )
-            ]
+            ],
+            1
           ),
           _vm._v(" "),
           _c(
-            "v-col",
-            { staticClass: "text-center", attrs: { cols: "12", sm: "4" } },
+            "v-menu",
+            { staticClass: "hidden-md-and-up" },
             [
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [_c("v-btn", { attrs: { depressed: "" } }, [_vm._v("Normal")])],
-                1
-              ),
+              _c("v-toolbar-side-icon", {
+                attrs: { slot: "activator" },
+                slot: "activator"
+              }),
               _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c("v-btn", { attrs: { depressed: "", color: "primary" } }, [
-                    _vm._v("Primary")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c("v-btn", { attrs: { depressed: "", color: "error" } }, [
-                    _vm._v("Error")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c("v-btn", { attrs: { depressed: "", disabled: "" } }, [
-                    _vm._v("Disabled")
-                  ])
-                ],
+                "v-list",
+                _vm._l(_vm.menu, function(item) {
+                  return _c(
+                    "v-list-tile",
+                    { key: item.icon },
+                    [
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v(_vm._s(item.title))])],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                }),
                 1
               )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { staticClass: "text-center", attrs: { cols: "12", sm: "4" } },
-            [
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c("v-btn", { attrs: { depressed: "", large: "" } }, [
-                    _vm._v("Normal")
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c(
-                    "v-btn",
-                    { attrs: { depressed: "", large: "", color: "primary" } },
-                    [_vm._v("Primary")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c(
-                    "v-btn",
-                    { attrs: { depressed: "", large: "", color: "error" } },
-                    [_vm._v("Error")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "my-2" },
-                [
-                  _c(
-                    "v-btn",
-                    { attrs: { depressed: "", large: "", disabled: "" } },
-                    [_vm._v("Disabled")]
-                  )
-                ],
-                1
-              )
-            ]
+            ],
+            1
           )
         ],
         1
