@@ -1,6 +1,6 @@
 <template>
 
-
+<v-app>
     <div >
          <navbar></navbar>
         
@@ -12,7 +12,7 @@
 
       
     </div>
-
+</v-app>
  
 </template>
 

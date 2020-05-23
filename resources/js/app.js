@@ -10,7 +10,7 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-
+import vuetify from './src/plugins/vuetify.js'
 
 
 /**
@@ -38,7 +38,8 @@ import Routes from './route.js';
 
 
 const app = new Vue({
+    vuetify,
     el: '#app',
     router: Routes,
     components: { Layout }
-});
+}).$mount('#app');
