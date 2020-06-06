@@ -22,6 +22,10 @@
         <router-link to="/prestations" class="my-auto mx-1">
           <v-btn depressed small>Toutes Les Prestations</v-btn>
         </router-link>
+
+          <router-link to="/login" class="my-auto mx-1">
+          <v-btn depressed small>login</v-btn>
+        </router-link>
       </v-toolbar-items>
       <v-menu class="hidden-md-and-up">
         <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
