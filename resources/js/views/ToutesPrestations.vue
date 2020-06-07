@@ -10,7 +10,14 @@
 
                     <div class="card-body">
                    toutes les  prestations
+
+                   
+                   <prestationTable></prestationTable>
+
                     </div>
+
+                
+
                 </div>
             </div>
         </div>  
@@ -20,10 +27,6 @@
  
 </template>
 
+<script src="./ToutesPrestations.js">
 
-<script>
-
-export default {
- 
-};
 </script>

@@ -11,6 +11,9 @@
                     <div class="card-body">
                      mes prestations
                     </div>
+
+<addPrestation></addPrestation>
+
                 </div>
             </div>
         </div>  
@@ -21,9 +24,7 @@
 </template>
 
 
-<script>
+<script src="./Mesprestations.js">
 
-export default {
- 
-};
+
 </script>

@@ -32,3 +32,12 @@ Route::prefix('user')->group(function()
     Route::middleware('auth:api')->get('/all','UserController@index');
 }
 );
+
+//prestation
+Route::prefix('prestation')->group(function()
+{
+    Route::post('/' , 'PrestationController@create');
+    Route::get('/' , 'PrestationController@index');
+  
+}
+);
