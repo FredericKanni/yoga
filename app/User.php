@@ -42,4 +42,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'id_role');
     }
+
+
+    /**
+     * 
+     * fuction pour la rel one to many 
+     */
+    public function prestations()
+
+    {
+
+        return $this->hasMany(Prestation::class, 'id_user');
+
+    }
 }
