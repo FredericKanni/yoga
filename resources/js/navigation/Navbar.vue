@@ -4,7 +4,7 @@
       <v-toolbar-title>Yoga</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <router-link to="/accueil" class="my-auto mx-1">
+        <router-link to="/" class="my-auto mx-1">
           <v-btn depressed small>Accueil</v-btn>
         </router-link>
 

@@ -1,21 +1,8 @@
 <template>
-
-
-    <div >
-        
-        <div class=" justify-content-center">
-            <div class="w-100 bg-dark">
-                <div class="">
-                    <div class="">Example Component</div>
-
-                    <div class="">
-                     accueil
-                    </div>
-                </div>
-            </div>
-        </div>  
-  
-    </div>
+<div>
+<galerie></galerie>
+<equipe></equipe>
+</div>
 
  
 </template>
@@ -23,7 +10,12 @@
 
 <script>
 
+import galerie from '../components/galerie/galerie.vue';
+import equipe from '../components/equipe/equipe.vue';
 export default {
- 
+ components: {
+        galerie,
+        equipe
+    }
 };
 </script>

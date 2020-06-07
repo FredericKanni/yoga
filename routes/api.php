@@ -40,4 +40,25 @@ Route::prefix('prestation')->group(function()
     Route::get('/' , 'PrestationController@index');
   
 }
+
+
+
 );
+
+
+
+//equipe
+
+Route::prefix('equipe')->group(function()
+{
+  
+    Route::get('/' , 'UserController@getEquipe');
+  
+}
+
+
+
+);
+
+
+

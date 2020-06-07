@@ -40,7 +40,7 @@ export default {
                     this.Prestations.push(element)
                 });
 
-                console.log(this.Prestations)
+                // console.log(this.Prestations)
             })
 
 
