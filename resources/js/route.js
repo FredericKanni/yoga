@@ -7,7 +7,7 @@ import Dashboard from './views/Dashboard.vue';
 import Login from './components/login/Login.vue';
 import MesPrestations from './views/MesPrestations.vue';
 import ToutesPrestations from './views/ToutesPrestations.vue';
-
+import Lieu from './components/lieu/lieu.vue';
 
 import { authenticationService } from './components/_services/authentication.service'
 
@@ -46,6 +46,12 @@ const router = new VueRouter({
             path: '/mesprestations',
             name: 'mesprestations',
             component: MesPrestations,
+        },
+
+        {
+            path: '/lieu',
+            name: 'lieu',
+            component: Lieu,
         },
 
         {

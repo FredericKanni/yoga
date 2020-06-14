@@ -13,6 +13,8 @@
                     </div>
 
 <addPrestation></addPrestation>
+<prestationTable></prestationTable>
+
 
                 </div>
             </div>

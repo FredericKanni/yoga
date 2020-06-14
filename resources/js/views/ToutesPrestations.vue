@@ -9,8 +9,7 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                   toutes les  prestations
-
+                   <h1 class="text-center">Toutes Les Prestations</h1>
                    
                    <prestationTable></prestationTable>
 

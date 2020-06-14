@@ -23,6 +23,10 @@
           <v-btn depressed small>Toutes Les Prestations</v-btn>
         </router-link>
 
+        <router-link to="/lieu" class="my-auto mx-1">
+          <v-btn depressed small>le lieu</v-btn>
+        </router-link>
+
           <router-link to="/login" class="my-auto mx-1">
           <v-btn depressed small>login</v-btn>
         </router-link>
