@@ -19,6 +19,7 @@ class CreatePrestationsTable extends Migration
             $table->string('description',255);
             $table->bigInteger('nbrmax');
             $table->float('prix', 8, 2);
+            $table->string('image',255)->nullable();
           //  $table->dateTime('date', 0);
 
             $table->unsignedBigInteger('id_user')->unsigned();

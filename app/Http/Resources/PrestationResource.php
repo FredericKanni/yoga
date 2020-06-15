@@ -14,6 +14,11 @@ class PrestationResource extends JsonResource
      */
     public function toArray($request)
     {
+
+
+        //permet de renvoyer le user avec ainsi que le with 
+         $user = new UserResource($this->whenLoaded('user'));
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -21,6 +26,9 @@ class PrestationResource extends JsonResource
             'prix' => $this->prix,
             'nbrmax' => $this->nbrmax,
             'id_user' => $this->id_user,
+            'user' => $user,
+            'image' => $this->image,
+          
         ];
     }
 }

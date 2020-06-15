@@ -22,17 +22,49 @@ class UserSeeder extends Seeder
                 "id_role" => "1"
 
             ],
+
             [
                 "id" => 2,
-                "name" => "auth",
+                "name" => "prof1",
                 //"firstname" => "Krishna",
-                "email" => "auth@gmail.com",
-                "password" => bcrypt('auth'),
+                "email" => "prof1@gmail.com",
+                "password" => bcrypt('prof'),
                 "id_role" => "2"
 
             ],
             [
                 "id" => 3,
+                "name" => "prof2",
+                //"firstname" => "Krishna",
+                "email" => "prof2@gmail.com",
+                "password" => bcrypt('prof'),
+                "id_role" => "2"
+
+            ],
+
+            [
+                "id" => 4,
+                "name" => "prof3",
+                //"firstname" => "Krishna",
+                "email" => "prof3@gmail.com",
+                "password" => bcrypt('prof'),
+                "id_role" => "2"
+
+            ],
+
+            [
+                "id" => 5,
+                "name" => "prof4",
+                //"firstname" => "Krishna",
+                "email" => "prof4@gmail.com",
+                "password" => bcrypt('prof'),
+                "id_role" => "2"
+
+            ],
+
+        
+            [
+                "id" => 6,
                 "name" => "toto",
                 //"firstname" => "Krishna",
                 "email" => "toto@gmail.com",

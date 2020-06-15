@@ -43,6 +43,6 @@ return PrestationResource::collection($prestations);
         $dataNewPrestation->id_user= 1;
 
         $dataNewPrestation->save();
-return new PrestationResource($dataNewPrestation);
+return new PrestationResource($dataNewPrestation );
       }
 }
