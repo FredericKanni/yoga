@@ -2144,7 +2144,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // console.log(this.newPrestation)
-      _services_api_services_js__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('/api/equipe/').then(function (_ref) {
+      _services_api_services_js__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('api/equipe').then(function (_ref) {
         var data = _ref.data;
         // console.log(data.data)
         data.data.forEach(function (element) {
@@ -2376,7 +2376,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // console.log(this.newPrestation)
-      _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('/api/prestation/').then(function (_ref) {
+      _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('api/prestation').then(function (_ref) {
         var data = _ref.data;
         console.log(data.data);
         data.data.forEach(function (element) {

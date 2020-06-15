@@ -17,7 +17,7 @@ export default {
         getData() {
 
             // console.log(this.newPrestation)
-            apiServices.get('/api/equipe/')
+            apiServices.get('api/equipe')
 
             .then(({ data }) => {
 

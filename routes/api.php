@@ -36,13 +36,18 @@ Route::prefix('user')->group(function()
 //prestation
 Route::prefix('prestation')->group(function()
 {
-    Route::post('/' , 'PrestationController@create');
+    // Route::post('/' , 'PrestationController@create');
     Route::get('/' , 'PrestationController@index');
   
 }
 
 );
 
+//roles = nom du middle ware ds le kernel 
+Route::middleware(['auth:api','roles:Admin|Prof'])->prefix('prestation')->group(function () {
+   
+    Route::post('/' , 'PrestationController@create');
+}); 
 
 
 //equipe
