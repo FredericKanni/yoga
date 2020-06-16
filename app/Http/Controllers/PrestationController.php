@@ -17,6 +17,8 @@ return PrestationResource::collection($prestations);
 }
 
 
+
+
     public function create(Request $request){
         $dataToverify = Validator::make(
             $request->input(),
@@ -40,7 +42,10 @@ return PrestationResource::collection($prestations);
         $dataNewPrestation->description= $dataToverify['description'];
         $dataNewPrestation->prix= $dataToverify['prix'];
         $dataNewPrestation->nbrmax= $dataToverify['nbrmax'];
-        $dataNewPrestation->id_user= 1;
+       
+        $user = $request->user();
+        $dataNewPrestation->id_user= $user->id;
+       
 
         $dataNewPrestation->save();
 return new PrestationResource($dataNewPrestation );
