@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -25,4 +26,19 @@ class AuthController extends Controller
         return new UserResource(Auth::user($accessToken), $accessToken);
       // return response(['user' => Auth::user(),'access_token' =>$accessToken]);
     }
+
+
+    public function logout() {
+
+         Log::debug('Logout');
+        
+            $accessToken = Auth::user()->token();
+
+            $accessToken->revoke();
+
+            
+        return response('Vous etes bien deconnectee',200);
+
+
+     }
 }

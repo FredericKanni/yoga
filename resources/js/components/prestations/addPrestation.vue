@@ -2,11 +2,11 @@
    <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
+        <v-btn color="primary" dark v-on="on" class="ma-5">Creer une prestation</v-btn>
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">User Profile</span>
+          <span class="headline">Creer une prestation</span>
         </v-card-title>
         <v-card-text>
           <v-container>

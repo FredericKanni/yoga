@@ -28,7 +28,7 @@ Route::get('/logout','AuthController@logout')->middleware('auth:api');
 // users
 Route::prefix('user')->group(function()
 {
-    Route::post('/login' , 'AuthController@login');
+    // Route::post('/login' , 'AuthController@login');
     Route::middleware('auth:api')->get('/all','UserController@index');
 }
 );
@@ -44,7 +44,7 @@ Route::prefix('prestation')->group(function()
 );
 
 //roles = nom du middle ware ds le kernel 
-Route::middleware(['auth:api','roles:Admin|Prof'])->prefix('prestation')->group(function () {
+Route::prefix('prestation')->group(function () {
    
     Route::post('/' , 'PrestationController@create');
 }); 

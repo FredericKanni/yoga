@@ -1,6 +1,6 @@
 <template>
     <div>
-        mes cartes de prestations
+        <!-- mes cartes de prestations -->
 <v-row>
 
 

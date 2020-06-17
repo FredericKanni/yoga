@@ -3,18 +3,10 @@
       <h1 class="text-center ma-8">
           le lieu
       </h1>
-
-
-
-
-
-
-
-<v-row>
-<v-col cols=12 md=4>
-  <v-carousel
+<v-container>
+<v-carousel
     cycle
-    height="200"
+    height="50vh"
     hide-delimiter-background
     show-arrows-on-hover
   >
@@ -34,16 +26,10 @@
  
     </v-carousel-item>
   </v-carousel>
-</v-col>
 
 
 
-
-<v-col cols=12 md=8>
-
-  <div>
-
-    <p>
+ <p>
       offrez-vous un moment hors du temps rien que pour vous. 
 Venez découvrir nos cours en extérieur, sur notre nouvelle terrasse
     </p>
@@ -57,23 +43,14 @@ Venez découvrir nos cours en extérieur, sur notre nouvelle terrasse
    Yoga est bien plus qu'un studio de Pilates et Yoga, c'est un concept à votre image dont l'objectif est de vous amener à une harmonie du corps et de l'esprit.
   </p>
    
-   <v-btn to='/lieu'>
-    voir +
-   </v-btn>
-  </div>
 
-</v-col>
-</v-row>
-
-
-
-
+</v-container>
 
 
 
     </div>
 </template>
 
-<script src="./lieu.js">
+<script src="./lieuView.js">
 
 </script>

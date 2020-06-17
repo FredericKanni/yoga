@@ -1,15 +1,15 @@
 <template>
     <div >
-        display prestation
+      
 
         <v-card>
     <v-card-title>
-      Nutrition
+      Prestations
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
-        label="Search"
+        label="Rechercher"
         single-line
         hide-details
       ></v-text-field>

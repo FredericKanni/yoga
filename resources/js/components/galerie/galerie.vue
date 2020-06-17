@@ -1,28 +1,46 @@
 <template>
     
+
+    
     <v-carousel
       cycle
-      height="100vh"
+      height="80vh"
       hide-delimiter-background
       show-arrows-on-hover
     >
+
+
       <v-carousel-item
-        v-for="(slide, i) in slides"
+        v-for="(item,i) in items"
         :key="i"
+ 
+          
+            
+       
       >
-        <v-sheet
-          :color="colors[i]"
-          height="100%"
-        >
+
           <v-row
             class="fill-height"
             align="center"
             justify="center"
+            height="100%"
           >
-            <div class="display-3">{{ slide }} Slide</div>
+            <!-- <div class="display-3"> Slide</div> -->
+
+            <v-img   :src="item.src" aspect-ratio="1.7" ></v-img>
           </v-row>
-        </v-sheet>
+
+
+
+
       </v-carousel-item>
+
+
+            <!-- <div class="display-3">{{ slide }} Slide</div> -->
+               <!-- <v-img src="'/public/storage/y1.jpg'" aspect-ratio="1.7"></v-img>  -->
+   <!-- <v-img   :src="item.src" aspect-ratio="1.7"></v-img>  -->
+              
+   
     </v-carousel>
 </template>
 
