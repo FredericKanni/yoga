@@ -1,8 +1,11 @@
 import { apiServices } from '../_services/api.services'
 import { authenticationService } from "../_services/authentication.service";
+import addPrestation from './addPrestation.vue';
 export default {
+    components: {
+        addPrestation,
+    },
     data: () => ({
-
 
         Prestations: [],
 
@@ -18,8 +21,7 @@ export default {
             { text: 'Description', value: 'description' },
             { text: 'Place Max', value: 'nbrmax' },
             { text: 'Prix', value: 'prix' },
-            { text: 'Actions', value: '' },
-
+            { text: "Actions", value: "actions" },
         ],
 
 

@@ -2571,6 +2571,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_services/api.services */ "./resources/js/components/_services/api.services.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    prestation: {
+      "default": function _default() {
+        return {};
+      }
+    },
+    isModification: {
+      "default": false
+    }
+  },
   data: function data() {
     return {
       dialog: false,
@@ -2615,9 +2625,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_services/api.services */ "./resources/js/components/_services/api.services.js");
 /* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_services/authentication.service */ "./resources/js/components/_services/authentication.service.js");
+/* harmony import */ var _addPrestation_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./addPrestation.vue */ "./resources/js/components/prestations/addPrestation.vue");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    addPrestation: _addPrestation_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   data: function data() {
     return {
       Prestations: [],
@@ -2637,8 +2652,8 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Prix',
         value: 'prix'
       }, {
-        text: 'Actions',
-        value: ''
+        text: "Actions",
+        value: "actions"
       }]
     };
   },
@@ -46002,7 +46017,20 @@ var render = function() {
               headers: _vm.headers,
               items: _vm.Prestations,
               search: _vm.search
-            }
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "item.actions",
+                fn: function(ref) {
+                  var item = ref.item
+                  return [
+                    _c("addPrestation", {
+                      attrs: { product: item, isModification: true }
+                    })
+                  ]
+                }
+              }
+            ])
           })
         ],
         1

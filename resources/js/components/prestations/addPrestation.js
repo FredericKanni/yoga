@@ -2,6 +2,21 @@ import { apiServices } from '../_services/api.services'
 
 
 export default {
+
+
+    props: {
+        prestation: {
+            default: function() {
+                return {
+
+                }
+            }
+        },
+        isModification: {
+            default: false
+        },
+    },
+
     data: () => ({
         dialog: false,
 

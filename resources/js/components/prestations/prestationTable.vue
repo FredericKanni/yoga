@@ -20,7 +20,10 @@
       :headers="headers"
       :items="Prestations"
       :search="search"
-    ></v-data-table>
+    >
+    
+       <template v-slot:item.actions="{ item }"><addPrestation :product="item" :isModification='true'></addPrestation></template>
+    </v-data-table>
 
 
 
