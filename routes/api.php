@@ -26,10 +26,12 @@ Route::get('/logout','AuthController@logout')->middleware('auth:api');
 
 
 // users
-Route::prefix('user')->group(function()
+Route::prefix('users')->group(function()
 {
     // Route::post('/login' , 'AuthController@login');
     Route::middleware('auth:api')->get('/all','UserController@index');
+    //on lui rajoute le mi car on a besoin de recuperer les prestation en function de l user
+    Route::middleware('auth:api')->get('/{id}/prestations' , 'PrestationController@pretationsProf');
 }
 );
 

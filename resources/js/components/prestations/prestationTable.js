@@ -1,12 +1,12 @@
 import { apiServices } from '../_services/api.services'
-
+import { authenticationService } from "../_services/authentication.service";
 export default {
     data: () => ({
 
 
         Prestations: [],
 
-
+        // currentUser: [],
         search: '',
 
 
@@ -18,6 +18,7 @@ export default {
             { text: 'Description', value: 'description' },
             { text: 'Place Max', value: 'nbrmax' },
             { text: 'Prix', value: 'prix' },
+            { text: 'Actions', value: '' },
 
         ],
 
@@ -29,19 +30,22 @@ export default {
     methods: {
         getData() {
 
-            // console.log(this.newPrestation)
-            apiServices.get('api/prestation')
 
-            .then(({ data }) => {
+            authenticationService.currentUser.subscribe(x => (this.currentUser = x))
+                // console.log(this.currentUser.id)
+                // console.log(this.newPrestation)
+                // apiServices.get('api/prestation')
+            apiServices.get('api/users/' + this.currentUser.id + '/prestations')
+                .then(({ data }) => {
 
-                console.log(data.data)
+                    console.log(data)
+                    console.log(data.prestations)
+                    data.prestations.forEach(element => {
+                        this.Prestations.push(element)
+                    });
 
-                data.data.forEach(element => {
-                    this.Prestations.push(element)
-                });
-
-                // console.log(this.Prestations)
-            })
+                    // console.log(this.Prestations)
+                })
 
 
             .catch()

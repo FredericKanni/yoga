@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PrestationResource;
 use App\Prestation;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,21 @@ return PrestationResource::collection($prestations);
 }
 
 
+public function pretationsProf(Request $request){
+
+//recupere l user connecte via le middleware  doc mettre la route dans un mid auth
+
+    $prestations = Prestation::with(['user'])->get();
+    $user=$request->user();
+$userId=$user->id;
+     $user = User::with(['prestations'])->find($userId);
+    // if (!$product) {
+    //     $addToDb = new Produits;
+        
+    // }
+
+    return   $user;
+    }
 
 
     public function create(Request $request){
