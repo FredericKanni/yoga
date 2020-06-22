@@ -48,7 +48,7 @@ Route::prefix('prestation')->group(function()
 //roles = nom du middle ware ds le kernel 
 Route::prefix('prestation')->group(function () {
    
-    Route::post('/' , 'PrestationController@create');
+    Route::post('/' , 'PrestationController@createOrUpdate');
 }); 
 
 

@@ -40,8 +40,8 @@ export default {
             apiServices.get('api/users/' + this.currentUser.id + '/prestations')
                 .then(({ data }) => {
 
-                    console.log(data)
-                    console.log(data.prestations)
+                    // console.log(data)
+                    // console.log(data.prestations)
                     data.prestations.forEach(element => {
                         this.Prestations.push(element)
                     });

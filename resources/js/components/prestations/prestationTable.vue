@@ -21,8 +21,8 @@
       :items="Prestations"
       :search="search"
     >
-    
-       <template v-slot:item.actions="{ item }"><addPrestation :product="item" :isModification='true'></addPrestation></template>
+     <!-- <addProduit v-on:addPrestation="Prestations.push($event)"/> -->
+       <template v-slot:item.actions="{ item }"><addPrestation :prestation="item" :isModification='true'></addPrestation></template>
     </v-data-table>
 
 

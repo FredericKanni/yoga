@@ -2581,6 +2581,9 @@ __webpack_require__.r(__webpack_exports__);
       "default": false
     }
   },
+  // created() {
+  //     console.log(this.prestation)
+  // },
   data: function data() {
     return {
       dialog: false,
@@ -2590,24 +2593,39 @@ __webpack_require__.r(__webpack_exports__);
       prix: '',
       date: '',
       id_user: '',
+      id: '',
       newPrestation: {}
     };
   },
   methods: {
     saveData: function saveData() {
+      //on passe la donne prestation qu on veut creer ou edite
       this.newPrestation = {
+        id: this.id,
         name: this.name,
         description: this.description,
         nbrmax: this.nbrmax,
         prix: this.prix,
         date: this.date,
         id_user: this.id_user
-      }; //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
-      // console.log(this.newPrestation)
+      };
+      console.log(this.newPrestation); //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
 
       _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].post('api/prestation', this.newPrestation).then(function (response) {
         console.log(response);
       })["catch"]();
+    },
+    modifierPrestationModal: function modifierPrestationModal(prestation) {
+      //permet de recuperer les valeur dans le modal
+      this.id = prestation.id;
+      this.name = prestation.name;
+      this.description = prestation.description;
+      this.nbrmax = prestation.nbrmax;
+      this.prix = prestation.prix; // this.date = prestation.date
+
+      this.id_user = prestation.id_user; // console.log(prestation.id)
+
+      console.log(this.prestation);
     }
   }
 });
@@ -2669,8 +2687,8 @@ __webpack_require__.r(__webpack_exports__);
 
       _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('api/users/' + this.currentUser.id + '/prestations').then(function (_ref) {
         var data = _ref.data;
-        console.log(data);
-        console.log(data.prestations);
+        // console.log(data)
+        // console.log(data.prestations)
         data.prestations.forEach(function (element) {
           _this.Prestations.push(element);
         }); // console.log(this.Prestations)
@@ -45781,17 +45799,45 @@ var render = function() {
               fn: function(ref) {
                 var on = ref.on
                 return [
-                  _c(
-                    "v-btn",
-                    _vm._g(
-                      {
-                        staticClass: "ma-5",
-                        attrs: { color: "primary", dark: "" }
-                      },
-                      on
-                    ),
-                    [_vm._v("Creer une prestation")]
-                  )
+                  !_vm.isModification
+                    ? _c(
+                        "v-btn",
+                        _vm._g(
+                          {
+                            staticClass: "ma-5",
+                            attrs: { color: "primary", dark: "" }
+                          },
+                          on
+                        ),
+                        [_vm._v("Creer une prestation")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.isModification
+                    ? _c(
+                        "v-btn",
+                        _vm._g(
+                          {
+                            staticClass: "ma-5",
+                            attrs: { color: "primary", dark: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.modifierPrestationModal(
+                                  _vm.prestation
+                                )
+                              }
+                            }
+                          },
+                          on
+                        ),
+                        [
+                          _c("v-icon", { attrs: { left: "" } }, [
+                            _vm._v("mdi-pencil")
+                          ])
+                        ],
+                        1
+                      )
+                    : _vm._e()
                 ]
               }
             }
@@ -45810,9 +45856,17 @@ var render = function() {
             "v-card",
             [
               _c("v-card-title", [
-                _c("span", { staticClass: "headline" }, [
-                  _vm._v("Creer une prestation")
-                ])
+                !_vm.isModification
+                  ? _c("span", { staticClass: "headline" }, [
+                      _vm._v("Creer une prestation")
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.isModification
+                  ? _c("span", { staticClass: "headline" }, [
+                      _vm._v("Modifier une prestation")
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c(
@@ -46025,7 +46079,7 @@ var render = function() {
                   var item = ref.item
                   return [
                     _c("addPrestation", {
-                      attrs: { product: item, isModification: true }
+                      attrs: { prestation: item, isModification: true }
                     })
                   ]
                 }
