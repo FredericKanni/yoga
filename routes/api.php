@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login','AuthController@login');
 Route::get('/logout','AuthController@logout')->middleware('auth:api');
-
+Route::post('/register', 'AuthController@register');
 
 // users
 Route::prefix('users')->group(function()

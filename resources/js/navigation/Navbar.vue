@@ -46,7 +46,9 @@
           <v-btn class="my-auto mx-1"  @click="logout()"  depressed small>deconnexion</v-btn>
     
         </router-link> -->
-       
+              <router-link  v-if="!isCheck" to="/register" class="my-auto mx-1">
+          <v-btn depressed small>register</v-btn>
+        </router-link>
 
 
       </v-toolbar-items>

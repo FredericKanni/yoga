@@ -8,7 +8,7 @@ import Login from './components/login/Login.vue';
 import MesPrestations from './views/MesPrestations.vue';
 import ToutesPrestations from './views/ToutesPrestations.vue';
 import Lieu from './components/lieu/lieuView.vue';
-
+import Register from './views/Register.vue';
 import { authenticationService } from './components/_services/authentication.service'
 
 
@@ -59,6 +59,13 @@ const router = new VueRouter({
             path: '/prestations',
             name: 'prestations',
             component: ToutesPrestations,
+        },
+
+        {
+            path: '/register',
+            name: 'register',
+            component: Register,
+            meta: { authorize: [] }
         },
 
     ]
