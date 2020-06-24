@@ -2598,7 +2598,8 @@ __webpack_require__.r(__webpack_exports__);
       date: '',
       id_user: '',
       id: '',
-      newPrestation: {}
+      newPrestation: {},
+      image: ''
     };
   },
   methods: {
@@ -2637,15 +2638,39 @@ __webpack_require__.r(__webpack_exports__);
       this.id_user = prestation.id_user; // console.log(prestation.id)
 
       console.log(this.prestation);
+    },
+    onFileChange: function onFileChange(file) {
+      var _this = this;
+
+      console.log(file); // let files = e.target.files || e.dataTransfer.files
+      // this.createImg(file);  
+
+      var reader = new FileReader();
+
+      reader.onload = function (file) {
+        _this.image = file.target.result;
+      };
+
+      reader.readAsDataURL(file);
+      console.log(this.image);
+      console.log('////////////////////////////');
+      console.log(reader);
+    },
+    // prevoir l image 
+    createImg: function createImg(file) {
+      console.log(file);
+      var image = new Image();
+    },
+    uploading: function uploading() {
+      console.log('uploading');
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     _services_authentication_service__WEBPACK_IMPORTED_MODULE_1__["authenticationService"].currentUser.subscribe(function (x) {
-      return _this.currentUser = x;
-    });
-    console.log(this.currentUser);
+      return _this2.currentUser = x;
+    }); // console.log(this.currentUser)
   }
 });
 
@@ -46074,6 +46099,36 @@ var render = function() {
                                   expression: "prix"
                                 }
                               })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "6", sm: "6", md: "6" } },
+                            [
+                              _c("v-file-input", {
+                                attrs: {
+                                  accept: "image/*",
+                                  label: "File input"
+                                },
+                                on: { change: _vm.onFileChange }
+                              }),
+                              _vm._v(" "),
+                              _c("v-img", {
+                                attrs: { src: _vm.image, contain: true }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "6", sm: "6", md: "6" } },
+                            [
+                              _c("v-btn", { on: { click: _vm.uploading } }, [
+                                _vm._v("upload")
+                              ])
                             ],
                             1
                           )

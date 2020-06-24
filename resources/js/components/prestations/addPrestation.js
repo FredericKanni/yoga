@@ -34,6 +34,8 @@ export default {
 
         newPrestation: {},
 
+        image: '',
+
     }),
 
     methods: {
@@ -89,13 +91,43 @@ export default {
             console.log(this.prestation)
         },
 
+        onFileChange(file) {
+            console.log(file)
+                // let files = e.target.files || e.dataTransfer.files
+                // this.createImg(file);  
 
+            let reader = new FileReader;
+
+            reader.onload = (file) => {
+                this.image = file.target.result;
+            };
+            reader.readAsDataURL(file)
+            console.log(this.image)
+            console.log('////////////////////////////')
+            console.log(reader)
+        },
+
+
+        // prevoir l image 
+        createImg(file) {
+
+            console.log(file)
+            let image = new Image;
+
+
+
+
+        },
+
+        uploading() {
+            console.log('uploading')
+        },
 
     },
 
     created() {
         authenticationService.currentUser.subscribe(x => (this.currentUser = x));
-        console.log(this.currentUser)
+        // console.log(this.currentUser)
 
     },
 

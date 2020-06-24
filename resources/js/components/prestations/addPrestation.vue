@@ -46,7 +46,16 @@
                 ></v-text-field>
               </v-col>
 
+                  <v-col cols="6" sm="6" md="6" >
+                <v-file-input accept="image/*" label="File input" @change="onFileChange"></v-file-input>
 
+                  <v-img :src="image" :contain="true"    ></v-img>
+    
+              </v-col>
+
+   <v-col cols="6" sm="6" md="6" >
+               <v-btn @click="uploading">upload</v-btn>
+              </v-col>
          
             </v-row>
           </v-container>
