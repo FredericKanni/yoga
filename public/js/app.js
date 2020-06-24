@@ -2681,7 +2681,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log('delete prestation');
       console.log(this.prestation); //requete 
 
-      _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].post('api/prestations/' + this.prestation.id).then(function (_ref) {
+      _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].post('api/prestations/' + this.prestation.id, this.prestation.id).then(function (_ref) {
         var data = _ref.data;
         console.log(data);
       })["catch"]();

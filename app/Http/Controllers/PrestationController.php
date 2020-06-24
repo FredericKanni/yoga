@@ -99,4 +99,22 @@ class PrestationController extends Controller
 
          return new PrestationResource($dataNewPrestation);
     }
+
+    public function delete(Request $request)
+    {
+
+
+        $validator = Validator::make(
+            $request->input(),
+            [
+                  "id" => "required|numeric",
+            ],
+            [
+                'required' => 'Le champ :attribute est requis'
+            ]
+        )->validate();
+
+        $Prestation =  Prestation::where('id', '=', $request->id)->first()->delete();
+        return  $Prestation;
+    }
 }

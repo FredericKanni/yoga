@@ -23,7 +23,7 @@ export default {
             console.log(this.prestation)
 
             //requete 
-            apiServices.post('api/prestations/' + this.prestation.id)
+            apiServices.post('api/prestations/' + this.prestation.id, this.prestation.id)
                 .then(({ data }) => {
                     console.log(data)
                 })
