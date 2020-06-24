@@ -19,7 +19,7 @@ class PrestationController extends Controller
     }
 
 
-    public function pretationsProf(Request $request)
+    public function prestationsProf(Request $request)
     {
 
         //recupere l user connecte via le middleware  doc mettre la route dans un mid auth
@@ -54,14 +54,21 @@ class PrestationController extends Controller
                 'required' => 'Le champ :attribute est requis'
             ]
         )->validate();
+       
         // return $validator;
-        //on recherche si la prestation existe on le return grace a son id et avec son user  
+        //on recherche si la prestation existe on le return grace a son id et avec son user 
+        if (isset( $validator['id'])){ 
         $Prestation =  Prestation::where('id', '=', $validator['id'])->first();
-        // return $Prestation;
+         //return $Prestation;   
+    }
+   // return $validator;
         //si prestation existe alors 
-        if ($Prestation) {
+        if (isset( $Prestation)){ 
+    
             $dataNewPrestation = $Prestation;
+            // return  $dataNewPrestation;
         }
+        // return "toto";
         //si prestation existe pas 
         else {
             $dataNewPrestation = new Prestation;
@@ -73,15 +80,19 @@ class PrestationController extends Controller
         $dataNewPrestation->nbrmax = $validator['nbrmax'];
         $dataNewPrestation->image = '';
 
+        // return  $dataNewPrestation;
         //si prestation existe alors son user ne change pas 
 
-        //sinon on la creer 
-        if (!$Prestation) {
+        //sinon on la creer alors on affrme  que c bien user connecté qui est propritaire
+        if (!isset($Prestation)){ 
+        // if (!$Prestation) {
             //recupere le user connecter 
             $user = $request->user();
+            // return $request;
+            // return $user->id;
             //passe l id du user connecter dans la presation
             $dataNewPrestation->id_user = $user->id;
-        }
+         }
         // return $dataNewPrestation;
         //on enregistre en base de donne 
         $dataNewPrestation->save();

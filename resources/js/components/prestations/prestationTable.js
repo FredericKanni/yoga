@@ -1,9 +1,11 @@
 import { apiServices } from '../_services/api.services'
 import { authenticationService } from "../_services/authentication.service";
 import addPrestation from './addPrestation.vue';
+import deletePrestation from './deletePrestation.vue';
 export default {
     components: {
         addPrestation,
+        deletePrestation
     },
     data: () => ({
 

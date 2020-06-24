@@ -14,7 +14,7 @@
                 <v-text-field
                   label="Nom"
                   v-model="user.name"
-                  name="login"
+                  name="name"
                   prepend-icon="mdi-account"
                   type="text"
                 />

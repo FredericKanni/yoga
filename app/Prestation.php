@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Prestation extends Model
 {
+
+    use SoftDeletes;
+
     protected $table = "prestations";
-    protected $fillable = ['id','name', 'description', 'nbrmax','prix', 'date'];
+    protected $fillable = ['id','name', 'description', 'nbrmax','prix', 'date','deleted_at'];
     public $timestamps = false;
 
 

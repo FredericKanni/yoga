@@ -31,23 +31,22 @@ Route::prefix('users')->group(function()
     // Route::post('/login' , 'AuthController@login');
     Route::middleware('auth:api')->get('/all','UserController@index');
     //on lui rajoute le mi car on a besoin de recuperer les prestation en function de l user
-    Route::middleware('auth:api')->get('/{id}/prestations' , 'PrestationController@pretationsProf');
+    Route::middleware('auth:api')->get('/{id}/prestations' , 'PrestationController@prestationsProf');
 }
 );
 
 //prestation
-Route::prefix('prestation')->group(function()
+Route::prefix('prestations')->group(function()
 {
     // Route::post('/' , 'PrestationController@create');
     Route::get('/' , 'PrestationController@index');
-  
+    Route::post('/{id}' , 'PrestationController@delete');
 }
 
 );
 
 //roles = nom du middle ware ds le kernel 
-Route::prefix('prestation')->group(function () {
-   
+Route::middleware('auth:api')->prefix('prestations')->group(function () {
     Route::post('/' , 'PrestationController@createOrUpdate');
 }); 
 

@@ -9,7 +9,7 @@ export default {
     methods: {
         getData() {
             // console.log(this.newPrestation)
-            apiServices.get('api/prestation')
+            apiServices.get('api/prestations')
                 .then(({ data }) => {
                     // console.log(data.data)
                     data.data.forEach(element => {

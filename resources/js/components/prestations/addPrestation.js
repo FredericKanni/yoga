@@ -1,5 +1,5 @@
 import { apiServices } from '../_services/api.services'
-
+import { authenticationService } from '../_services/authentication.service';
 
 export default {
 
@@ -41,19 +41,26 @@ export default {
         saveData() {
             //on passe la donne prestation qu on veut creer ou edite
             this.newPrestation = {
-                id: this.id,
+
+                // id: this.id,
                 name: this.name,
                 description: this.description,
                 nbrmax: this.nbrmax,
                 prix: this.prix,
                 date: this.date,
-                id_user: this.id_user,
+                id_user: this.currentUser.id,
             }
+
+            if (this.isModification) {
+                //si modification garde id_user d origin l admin pourra modifie mais le propriétaire restera le prof 
+                this.newPrestation.id_user = this.id_user,
+                    this.newPrestation.id = this.id
+            }
+            console.log(this.isModification)
+
             console.log(this.newPrestation)
-
-
-            //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
-            apiServices.post('api/prestation', this.newPrestation)
+                //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
+            apiServices.post('api/prestations', this.newPrestation)
 
             .then(response => {
                 console.log(response)
@@ -85,4 +92,12 @@ export default {
 
 
     },
+
+    created() {
+        authenticationService.currentUser.subscribe(x => (this.currentUser = x));
+        console.log(this.currentUser)
+
+    },
+
+
 }

@@ -1,9 +1,10 @@
 <template>
-   <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
+   <div justify="center" class="d-inline">
+    
+   <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
         <v-btn v-if="!isModification"  color="primary" dark v-on="on" class="ma-5">Creer une prestation</v-btn>
-  <v-btn v-if="isModification"  @click="modifierPrestationModal(prestation)"  color="primary" dark v-on="on" class="ma-5">
+  <v-btn v-if="isModification"  @click="modifierPrestationModal(prestation)"  color="primary" dark v-on="on" class="ma-1">
      <v-icon left>mdi-pencil</v-icon>
   </v-btn>
         
@@ -59,8 +60,8 @@
           
         </v-card-actions>
       </v-card>
-    </v-dialog>
-  </v-row>
+    </v-dialog> 
+  </div>
 </template>
 
 <script src="./addPrestation.js">

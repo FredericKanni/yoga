@@ -22,7 +22,10 @@
       :search="search"
     >
      <!-- <addProduit v-on:addPrestation="Prestations.push($event)"/> -->
-       <template v-slot:item.actions="{ item }"><addPrestation :prestation="item" :isModification='true'></addPrestation></template>
+       <template v-slot:item.actions="{ item }"><addPrestation :prestation="item" :isModification='true'></addPrestation>
+       <deletePrestation :prestation="item"></deletePrestation>
+       
+       </template>
     </v-data-table>
 
 
