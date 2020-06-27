@@ -2800,14 +2800,36 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_services_api_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/_services/api.services */ "./resources/js/components/_services/api.services.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      destinationId: this.$route.params.id
+      destinationId: this.$route.params.id,
+      prestation: null,
+      prestationDetails: null
     };
   },
+  methods: {
+    getDatas: function getDatas() {
+      var _this = this;
+
+      this.prestation = {
+        id: this.destinationId
+      };
+      console.log('requete'); //obetnir info de  la prestation en fct de son id
+
+      _components_services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('/api/prestations/' + this.prestation.id, this.prestation).then(function (_ref) {
+        var data = _ref.data;
+        console.log(data);
+        _this.prestationDetails = data;
+        console.log(_this.prestationDetails);
+      })["catch"]();
+    }
+  },
   created: function created() {
-    console.log(this.destinationId);
+    // console.log(this.destinationId)
+    this.getDatas();
   }
 });
 
@@ -46828,16 +46850,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("detail de " + _vm._s(_vm.prestationDetails))]),
+      _vm._v(" "),
+      _c("v-btn", [_vm._v("ajouter au panier")])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("detail")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

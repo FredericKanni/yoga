@@ -38,8 +38,11 @@ Route::prefix('users')->group(function()
 //prestation
 Route::prefix('prestations')->group(function()
 {
+    
+ Route::get('/{id}' , 'PrestationController@showDetails');
     // Route::post('/' , 'PrestationController@create');
     Route::get('/' , 'PrestationController@index');
+       
     Route::post('/{id}' , 'PrestationController@delete');
 }
 

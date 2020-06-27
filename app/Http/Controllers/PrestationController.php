@@ -19,6 +19,25 @@ class PrestationController extends Controller
         return PrestationResource::collection($prestations);
     }
 
+    public function showDetails(Request $request)
+    {
+
+        $validator = Validator::make(
+            $request->input(),
+            [
+                "id"  => "required|numeric",
+            ],
+            [
+                'required' => 'Le champ :attribute est requis'
+            ]
+        )->validate();
+$prestation = Prestation::with(['user'])->where('id', '=', $validator['id'])->first();
+      return $prestation;
+      
+    }
+
+    
+
 
     public function prestationsProf(Request $request)
     {
