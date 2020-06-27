@@ -7,6 +7,7 @@ use App\Prestation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PrestationController extends Controller
 {
@@ -48,7 +49,7 @@ class PrestationController extends Controller
                 "prix" => "required|numeric",
                 "nbrmax" => "required|numeric",
                 "id_user" => "numeric",
-
+                "image"  => "",
             ],
             [
                 'required' => 'Le champ :attribute est requis'
@@ -78,7 +79,7 @@ class PrestationController extends Controller
         $dataNewPrestation->description = $validator['description'];
         $dataNewPrestation->prix = $validator['prix'];
         $dataNewPrestation->nbrmax = $validator['nbrmax'];
-        $dataNewPrestation->image = '';
+      
 
         // return  $dataNewPrestation;
         //si prestation existe alors son user ne change pas 
@@ -93,6 +94,37 @@ class PrestationController extends Controller
             //passe l id du user connecter dans la presation
             $dataNewPrestation->id_user = $user->id;
          }
+
+
+
+         if (isset($dataNewPrestation->image)) { //Si ceci est vrai, alors on save dans la base
+            return 'image eite';
+            $dataNewPrestation->save();
+        }
+        else{
+            $img = $request->get('image');
+            $exploded = explode(",", $img);
+
+            if (str::contains($exploded[0], 'gif')) { // si la chaîne donnée contient la valeur donnée 'gif'
+                $ext = 'gif'; // exter
+            } else if (str::contains($exploded[0], 'png')) { // sinon si 'png'
+                $ext = 'png'; 
+            } else {
+                $ext = 'jpeg'; // sinon 'jpeg'
+            }
+
+            $decode = base64_decode($exploded[1]);
+            $filename = str::random() . "." . $ext;
+            $path = public_path() . "\storage\images\\" . $filename;
+// return $path; 
+
+if (file_put_contents($path, $decode)) { // si Écrit le résultat dans le fichier
+    $dataNewPrestation->image = "\storage\images\\" . $filename; // ajout photo dans /storage/images/
+}
+            // return 'image eite pas encore ';
+        }
+
+
         // return $dataNewPrestation;
         //on enregistre en base de donne 
         $dataNewPrestation->save();
@@ -107,12 +139,14 @@ class PrestationController extends Controller
         $validator = Validator::make(
             $request->input(),
             [
-                  "id" => "required|numeric",
+                "id"  => "required",
+               
             ],
             [
                 'required' => 'Le champ :attribute est requis'
             ]
         )->validate();
+        // return $request;
 
         $Prestation =  Prestation::where('id', '=', $request->id)->first()->delete();
         return  $Prestation;

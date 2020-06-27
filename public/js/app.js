@@ -2599,7 +2599,7 @@ __webpack_require__.r(__webpack_exports__);
       id_user: '',
       id: '',
       newPrestation: {},
-      image: ''
+      image: null
     };
   },
   methods: {
@@ -2612,7 +2612,9 @@ __webpack_require__.r(__webpack_exports__);
         nbrmax: this.nbrmax,
         prix: this.prix,
         date: this.date,
-        id_user: this.currentUser.id
+        id_user: this.currentUser.id,
+        //qd on cree on lui passe une image 
+        image: this.image
       };
 
       if (this.isModification) {
@@ -2660,9 +2662,6 @@ __webpack_require__.r(__webpack_exports__);
     createImg: function createImg(file) {
       console.log(file);
       var image = new Image();
-    },
-    uploading: function uploading() {
-      console.log('uploading');
     }
   },
   created: function created() {
@@ -2704,9 +2703,12 @@ __webpack_require__.r(__webpack_exports__);
     deletePretation: function deletePretation() {
       this.dialog = false;
       console.log('delete prestation');
-      console.log(this.prestation); //requete 
+      console.log(this.prestation);
+      this.newPrestation = {
+        id: this.prestation
+      }; //requete 
 
-      _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].post('api/prestations/' + this.prestation.id, this.prestation.id).then(function (_ref) {
+      _services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].post('api/prestations/' + this.prestation.id, this.newPrestation).then(function (_ref) {
         var data = _ref.data;
         console.log(data);
       })["catch"]();
@@ -46115,23 +46117,18 @@ var render = function() {
                                 on: { change: _vm.onFileChange }
                               }),
                               _vm._v(" "),
-                              _c("v-img", {
-                                attrs: { src: _vm.image, contain: true }
-                              })
+                              _vm.image
+                                ? _c("v-img", {
+                                    attrs: { src: _vm.image, contain: true }
+                                  })
+                                : _vm._e()
                             ],
                             1
                           ),
                           _vm._v(" "),
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "6", sm: "6", md: "6" } },
-                            [
-                              _c("v-btn", { on: { click: _vm.uploading } }, [
-                                _vm._v("upload")
-                              ])
-                            ],
-                            1
-                          )
+                          _c("v-col", {
+                            attrs: { cols: "6", sm: "6", md: "6" }
+                          })
                         ],
                         1
                       )

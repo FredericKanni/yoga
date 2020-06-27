@@ -22,8 +22,15 @@ export default {
             console.log('delete prestation')
             console.log(this.prestation)
 
+            this.newPrestation = {
+
+                id: this.prestation,
+
+
+            }
+
             //requete 
-            apiServices.post('api/prestations/' + this.prestation.id, this.prestation.id)
+            apiServices.post('api/prestations/' + this.prestation.id, this.newPrestation)
                 .then(({ data }) => {
                     console.log(data)
                 })

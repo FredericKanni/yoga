@@ -34,7 +34,7 @@ export default {
 
         newPrestation: {},
 
-        image: '',
+        image: null,
 
     }),
 
@@ -51,6 +51,9 @@ export default {
                 prix: this.prix,
                 date: this.date,
                 id_user: this.currentUser.id,
+                //qd on cree on lui passe une image 
+                image: this.image,
+
             }
 
             if (this.isModification) {
@@ -119,9 +122,7 @@ export default {
 
         },
 
-        uploading() {
-            console.log('uploading')
-        },
+
 
     },
 
