@@ -34,15 +34,16 @@
         </div>
   
         <div>{{presta.description}}</div>
+            <div>{{presta.id}}</div>
       </v-card-text>
   
       <v-card-actions>
         <v-btn
           color="deep-purple lighten-2"
           text
-   
+   :to="'prestations/'+ presta.id"
         >
-          Reserver
+          Voir +
         </v-btn>
       </v-card-actions>
     </v-card>

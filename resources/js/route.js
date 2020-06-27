@@ -11,7 +11,7 @@ import Lieu from './components/lieu/lieuView.vue';
 import Register from './views/Register.vue';
 import { authenticationService } from './components/_services/authentication.service'
 
-
+import DetailsPrestation from './views/DetailsPrestation.vue';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -53,6 +53,14 @@ const router = new VueRouter({
             path: '/lieu',
             name: 'lieu',
             component: Lieu,
+        },
+
+
+
+        {
+            path: '/prestations/:id',
+            name: 'detailsPrestation',
+            component: DetailsPrestation,
         },
 
         {
