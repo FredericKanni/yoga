@@ -50,6 +50,10 @@
           <v-btn depressed small>register</v-btn>
         </router-link>
 
+          <div class="my-auto mx-1">
+          <PanierIcone></PanierIcone>
+        </div>
+
 
       </v-toolbar-items>
       <v-menu class="hidden-md-and-up">
@@ -63,7 +67,12 @@
 <script>
 import { authenticationService } from "../components/_services/authentication.service";
 import router from "../route";
+import PanierIcone from "../components/panier/panierIcone.vue"
 export default {
+
+  components:{
+PanierIcone,
+  },
   data () {
         return {
             currentUser: null

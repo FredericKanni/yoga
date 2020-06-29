@@ -11,7 +11,7 @@ class Prestation extends Model
     use SoftDeletes;
 
     protected $table = "prestations";
-    protected $fillable = ['id','name', 'description', 'nbrmax','prix', 'date','deleted_at'];
+    protected $fillable = ['id','name', 'description','places_dispo', 'nbrmax','prix', 'date','deleted_at'];
     public $timestamps = false;
 
 

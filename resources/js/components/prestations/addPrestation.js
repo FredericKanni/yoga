@@ -31,7 +31,7 @@ export default {
         date: '',
         id_user: '',
         id: '',
-
+        places_dispo: '',
         newPrestation: {},
 
         image: null,
@@ -51,6 +51,7 @@ export default {
                 prix: this.prix,
                 date: this.date,
                 id_user: this.currentUser.id,
+                places_dispo: this.places_dispo,
                 //qd on cree on lui passe une image 
                 image: this.image,
 
@@ -89,8 +90,8 @@ export default {
             this.prix = prestation.prix
                 // this.date = prestation.date
             this.id_user = prestation.id_user
-
-            // console.log(prestation.id)
+            this.places_dispo = prestation.places_dispo
+                // console.log(prestation.id)
             console.log(this.prestation)
         },
 

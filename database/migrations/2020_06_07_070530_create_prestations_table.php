@@ -17,6 +17,7 @@ class CreatePrestationsTable extends Migration
             $table->id();
             $table->string('name',255);
             $table->string('description',255);
+            $table->string('places_dispo',255);
             $table->bigInteger('nbrmax');
             $table->float('prix', 8, 2);
             $table->string('image',255)->nullable();

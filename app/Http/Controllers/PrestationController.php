@@ -69,6 +69,7 @@ $prestation = Prestation::with(['user'])->where('id', '=', $validator['id'])->fi
                 "nbrmax" => "required|numeric",
                 "id_user" => "numeric",
                 "image"  => "",
+                "places_dispo"  => "required",
             ],
             [
                 'required' => 'Le champ :attribute est requis'
@@ -98,7 +99,7 @@ $prestation = Prestation::with(['user'])->where('id', '=', $validator['id'])->fi
         $dataNewPrestation->description = $validator['description'];
         $dataNewPrestation->prix = $validator['prix'];
         $dataNewPrestation->nbrmax = $validator['nbrmax'];
-      
+        $dataNewPrestation->places_dispo = $validator['places_dispo'];
 
         // return  $dataNewPrestation;
         //si prestation existe alors son user ne change pas 

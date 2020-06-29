@@ -1,7 +1,7 @@
 <template>
     <div>
      <h1>detail de {{prestationDetails}}</h1>
-     <v-btn>ajouter au panier</v-btn>
+     <v-btn  @click="addToPanier">ajouter au panier</v-btn>
     </div>
 </template>
 

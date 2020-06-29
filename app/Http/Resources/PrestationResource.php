@@ -25,6 +25,7 @@ class PrestationResource extends JsonResource
             'description' => $this->description,
             'prix' => $this->prix,
             'nbrmax' => $this->nbrmax,
+            'places_dispo' => $this->places_dispo,
             'id_user' => $this->id_user,
             'user' => $user,
             'image' => $this->image,
