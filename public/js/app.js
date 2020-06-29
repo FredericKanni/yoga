@@ -2842,7 +2842,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       destinationId: this.$route.params.id,
       prestation: null,
-      prestationDetails: null
+      prestationDetails: null,
+      placeNbr: 0,
+      quantityMax: 10
     };
   },
   methods: {
@@ -2857,11 +2859,13 @@ __webpack_require__.r(__webpack_exports__);
       _components_services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('/api/prestations/' + this.prestation.id, this.prestation).then(function (_ref) {
         var data = _ref.data;
         // console.log(data)
-        _this.prestationDetails = data; // console.log(this.prestationDetails)
-      })["catch"]();
+        _this.prestationDetails = data;
+        _this.quantityMax = _this.prestationDetails.nbrmax; // this.placeNbr = this.prestationDetails.places_dispo
+        // console.log(this.prestationDetails)
+      })["catch"](); // console.log(this.prestationDetails)
     },
     addToPanier: function addToPanier() {
-      _components_services_panierService__WEBPACK_IMPORTED_MODULE_1__["panierService"].addToPanier(this.prestationDetails);
+      _components_services_panierService__WEBPACK_IMPORTED_MODULE_1__["panierService"].addToPanier(this.prestationDetails, this.placeNbr);
     }
   },
   created: function created() {
@@ -46960,7 +46964,25 @@ var render = function() {
       _vm._v(" "),
       _c("v-btn", { on: { click: _vm.addToPanier } }, [
         _vm._v("ajouter au panier")
-      ])
+      ]),
+      _vm._v(" "),
+      _c("v-text-field", {
+        attrs: {
+          label: "places diponibles",
+          type: "number",
+          "single-line": "",
+          min: "0",
+          max: _vm.quantityMax,
+          value: ""
+        },
+        model: {
+          value: _vm.placeNbr,
+          callback: function($$v) {
+            _vm.placeNbr = $$v
+          },
+          expression: "placeNbr"
+        }
+      })
     ],
     1
   )
@@ -104570,11 +104592,13 @@ var panierService = {
   addToPanier: addToPanier
 };
 
-function addToPanier(prestation) {
-  console.log(prestation);
-  var basket = getCurrentBasket(); // updateLocalStorage(product, quantity, quantityMax);
-
-  storeBasket(basket);
+function addToPanier(prestation, placeNbr) {
+  // console.log(prestation)
+  // console.log(placeNbr)
+  // let basket = localStorage.getItem("currentBasket");
+  //fait les modif dans localstorage
+  // updateLocalStorage(product, quantity, quantityMax);
+  updateLocalStorage(prestation, placeNbr);
 }
 
 function getCurrentBasket() {
@@ -104589,10 +104613,39 @@ function getCurrentBasket() {
   }
 
   return basket;
+}
+/**
+ * modifie le local storage
+ */
+
+
+function updateLocalStorage(prestation, placeNbr) {
+  console.log(prestation);
+  console.log(placeNbr);
+  console.log('updateLocalStorage');
+  var basket = getCurrentBasket();
+  var qt = 0;
+
+  if (!_.hasIn(basket, buildKey(prestation))) {
+    basket[buildKey(prestation)] = {
+      id: prestation.id,
+      name: prestation.name,
+      prix: prestation.prix
+    }; //quantite que l on veut rajouter en creant
+
+    qt = parseInt(placeNbr);
+  } else {
+    //qt en localstorage +  //quantite que l on veut rajouter en update
+    qt = basket[buildKey(prestation)].placeNbr + parseInt(placeNbr);
+  }
+
+  basket[buildKey(prestation)].placeNbr = qt;
+  storeBasket(basket);
 } //save basket set current basket
 
 
 function storeBasket(basket) {
+  console.log('storeBasket');
   localStorage.setItem("currentBasket", JSON.stringify(basket));
 } //construit le nom de la cle prestation
 

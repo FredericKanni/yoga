@@ -6,6 +6,8 @@ export default {
             destinationId: this.$route.params.id,
             prestation: null,
             prestationDetails: null,
+            placeNbr: 0,
+            quantityMax: 10,
         }
     },
 
@@ -20,16 +22,19 @@ export default {
                 .then(({ data }) => {
                     // console.log(data)
                     this.prestationDetails = data
+                    this.quantityMax = this.prestationDetails.nbrmax
+                        // this.placeNbr = this.prestationDetails.places_dispo
                         // console.log(this.prestationDetails)
                 })
 
 
             .catch()
+                // console.log(this.prestationDetails)
         },
 
 
         addToPanier() {
-            panierService.addToPanier(this.prestationDetails);
+            panierService.addToPanier(this.prestationDetails, this.placeNbr);
         }
     },
 
@@ -37,5 +42,6 @@ export default {
 
         // console.log(this.destinationId)
         this.getDatas();
+
     },
 }
