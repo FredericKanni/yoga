@@ -7,9 +7,9 @@ export const panierService = {
 }
 
 function addToPanier(prestation, placeNbr) {
-    // console.log(prestation)
-    // console.log(placeNbr)
-    // let basket = localStorage.getItem("currentBasket");
+    console.log(prestation)
+    console.log(placeNbr)
+        // let basket = localStorage.getItem("currentBasket");
 
     //fait les modif dans localstorage
     // updateLocalStorage(product, quantity, quantityMax);

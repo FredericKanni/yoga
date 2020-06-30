@@ -2818,7 +2818,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.getData();
+    this.getData(); // console.log(this.Prestations)
   }
 });
 
@@ -2840,9 +2840,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      destinationId: this.$route.params.id,
-      prestation: null,
-      prestationDetails: null,
+      prestaInfos: {},
       placeNbr: 0,
       quantityMax: 10
     };
@@ -2851,26 +2849,19 @@ __webpack_require__.r(__webpack_exports__);
     getDatas: function getDatas() {
       var _this = this;
 
-      this.prestation = {
-        id: this.destinationId
-      };
-      console.log('requete'); //obetnir info de  la prestation en fct de son id
-
-      _components_services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('/api/prestations/' + this.prestation.id, this.prestation).then(function (_ref) {
+      _components_services_api_services__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('/api/prestations/' + this.$route.params.id).then(function (_ref) {
         var data = _ref.data;
-        // console.log(data)
-        _this.prestationDetails = data;
-        _this.quantityMax = _this.prestationDetails.nbrmax; // this.placeNbr = this.prestationDetails.places_dispo
-        // console.log(this.prestationDetails)
-      })["catch"](); // console.log(this.prestationDetails)
+        _this.prestaInfos = data;
+        return data;
+      })["catch"]();
     },
     addToPanier: function addToPanier() {
-      _components_services_panierService__WEBPACK_IMPORTED_MODULE_1__["panierService"].addToPanier(this.prestationDetails, this.placeNbr);
+      _components_services_panierService__WEBPACK_IMPORTED_MODULE_1__["panierService"].addToPanier(this.prestaInfos, this.placeNbr);
     }
   },
   created: function created() {
-    // console.log(this.destinationId)
     this.getDatas();
+    console.log(this.prestaInfos);
   }
 });
 
@@ -46957,35 +46948,87 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h1", [_vm._v("detail de " + _vm._s(_vm.prestationDetails))]),
-      _vm._v(" "),
-      _c("v-btn", { on: { click: _vm.addToPanier } }, [
-        _vm._v("ajouter au panier")
-      ]),
-      _vm._v(" "),
-      _c("v-text-field", {
-        attrs: {
-          label: "places diponibles",
-          type: "number",
-          "single-line": "",
-          min: "0",
-          max: _vm.quantityMax,
-          value: ""
-        },
-        model: {
-          value: _vm.placeNbr,
-          callback: function($$v) {
-            _vm.placeNbr = $$v
-          },
-          expression: "placeNbr"
-        }
-      })
-    ],
-    1
-  )
+  return _c("div", [
+    _c("h1", [_vm._v("detail de " + _vm._s(_vm.prestaInfos))]),
+    _vm._v(" "),
+    _c("p", [_vm._v("/////////")]),
+    _vm._v(" "),
+    _vm.prestaInfos.placesDispo > 0
+      ? _c(
+          "div",
+          [
+            _c("v-btn", { on: { click: _vm.addToPanier } }, [
+              _vm._v("ajouter au panier")
+            ]),
+            _vm._v(" "),
+            _c("v-text-field", {
+              attrs: {
+                disabled: _vm.prestaInfos.placesDispo == 0,
+                label: "places diponibles",
+                type: "number",
+                "single-line": "",
+                min: "0",
+                max: _vm.quantityMax,
+                value: ""
+              },
+              model: {
+                value: _vm.placeNbr,
+                callback: function($$v) {
+                  _vm.placeNbr = $$v
+                },
+                expression: "placeNbr"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.prestaInfos.placesDispo == 0
+      ? _c("div", [
+          _vm._v("\n      plus de place disponible pour ce cours \n   ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("p", [_vm._v("/////////")]),
+    _vm._v(" "),
+    _vm.prestaInfos.places_dispo > 0
+      ? _c(
+          "div",
+          [
+            _c("v-btn", { on: { click: _vm.addToPanier } }, [
+              _vm._v("ajouter au panier")
+            ]),
+            _vm._v(" "),
+            _c("v-text-field", {
+              attrs: {
+                disabled: _vm.prestaInfos.places_dispo == 0,
+                label: "places diponibles",
+                type: "number",
+                "single-line": "",
+                min: "0",
+                max: _vm.quantityMax,
+                value: ""
+              },
+              model: {
+                value: _vm.placeNbr,
+                callback: function($$v) {
+                  _vm.placeNbr = $$v
+                },
+                expression: "placeNbr"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.prestaInfos.places_dispo == 0
+      ? _c("div", [
+          _vm._v("\n      plus de place disponible pour ce cours \n   ")
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -104593,11 +104636,11 @@ var panierService = {
 };
 
 function addToPanier(prestation, placeNbr) {
-  // console.log(prestation)
-  // console.log(placeNbr)
-  // let basket = localStorage.getItem("currentBasket");
+  console.log(prestation);
+  console.log(placeNbr); // let basket = localStorage.getItem("currentBasket");
   //fait les modif dans localstorage
   // updateLocalStorage(product, quantity, quantityMax);
+
   updateLocalStorage(prestation, placeNbr);
 }
 

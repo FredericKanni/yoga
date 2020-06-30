@@ -17,15 +17,16 @@ class PrestationResource extends JsonResource
 
 
         //permet de renvoyer le user avec ainsi que le with 
-         $user = new UserResource($this->whenLoaded('user'));
-
+        //  $user = new UserResource($this->whenLoaded('user'));
+        $user = new UserResource($this->whenLoaded('user'));
+        // $user = 'App\User'::find($this->id_user);
         return [
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
             'prix' => $this->prix,
             'nbrmax' => $this->nbrmax,
-            'places_dispo' => $this->places_dispo,
+            'placesDispo' => $this->places_dispo,
             'id_user' => $this->id_user,
             'user' => $user,
             'image' => $this->image,
