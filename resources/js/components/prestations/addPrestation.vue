@@ -60,6 +60,18 @@
    <v-col cols="6" sm="6" md="6" >
                
               </v-col>
+
+    
+    <v-date-picker
+      v-model="picker"
+      :first-day-of-week="1"
+      locale="fr"
+      @change="datePrint"
+    ></v-date-picker>
+
+    <v-row justify="center">
+    <v-time-picker  v-model="time"  @change="datePrint"></v-time-picker>
+  </v-row>
          
             </v-row>
           </v-container>

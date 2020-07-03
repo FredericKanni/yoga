@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-toolbar color="indigo" dark fixed >
-      <v-toolbar-title>Yoga</v-toolbar-title>
+      <v-toolbar-title>YogaMorphose</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <router-link to="/" class="my-auto mx-1">
@@ -35,7 +35,7 @@
 
 
           <router-link  v-if="!isCheck" to="/login" class="my-auto mx-1">
-          <v-btn depressed small>login</v-btn>
+          <v-btn depressed small>se connecter</v-btn>
         </router-link>
 
          <div class="my-auto mx-1"  v-if="isCheck" >
@@ -47,7 +47,7 @@
     
         </router-link> -->
               <router-link  v-if="!isCheck" to="/register" class="my-auto mx-1">
-          <v-btn depressed small>register</v-btn>
+          <v-btn depressed small>s'enregistrer</v-btn>
         </router-link>
 
           <div class="my-auto mx-1">

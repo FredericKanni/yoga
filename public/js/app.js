@@ -2602,6 +2602,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_services/api.services */ "./resources/js/components/_services/api.services.js");
 /* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_services/authentication.service */ "./resources/js/components/_services/authentication.service.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2630,13 +2632,24 @@ __webpack_require__.r(__webpack_exports__);
       id: '',
       places_dispo: '',
       newPrestation: {},
-      image: null
+      image: null,
+      picker: new Date().toISOString().substr(0, 10),
+      time: null
     };
   },
   methods: {
+    datePrint: function datePrint() {
+      console.log(this.picker); // this.time = this.time + ':00'
+
+      console.log(this.time);
+      this.picker = this.picker + ' ' + this.time;
+      console.log(this.picker);
+    },
     saveData: function saveData() {
+      var _this$newPrestation;
+
       //on passe la donne prestation qu on veut creer ou edite
-      this.newPrestation = {
+      this.newPrestation = (_this$newPrestation = {
         // id: this.id,
         name: this.name,
         description: this.description,
@@ -2644,10 +2657,8 @@ __webpack_require__.r(__webpack_exports__);
         prix: this.prix,
         date: this.date,
         id_user: this.currentUser.id,
-        places_dispo: this.places_dispo,
-        //qd on cree on lui passe une image 
-        image: this.image
-      };
+        places_dispo: this.places_dispo
+      }, _defineProperty(_this$newPrestation, "date", this.picker), _defineProperty(_this$newPrestation, "image", this.image), _this$newPrestation);
 
       if (this.isModification) {
         //si modification garde id_user d origin l admin pourra modifie mais le propriétaire restera le prof 
@@ -45540,7 +45551,7 @@ var render = function() {
     {
       attrs: {
         cycle: "",
-        height: "80vh",
+        height: "90vh",
         "hide-delimiter-background": "",
         "show-arrows-on-hover": ""
       }
@@ -46276,7 +46287,37 @@ var render = function() {
                           _vm._v(" "),
                           _c("v-col", {
                             attrs: { cols: "6", sm: "6", md: "6" }
-                          })
+                          }),
+                          _vm._v(" "),
+                          _c("v-date-picker", {
+                            attrs: { "first-day-of-week": 1, locale: "fr" },
+                            on: { change: _vm.datePrint },
+                            model: {
+                              value: _vm.picker,
+                              callback: function($$v) {
+                                _vm.picker = $$v
+                              },
+                              expression: "picker"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "v-row",
+                            { attrs: { justify: "center" } },
+                            [
+                              _c("v-time-picker", {
+                                on: { change: _vm.datePrint },
+                                model: {
+                                  value: _vm.time,
+                                  callback: function($$v) {
+                                    _vm.time = $$v
+                                  },
+                                  expression: "time"
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -46646,7 +46687,7 @@ var render = function() {
         "v-toolbar",
         { attrs: { color: "indigo", dark: "", fixed: "" } },
         [
-          _c("v-toolbar-title", [_vm._v("Yoga")]),
+          _c("v-toolbar-title", [_vm._v("YogaMorphose")]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
@@ -46704,7 +46745,7 @@ var render = function() {
                     { staticClass: "my-auto mx-1", attrs: { to: "/login" } },
                     [
                       _c("v-btn", { attrs: { depressed: "", small: "" } }, [
-                        _vm._v("login")
+                        _vm._v("se connecter")
                       ])
                     ],
                     1
@@ -46740,7 +46781,7 @@ var render = function() {
                     { staticClass: "my-auto mx-1", attrs: { to: "/register" } },
                     [
                       _c("v-btn", { attrs: { depressed: "", small: "" } }, [
-                        _vm._v("register")
+                        _vm._v("s'enregistrer")
                       ])
                     ],
                     1
@@ -46948,87 +46989,161 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("detail de " + _vm._s(_vm.prestaInfos))]),
-    _vm._v(" "),
-    _c("p", [_vm._v("/////////")]),
-    _vm._v(" "),
-    _vm.prestaInfos.placesDispo > 0
-      ? _c(
-          "div",
-          [
-            _c("v-btn", { on: { click: _vm.addToPanier } }, [
-              _vm._v("ajouter au panier")
-            ]),
-            _vm._v(" "),
-            _c("v-text-field", {
-              attrs: {
-                disabled: _vm.prestaInfos.placesDispo == 0,
-                label: "places diponibles",
-                type: "number",
-                "single-line": "",
-                min: "0",
-                max: _vm.quantityMax,
-                value: ""
-              },
-              model: {
-                value: _vm.placeNbr,
-                callback: function($$v) {
-                  _vm.placeNbr = $$v
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("detail de\n        ")]),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "12" } },
+            [
+              _c("v-card", { attrs: { color: "blue", dark: "" } }, [
+                _c(
+                  "div",
+                  { staticClass: "d-flex flex-no-wrap " },
+                  [
+                    _c(
+                      "v-avatar",
+                      {
+                        staticClass: "ma-3",
+                        attrs: { size: "25vw", tile: "" }
+                      },
+                      [
+                        _c("v-img", {
+                          attrs: {
+                            src:
+                              "https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      [
+                        _c(
+                          "v-card-title",
+                          {
+                            staticClass: "headline",
+                            attrs: { "d-inline": "" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  \n                 Cours de yoga\n\n                 "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("v-card-subtitle", [
+                          _vm._v("avec: Halcyon Days   "),
+                          _c("br"),
+                          _vm._v(" jour et heure ")
+                        ]),
+                        _vm._v(" "),
+                        _c("v-card-text", [
+                          _vm._v(
+                            "\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, accusamus perferendis sit impedit doloribus blanditiis consectetur est recusandae! Repudiandae quo dicta ipsa sit accusamus non autem ab exercitationem, corporis at?\n                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, accusamus perferendis sit impedit doloribus blanditiis consectetur est recusandae! Repudiandae quo dicta ipsa sit accusamus non autem ab exercitationem, corporis at?\n              \n                "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("p", [_vm._v("/////////")]),
+      _vm._v(" "),
+      _vm.prestaInfos.placesDispo > 0
+        ? _c(
+            "div",
+            [
+              _c("v-btn", { on: { click: _vm.addToPanier } }, [
+                _vm._v("ajouter au panier")
+              ]),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  disabled: _vm.prestaInfos.placesDispo == 0,
+                  label: "places diponibles",
+                  type: "number",
+                  "single-line": "",
+                  min: "0",
+                  max: _vm.quantityMax,
+                  value: ""
                 },
-                expression: "placeNbr"
-              }
-            })
-          ],
-          1
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.prestaInfos.placesDispo == 0
-      ? _c("div", [
-          _vm._v("\n      plus de place disponible pour ce cours \n   ")
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("p", [_vm._v("/////////")]),
-    _vm._v(" "),
-    _vm.prestaInfos.places_dispo > 0
-      ? _c(
-          "div",
-          [
-            _c("v-btn", { on: { click: _vm.addToPanier } }, [
-              _vm._v("ajouter au panier")
-            ]),
-            _vm._v(" "),
-            _c("v-text-field", {
-              attrs: {
-                disabled: _vm.prestaInfos.places_dispo == 0,
-                label: "places diponibles",
-                type: "number",
-                "single-line": "",
-                min: "0",
-                max: _vm.quantityMax,
-                value: ""
-              },
-              model: {
-                value: _vm.placeNbr,
-                callback: function($$v) {
-                  _vm.placeNbr = $$v
+                model: {
+                  value: _vm.placeNbr,
+                  callback: function($$v) {
+                    _vm.placeNbr = $$v
+                  },
+                  expression: "placeNbr"
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.prestaInfos.placesDispo == 0
+        ? _c("div", [
+            _vm._v("\n       plus de place disponible pour ce cours \n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("p", [_vm._v("/////////")]),
+      _vm._v(" "),
+      _vm.prestaInfos.places_dispo > 0
+        ? _c(
+            "div",
+            [
+              _c("v-btn", { on: { click: _vm.addToPanier } }, [
+                _vm._v("ajouter au panier")
+              ]),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: {
+                  disabled: _vm.prestaInfos.places_dispo == 0,
+                  label: "places diponibles",
+                  type: "number",
+                  "single-line": "",
+                  min: "0",
+                  max: _vm.quantityMax,
+                  value: ""
                 },
-                expression: "placeNbr"
-              }
-            })
-          ],
-          1
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.prestaInfos.places_dispo == 0
-      ? _c("div", [
-          _vm._v("\n      plus de place disponible pour ce cours \n   ")
-        ])
-      : _vm._e()
-  ])
+                model: {
+                  value: _vm.placeNbr,
+                  callback: function($$v) {
+                    _vm.placeNbr = $$v
+                  },
+                  expression: "placeNbr"
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.prestaInfos.places_dispo == 0
+        ? _c("div", [
+            _vm._v("\n       plus de place disponible pour ce cours \n    ")
+          ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

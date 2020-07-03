@@ -4,7 +4,7 @@
     
     <v-carousel
       cycle
-      height="80vh"
+      height="90vh"
       hide-delimiter-background
       show-arrows-on-hover
     >
@@ -13,7 +13,6 @@
       <v-carousel-item
         v-for="(item,i) in items"
         :key="i"
- 
           
             
        
@@ -27,7 +26,7 @@
           >
             <!-- <div class="display-3"> Slide</div> -->
 
-            <v-img   :src="item.src" aspect-ratio="1.7" ></v-img>
+            <v-img    :src="item.src" aspect-ratio="1.7" ></v-img>
           </v-row>
 
 

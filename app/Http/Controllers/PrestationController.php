@@ -60,6 +60,7 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
                 "nbrmax" => "required|numeric",
                 "id_user" => "numeric",
                 "image"  => "",
+                "date"  => "",
                 "places_dispo"  => "required",
             ],
             [
@@ -67,7 +68,7 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
             ]
         )->validate();
        
-        // return $validator;
+        //  return $validator;
         //on recherche si la prestation existe on le return grace a son id et avec son user 
         if (isset( $validator['id'])){ 
         $Prestation =  Prestation::where('id', '=', $validator['id'])->first();
@@ -91,7 +92,7 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
         $dataNewPrestation->prix = $validator['prix'];
         $dataNewPrestation->nbrmax = $validator['nbrmax'];
         $dataNewPrestation->places_dispo = $validator['places_dispo'];
-
+        $dataNewPrestation->date = $validator['date'] ;
         // return  $dataNewPrestation;
         //si prestation existe alors son user ne change pas 
 
@@ -109,7 +110,7 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
 
 
          if (isset($dataNewPrestation->image)) { //Si ceci est vrai, alors on save dans la base
-            return 'image eite';
+            // return 'image eite';
             $dataNewPrestation->save();
         }
         else{

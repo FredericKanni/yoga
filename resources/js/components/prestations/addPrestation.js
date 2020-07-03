@@ -36,9 +36,18 @@ export default {
 
         image: null,
 
+        picker: new Date().toISOString().substr(0, 10),
+        time: null
     }),
 
     methods: {
+        datePrint() {
+            console.log(this.picker)
+                // this.time = this.time + ':00'
+            console.log(this.time)
+            this.picker = this.picker + ' ' + this.time
+            console.log(this.picker)
+        },
 
         saveData() {
             //on passe la donne prestation qu on veut creer ou edite
@@ -53,6 +62,7 @@ export default {
                 id_user: this.currentUser.id,
                 places_dispo: this.places_dispo,
                 //qd on cree on lui passe une image 
+                date: this.picker,
                 image: this.image,
 
             }

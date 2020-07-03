@@ -1,7 +1,69 @@
 <template>
     <div>
-     <h1>detail de {{prestaInfos}}</h1>
+     <h1>detail de
+        <!-- {{prestaInfos}} -->
+     </h1>
    
+
+   <v-row>
+     <v-col
+        cols="12"
+     
+     >
+   
+
+
+
+  <v-card
+              color="blue"
+              dark
+            >
+              <div class="d-flex flex-no-wrap ">
+                 <v-avatar
+                  class="ma-3"
+                  size="25vw"
+                  tile
+                >
+                  <v-img src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"></v-img>
+                </v-avatar>
+               
+          
+                <div
+                >
+              
+                  <v-card-title
+                    class="headline"
+                   d-inline
+                  >
+                  
+                 Cours de yoga
+
+                 </v-card-title>
+
+
+    
+                  <v-card-subtitle >avec: Halcyon Days   <br> jour et heure </v-card-subtitle>
+                  <!-- <v-card-actions  > -->
+  <!-- <v-btn small text  >jour heure</v-btn> -->
+<!-- </v-card-actions> -->
+                    <v-card-text>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, accusamus perferendis sit impedit doloribus blanditiis consectetur est recusandae! Repudiandae quo dicta ipsa sit accusamus non autem ab exercitationem, corporis at?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, accusamus perferendis sit impedit doloribus blanditiis consectetur est recusandae! Repudiandae quo dicta ipsa sit accusamus non autem ab exercitationem, corporis at?
+              
+                </v-card-text>
+
+
+                
+                </div>
+  
+               
+              </div>
+            </v-card>
+
+
+
+     </v-col>
+   </v-row>
     <p>/////////</p>
    <div v-if="prestaInfos.placesDispo > 0">
  <v-btn  @click="addToPanier">ajouter au panier</v-btn>
