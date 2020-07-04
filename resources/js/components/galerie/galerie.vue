@@ -1,7 +1,7 @@
 <template>
     
+<div>
 
-    
     <v-carousel
       cycle
       height="90vh"
@@ -41,6 +41,8 @@
               
    
     </v-carousel>
+</div>
+    
 </template>
 
 <script src="./galerie.js">

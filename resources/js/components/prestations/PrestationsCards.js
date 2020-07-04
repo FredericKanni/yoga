@@ -8,14 +8,36 @@ export default {
 
     methods: {
         getData() {
-            // console.log(this.newPrestation)
             apiServices.get('api/prestations')
                 .then(({ data }) => {
-                    // console.log(data.data)
                     data.data.forEach(element => {
                         this.Prestations.push(element)
                     });
-                    // console.log(this.Prestations)
+
+                    this.Prestations.forEach(element => {
+                        if (element.date != null) {
+
+                            let d = new Date(element.date)
+
+                            let dAujourdhui = d
+                                // new Date();
+                            let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                            // console.log(dAujourdhui.toLocaleDateString('fr-CA', options))
+                            // console.log(dAujourdhui.getHours() + 'h' + dAujourdhui.getMinutes())
+
+                            element.date = dAujourdhui.toLocaleDateString('fr-CA', options)
+
+                            element.heure = dAujourdhui.getHours() + 'h' + dAujourdhui.getMinutes()
+                        } else {
+                            element.date = ''
+
+                            element.heure = ''
+                        }
+
+
+
+                    });
+
                 })
                 .catch()
         }

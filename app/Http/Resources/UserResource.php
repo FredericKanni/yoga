@@ -37,6 +37,10 @@ class UserResource extends JsonResource
                 'email' => $this->email,
                 'token' => $this->token,
                'role'=>$role,
+               'image' => $this->name,
+               'metier' =>$this->metier,
+               'description' => $this->description,
+               'image' => $this->image,
             ];
         } else {
             return parent::toArray($request);

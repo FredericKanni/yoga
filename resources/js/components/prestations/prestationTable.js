@@ -36,19 +36,13 @@ export default {
 
 
             authenticationService.currentUser.subscribe(x => (this.currentUser = x))
-                // console.log(this.currentUser.id)
-                // console.log(this.newPrestation)
-                // apiServices.get('api/prestation')
             apiServices.get('api/users/' + this.currentUser.id + '/prestations')
                 .then(({ data }) => {
 
-                    // console.log(data)
-                    // console.log(data.prestations)
                     data.prestations.forEach(element => {
                         this.Prestations.push(element)
                     });
 
-                    // console.log(this.Prestations)
                 })
 
 
@@ -60,6 +54,5 @@ export default {
 
     created() {
         this.getData();
-        // console.log(this.Prestations)
     },
 }

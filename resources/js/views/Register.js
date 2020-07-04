@@ -27,9 +27,7 @@ export default {
                     id_role: 3
                 })
                 .then(response => {
-                    if (response.status === 201) {
-                        console.log("ok")
-                    }
+                    if (response.status === 201) {}
                 })
 
             router.push("/");

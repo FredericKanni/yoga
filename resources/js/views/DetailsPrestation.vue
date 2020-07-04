@@ -41,8 +41,9 @@
                  </v-card-title>
 
 
+
     
-                  <v-card-subtitle >avec: Halcyon Days   <br> jour et heure </v-card-subtitle>
+                  <v-card-subtitle >avec: Halcyon Days   <br> le {{date}} à {{heure}} </v-card-subtitle>
                   <!-- <v-card-actions  > -->
   <!-- <v-btn small text  >jour heure</v-btn> -->
 <!-- </v-card-actions> -->
@@ -52,8 +53,9 @@
               
                 </v-card-text>
 
+<!-- {{prestaInfos}} -->
 
-                
+           
                 </div>
   
                
@@ -64,31 +66,9 @@
 
      </v-col>
    </v-row>
-    <p>/////////</p>
-   <div v-if="prestaInfos.placesDispo > 0">
- <v-btn  @click="addToPanier">ajouter au panier</v-btn>
-
-        <v-text-field
-         :disabled=" prestaInfos.placesDispo == 0"
-            label="places diponibles"
-            type="number"
-            single-line
-            min="0"
-        :max="quantityMax"
-            value=""
-            v-model="placeNbr"
-           
-          ></v-text-field>
-
-   </div>
-
-   <div v-if="prestaInfos.placesDispo == 0">
-       plus de place disponible pour ce cours 
-    </div>
-
-    <p>/////////</p>
-
-      <div v-if="prestaInfos.places_dispo > 0">
+    
+<div >
+      <!-- <div v-if="prestaInfos.places_dispo > 0"> -->
  <v-btn  @click="addToPanier">ajouter au panier</v-btn>
 
         <v-text-field

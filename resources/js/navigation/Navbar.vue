@@ -27,7 +27,7 @@
           <v-btn depressed small>le lieu</v-btn>
         </router-link>
 
-         <router-link to="" class="my-auto mx-1">
+         <router-link to="/contact" class="my-auto mx-1">
           <v-btn depressed small>contact</v-btn>
         </router-link>
 
@@ -96,7 +96,6 @@ PanierIcone,
 
   created () {
         authenticationService.currentUser.subscribe(x => this.currentUser = x);
-        // console.log(this.currentUser)
     },
 
 }

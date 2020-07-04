@@ -18,9 +18,7 @@ export default {
     },
 
 
-    // created() {
-    //     console.log(this.prestation)
-    // },
+
     data: () => ({
         dialog: false,
 
@@ -28,7 +26,7 @@ export default {
         description: '',
         nbrmax: '',
         prix: '',
-        date: '',
+
         id_user: '',
         id: '',
         places_dispo: '',
@@ -36,21 +34,25 @@ export default {
 
         image: null,
 
-        picker: new Date().toISOString().substr(0, 10),
-        time: null
+        date: new Date().toISOString().substr(0, 10),
+        time: new Date(),
+        dateTime: null
     }),
 
     methods: {
         datePrint() {
-            console.log(this.picker)
-                // this.time = this.time + ':00'
-            console.log(this.time)
-            this.picker = this.picker + ' ' + this.time
-            console.log(this.picker)
+
+
+
+
+            // this.time = this.time + ':00'
+            let datetime = this.date + ' ' + this.time + ':00'
         },
 
         saveData() {
-            //on passe la donne prestation qu on veut creer ou edite
+
+            this.dateTime = this.date + ' ' + this.time + ':00'
+                //on passe la donne prestation qu on veut creer ou edite
             this.newPrestation = {
 
                 // id: this.id,
@@ -62,7 +64,7 @@ export default {
                 id_user: this.currentUser.id,
                 places_dispo: this.places_dispo,
                 //qd on cree on lui passe une image 
-                date: this.picker,
+                date: this.dateTime,
                 image: this.image,
 
             }
@@ -72,10 +74,8 @@ export default {
                 this.newPrestation.id_user = this.id_user,
                     this.newPrestation.id = this.id
             }
-            console.log(this.isModification)
 
-            console.log(this.newPrestation)
-                //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
+            //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
             apiServices.post('api/prestations', this.newPrestation)
 
             .then(response => {
@@ -101,14 +101,11 @@ export default {
                 // this.date = prestation.date
             this.id_user = prestation.id_user
             this.places_dispo = prestation.places_dispo
-                // console.log(prestation.id)
-            console.log(this.prestation)
         },
 
         onFileChange(file) {
-            console.log(file)
-                // let files = e.target.files || e.dataTransfer.files
-                // this.createImg(file);  
+            // let files = e.target.files || e.dataTransfer.files
+            // this.createImg(file);  
 
             let reader = new FileReader;
 
@@ -116,16 +113,12 @@ export default {
                 this.image = file.target.result;
             };
             reader.readAsDataURL(file)
-            console.log(this.image)
-            console.log('////////////////////////////')
-            console.log(reader)
         },
 
 
         // prevoir l image 
         createImg(file) {
 
-            console.log(file)
             let image = new Image;
 
 

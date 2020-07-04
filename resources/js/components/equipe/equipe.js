@@ -16,18 +16,14 @@ export default {
     methods: {
         getData() {
 
-            // console.log(this.newPrestation)
-            apiServices.get('api/equipe')
+            apiServices.get('api/users/profs')
 
             .then(({ data }) => {
 
-                // console.log(data.data)
 
                 data.data.forEach(element => {
                     this.equipe.push(element)
                 });
-                console.log(this.equipe)
-                    // console.log(this.Prestations)
             })
 
 

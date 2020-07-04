@@ -63,7 +63,7 @@
 
     
     <v-date-picker
-      v-model="picker"
+      v-model="date"
       :first-day-of-week="1"
       locale="fr"
       @change="datePrint"

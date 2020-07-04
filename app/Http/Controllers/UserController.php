@@ -19,6 +19,7 @@ class UserController extends Controller
       $role= Role::where('name', '=', 'prof')->first();
       $idRole = $role['id'];
       $users = User::with(['role'])->where('id_role', '=', $idRole)->get();
+
       return UserResource::collection($users);
    
       }

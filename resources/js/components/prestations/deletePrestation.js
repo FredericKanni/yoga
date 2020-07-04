@@ -19,8 +19,6 @@ export default {
     methods: {
         deletePretation() {
             this.dialog = false
-            console.log('delete prestation')
-            console.log(this.prestation)
 
             this.newPrestation = {
 
@@ -31,9 +29,7 @@ export default {
 
             //requete 
             apiServices.post('api/prestations/' + this.prestation.id, this.newPrestation)
-                .then(({ data }) => {
-                    console.log(data)
-                })
+                .then(({ data }) => {})
 
 
             .catch()

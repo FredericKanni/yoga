@@ -35,6 +35,9 @@
   
         <div>{{presta.description}}</div>
             <div>{{presta.id}}</div>
+
+             <div>{{presta.date}}</div>
+              <div>{{presta.heure}}</div>
       </v-card-text>
   
       <v-card-actions>

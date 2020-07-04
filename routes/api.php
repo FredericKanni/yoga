@@ -56,10 +56,10 @@ Route::middleware('auth:api')->prefix('prestations')->group(function () {
 
 //equipe
 
-Route::prefix('equipe')->group(function()
+Route::prefix('users')->group(function()
 {
   
-    Route::get('/' , 'UserController@getEquipe');
+    Route::get('/profs' , 'UserController@getEquipe');
   
 }
 

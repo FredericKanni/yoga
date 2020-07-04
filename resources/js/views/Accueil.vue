@@ -111,17 +111,14 @@ tab:[]
 
     methods: {
         getData() {
-            // console.log(this.newPrestation)
             apiServices.get('api/prestations')
                 .then(({ data }) => {
-                    // console.log(data.data)
                     data.data.forEach(element => {
                         this.Prestations.push(element)
                     });
 
                     this.tab= this.Prestations;
                      this.tab=   [this.tab[0],this.tab[1],this.tab[2]]  ;
-                    // console.log(this.Prestations)
                 })
                 .catch()
         }

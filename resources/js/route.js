@@ -8,7 +8,9 @@ import Login from './components/login/Login.vue';
 import MesPrestations from './views/MesPrestations.vue';
 import ToutesPrestations from './views/ToutesPrestations.vue';
 import Lieu from './components/lieu/lieuView.vue';
+import contact from './views/contact.vue';
 import Register from './views/Register.vue';
+import Stepper from './views/Stepper.vue';
 import { authenticationService } from './components/_services/authentication.service'
 
 import DetailsPrestation from './views/DetailsPrestation.vue';
@@ -35,6 +37,20 @@ const router = new VueRouter({
             name: 'profil',
             component: Profil,
         },
+
+        {
+            path: '/stepper',
+            name: 'stepper',
+            component: Stepper,
+        },
+
+        {
+            path: '/contact',
+            name: 'contact',
+            component: contact,
+        },
+
+
 
         {
             path: '/login',

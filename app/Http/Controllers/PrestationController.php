@@ -13,6 +13,8 @@ class PrestationController extends Controller
 {
 
 
+   
+
     public function index()
     {
         $prestations = Prestation::with(['user'])->get();
@@ -24,7 +26,7 @@ class PrestationController extends Controller
    
 $prestation = Prestation::with('user')->where('id', '=', $id)->first();
 //   return new PrestationResource($prestation) ;
-      return ($prestation) ;
+      return new PrestationResource ($prestation) ;
     }
 
     
@@ -92,7 +94,7 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
         $dataNewPrestation->prix = $validator['prix'];
         $dataNewPrestation->nbrmax = $validator['nbrmax'];
         $dataNewPrestation->places_dispo = $validator['places_dispo'];
-        $dataNewPrestation->date = $validator['date'] ;
+        $dataNewPrestation->created_at = $validator['date'] ;
         // return  $dataNewPrestation;
         //si prestation existe alors son user ne change pas 
 
