@@ -18,6 +18,7 @@ return [
     // 'default' => env('DB_CONNECTION', 'mysql'),
 
     'default' => env('DB_CONNECTION', 'pgsql'),
+    'client_encoding' => 'utf8',
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -66,7 +67,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => $DATABASE_URL['url'],
+            'url' => env('DATABASE_URL'),
             'host' => $DATABASE_URL['host'],
             'port' => $DATABASE_URL['port'],
             'database' => ltrim($DATABASE_URL["path"], "/"),
