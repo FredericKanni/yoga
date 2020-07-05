@@ -24,8 +24,17 @@
         <div>{{prof.description}}</div>
       </v-card-text>
     </v-card>
+
+
+
+    
+
 </v-col>
 
+
+
+  
+         
 
 
 

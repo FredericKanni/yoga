@@ -3031,8 +3031,29 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       e1: 1,
-      prestationStep: ''
+      prestationStep: '',
+      orderList: [],
+      nom: '',
+      prenom: '',
+      ville: '',
+      codePostal: '',
+      pays: '',
+      adresse: '',
+      hidden: true,
+      checkbox: false
     };
+  },
+  methods: {
+    getOrder: function getOrder() {
+      this.orderList = basketService.getCurrentBasket();
+    },
+    displayInputs: function displayInputs() {
+      if (this.checkbox === true) {
+        this.hidden = false;
+      } else {
+        this.hidden = true;
+      }
+    }
   },
   created: function created() {
     this.prestationStep = _components_services_panierService__WEBPACK_IMPORTED_MODULE_0__["panierService"].getCurrentBasket();
@@ -47436,36 +47457,38 @@ var render = function() {
                 "v-stepper-content",
                 { attrs: { step: "1" } },
                 [
-                  _c(
-                    "v-card",
-                    {
-                      staticClass: "mb-12",
-                      attrs: { color: "grey lighten-1", height: "200px" }
-                    },
-                    _vm._l(_vm.prestationStep, function(presta) {
-                      return _c(
-                        "v-col",
-                        {
-                          key: presta.id,
-                          attrs: { cols: "12", sm: "6", md: "3" }
-                        },
-                        [
-                          _vm._v(
-                            "\n    \n" +
-                              _vm._s(presta.name) +
-                              " \n\n" +
-                              _vm._s(presta.placeNbr) +
-                              "  x " +
-                              _vm._s(presta.prix) +
-                              " € = " +
-                              _vm._s(presta.placeNbr * presta.prix) +
-                              "\n\n"
-                          )
-                        ]
-                      )
-                    }),
-                    1
-                  ),
+                  _vm._l(_vm.prestationStep, function(presta) {
+                    return _c(
+                      "v-col",
+                      {
+                        key: presta.id,
+                        attrs: { cols: "12", sm: "6", md: "3" }
+                      },
+                      [
+                        _c(
+                          "v-card",
+                          {
+                            staticClass: "mb-2 pa-2 w-",
+                            attrs: { color: "grey lighten-1", width: "100%" }
+                          },
+                          [
+                            _vm._v(
+                              "\n" +
+                                _vm._s(presta.name) +
+                                " \n\n" +
+                                _vm._s(presta.placeNbr) +
+                                "  x " +
+                                _vm._s(presta.prix) +
+                                " € = " +
+                                _vm._s(presta.placeNbr * presta.prix) +
+                                "\n\n    "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  }),
                   _vm._v(" "),
                   _c(
                     "v-btn",
@@ -47482,17 +47505,169 @@ var render = function() {
                   _vm._v(" "),
                   _c("v-btn", { attrs: { text: "" } }, [_vm._v("Cancel")])
                 ],
-                1
+                2
               ),
               _vm._v(" "),
               _c(
                 "v-stepper-content",
                 { attrs: { step: "2" } },
                 [
-                  _c("v-card", {
-                    staticClass: "mb-12",
-                    attrs: { color: "grey lighten-1", height: "200px" }
+                  _c("span", [_vm._v("Adresse de facturation")]),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "Nom" },
+                    model: {
+                      value: _vm.nom,
+                      callback: function($$v) {
+                        _vm.nom = $$v
+                      },
+                      expression: "nom"
+                    }
                   }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "Prenom" },
+                    model: {
+                      value: _vm.prenom,
+                      callback: function($$v) {
+                        _vm.prenom = $$v
+                      },
+                      expression: "prenom"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "Pays*" },
+                    model: {
+                      value: _vm.pays,
+                      callback: function($$v) {
+                        _vm.pays = $$v
+                      },
+                      expression: "pays"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "Ville*" },
+                    model: {
+                      value: _vm.ville,
+                      callback: function($$v) {
+                        _vm.ville = $$v
+                      },
+                      expression: "ville"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "Adresse*" },
+                    model: {
+                      value: _vm.adresse,
+                      callback: function($$v) {
+                        _vm.adresse = $$v
+                      },
+                      expression: "adresse"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "Code Postal*" },
+                    model: {
+                      value: _vm.codePostal,
+                      callback: function($$v) {
+                        _vm.codePostal = $$v
+                      },
+                      expression: "codePostal"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-checkbox", {
+                    attrs: { label: "Oui" },
+                    on: {
+                      change: function($event) {
+                        return _vm.displayInputs()
+                      }
+                    },
+                    model: {
+                      value: _vm.checkbox,
+                      callback: function($$v) {
+                        _vm.checkbox = $$v
+                      },
+                      expression: "checkbox"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { attrs: { hidden: _vm.hidden } },
+                    [
+                      _c("v-text-field", {
+                        attrs: { label: "Nom" },
+                        model: {
+                          value: _vm.nom,
+                          callback: function($$v) {
+                            _vm.nom = $$v
+                          },
+                          expression: "nom"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: { label: "Prenom" },
+                        model: {
+                          value: _vm.prenom,
+                          callback: function($$v) {
+                            _vm.prenom = $$v
+                          },
+                          expression: "prenom"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: { label: "Pays*" },
+                        model: {
+                          value: _vm.pays,
+                          callback: function($$v) {
+                            _vm.pays = $$v
+                          },
+                          expression: "pays"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: { label: "Ville*" },
+                        model: {
+                          value: _vm.ville,
+                          callback: function($$v) {
+                            _vm.ville = $$v
+                          },
+                          expression: "ville"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: { label: "Adresse*" },
+                        model: {
+                          value: _vm.adresse,
+                          callback: function($$v) {
+                            _vm.adresse = $$v
+                          },
+                          expression: "adresse"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-text-field", {
+                        attrs: { label: "Code Postal*" },
+                        model: {
+                          value: _vm.codePostal,
+                          callback: function($$v) {
+                            _vm.codePostal = $$v
+                          },
+                          expression: "codePostal"
+                        }
+                      })
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
                     "v-btn",

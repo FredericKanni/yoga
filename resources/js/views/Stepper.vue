@@ -15,25 +15,27 @@
 
     <v-stepper-items>
       <v-stepper-content step="1">
-        <v-card
-          class="mb-12"
-          color="grey lighten-1"
-          height="200px"
-        >
+    
 
         
           <v-col  cols="12" sm="6" md='3'
     v-for="presta in prestationStep"
     :key="presta.id"
     >
-    
+        <v-card
+          class="mb-2 pa-2 w-"
+          color="grey lighten-1"
+        width=100%
+        >
 {{presta.name}} 
 
 {{presta.placeNbr}}  x {{presta.prix}} € = {{presta.placeNbr*presta.prix}}
 
+    </v-card>
+
 </v-col>
         
-        </v-card>
+        
 
         <v-btn
           color="primary"
@@ -46,12 +48,25 @@
       </v-stepper-content>
 
       <v-stepper-content step="2">
-        <v-card
-          class="mb-12"
-          color="grey lighten-1"
-          height="200px"
-        ></v-card>
 
+    <span>Adresse de facturation</span>
+        <v-text-field label="Nom" v-model="nom"></v-text-field>
+        <v-text-field label="Prenom" v-model="prenom"></v-text-field>
+        <v-text-field label="Pays*" v-model="pays"></v-text-field>
+        <v-text-field label="Ville*" v-model="ville"></v-text-field>
+        <v-text-field label="Adresse*" v-model="adresse"></v-text-field>
+        <v-text-field label="Code Postal*" v-model="codePostal"></v-text-field>
+        <v-checkbox v-model="checkbox" label="Oui" @change="displayInputs()"></v-checkbox>
+        <div :hidden="hidden">
+          <v-text-field label="Nom" v-model="nom"></v-text-field>
+          <v-text-field label="Prenom" v-model="prenom"></v-text-field>
+          <v-text-field label="Pays*" v-model="pays"></v-text-field>
+          <v-text-field label="Ville*" v-model="ville"></v-text-field>
+          <v-text-field label="Adresse*" v-model="adresse"></v-text-field>
+          <v-text-field label="Code Postal*" v-model="codePostal"></v-text-field>
+</div>
+
+     
         <v-btn
           color="primary"
           @click="e1 = 3"
