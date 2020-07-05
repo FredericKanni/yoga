@@ -18,7 +18,7 @@ return [
     // 'default' => env('DB_CONNECTION', 'mysql'),
 
     'default' => env('DB_CONNECTION', 'pgsql'),
-    'client_encoding' => 'utf8',
+    // 'client_encoding' => 'utf8',
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -73,7 +73,7 @@ return [
             'database' => ltrim($DATABASE_URL["path"], "/"),
             'username' => $DATABASE_URL['user'],
             'password' => $DATABASE_URL['pass'],
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
