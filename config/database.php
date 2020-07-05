@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL=parse_url('postgres://zcfemqgilzvnjc:ced1243a335f436c3a46b90ce7781e43110bc90ee5899332b89323cd7ad85458@ec2-34-192-173-173.compute-1.amazonaws.com:5432/d6mslj92jfh6vg');
+$DATABASE_URL=parse_url('postgres://ahufpfddpakwib:2c68643304f79d2bc6de149fa727811ca5fabe48b6f750a6ef68b8ebf428e835@ec2-18-214-119-135.compute-1.amazonaws.com:5432/d8og4q4uf6jo2');
 return [
 
     /*
@@ -80,7 +80,7 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
