@@ -20,10 +20,13 @@
       <v-card-text>
         <div class="ma-0 text-center">{{prof.metier}}</div>
       </v-card-text>
+      
       <v-card-text class="text-center">
         <div>{{prof.description}}</div>
+
       </v-card-text>
     </v-card>
+
 
 
 
