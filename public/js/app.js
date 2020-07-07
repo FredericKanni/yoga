@@ -2875,7 +2875,42 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony import */ var _services_api_services_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_services/api.services.js */ "./resources/js/components/_services/api.services.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      listProf: [],
+      listUser: []
+    };
+  },
+  methods: {
+    //recupere les donnes des uttilisateur en bdd
+    getdatas: function getdatas() {
+      var _this = this;
+
+      _services_api_services_js__WEBPACK_IMPORTED_MODULE_0__["apiServices"].get('api/users/all').then(function (data) {
+        // console.log(data)
+        data.data.forEach(function (element) {
+          if (element.id_role == 2) {
+            console.log(element.name);
+
+            _this.listProf.push(element);
+          }
+
+          if (element.id_role == 3) {
+            console.log(element.name);
+
+            _this.listUser.push(element);
+          }
+        }); // console.log(this.listUser)
+      })["catch"]();
+    }
+  },
+  created: function created() {
+    this.getdatas();
+  }
+});
 
 /***/ }),
 
@@ -45417,6 +45452,98 @@ var render = function() {
       _c("h2", { staticClass: "m-3 text-center" }, [_vm._v("L'Equipe")]),
       _vm._v(" "),
       _c(
+        "v-slide-group",
+        { attrs: { multiple: "", "show-arrows": "" } },
+        _vm._l(25, function(n) {
+          return _c(
+            "v-slide-item",
+            { key: n },
+            [
+              _c(
+                "v-slide-group",
+                { attrs: { multiple: "", "show-arrows": "" } },
+                _vm._l(25, function(n) {
+                  return _c("v-slide-item", {
+                    key: n,
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "default",
+                          fn: function(ref) {
+                            var active = ref.active
+                            var toggle = ref.toggle
+                            return [
+                              _c(
+                                "v-card",
+                                {
+                                  attrs: {
+                                    "input-value": active,
+                                    "active-class": "purple white--text"
+                                  },
+                                  on: { click: toggle }
+                                },
+                                [
+                                  _c(
+                                    "v-col",
+                                    {
+                                      staticClass: "text-center mt-1",
+                                      attrs: { cols: "12" }
+                                    },
+                                    [
+                                      _c(
+                                        "v-avatar",
+                                        {
+                                          staticClass: "profile",
+                                          attrs: { color: "grey", size: "164" }
+                                        },
+                                        [_c("v-img")],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-title",
+                                    { staticClass: "justify-center" },
+                                    [_vm._v("toto")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-card-text", [
+                                    _c(
+                                      "div",
+                                      { staticClass: "ma-0 text-center" },
+                                      [_vm._v("profyoga")]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-card-text",
+                                    { staticClass: "text-center" },
+                                    [_c("div", [_vm._v("lul")])]
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          }
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  })
+                }),
+                1
+              )
+            ],
+            1
+          )
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "v-row",
         _vm._l(_vm.equipe, function(prof) {
           return _c(
@@ -46542,7 +46669,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    edituser\n")])
+  return _c(
+    "div",
+    [
+      _vm._v("\n       list profs\n\n"),
+      _c(
+        "v-row",
+        _vm._l(_vm.listProf, function(prof) {
+          return _c(
+            "v-col",
+            { key: prof.id, attrs: { cols: "12", sm: "6", md: "3" } },
+            [_vm._v("\n \n" + _vm._s(prof.name) + "\n\n   \n\n    ")]
+          )
+        }),
+        1
+      ),
+      _vm._v("\n\nlist client\n"),
+      _c(
+        "v-row",
+        _vm._l(_vm.listUser, function(user) {
+          return _c(
+            "v-col",
+            { key: user.id, attrs: { cols: "12", sm: "6", md: "3" } },
+            [_vm._v("\n \n" + _vm._s(user.name) + "\n\n   \n\n    ")]
+          )
+        }),
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -47435,15 +47591,7 @@ var render = function() {
               _vm._v(" "),
               _c("v-divider"),
               _vm._v(" "),
-              _c(
-                "v-stepper-step",
-                { attrs: { complete: _vm.e1 > 2, step: "2" } },
-                [_vm._v("Adresse")]
-              ),
-              _vm._v(" "),
-              _c("v-divider"),
-              _vm._v(" "),
-              _c("v-stepper-step", { attrs: { step: "3" } }, [
+              _c("v-stepper-step", { attrs: { step: "2" } }, [
                 _vm._v("Moyen de Paiment")
               ])
             ],
@@ -47512,196 +47660,6 @@ var render = function() {
                 "v-stepper-content",
                 { attrs: { step: "2" } },
                 [
-                  _c("span", [_vm._v("Adresse de facturation")]),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Nom" },
-                    model: {
-                      value: _vm.nom,
-                      callback: function($$v) {
-                        _vm.nom = $$v
-                      },
-                      expression: "nom"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Prenom" },
-                    model: {
-                      value: _vm.prenom,
-                      callback: function($$v) {
-                        _vm.prenom = $$v
-                      },
-                      expression: "prenom"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Pays*" },
-                    model: {
-                      value: _vm.pays,
-                      callback: function($$v) {
-                        _vm.pays = $$v
-                      },
-                      expression: "pays"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Ville*" },
-                    model: {
-                      value: _vm.ville,
-                      callback: function($$v) {
-                        _vm.ville = $$v
-                      },
-                      expression: "ville"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Adresse*" },
-                    model: {
-                      value: _vm.adresse,
-                      callback: function($$v) {
-                        _vm.adresse = $$v
-                      },
-                      expression: "adresse"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Code Postal*" },
-                    model: {
-                      value: _vm.codePostal,
-                      callback: function($$v) {
-                        _vm.codePostal = $$v
-                      },
-                      expression: "codePostal"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("v-checkbox", {
-                    attrs: { label: "Oui" },
-                    on: {
-                      change: function($event) {
-                        return _vm.displayInputs()
-                      }
-                    },
-                    model: {
-                      value: _vm.checkbox,
-                      callback: function($$v) {
-                        _vm.checkbox = $$v
-                      },
-                      expression: "checkbox"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { attrs: { hidden: _vm.hidden } },
-                    [
-                      _c("v-text-field", {
-                        attrs: { label: "Nom" },
-                        model: {
-                          value: _vm.nom,
-                          callback: function($$v) {
-                            _vm.nom = $$v
-                          },
-                          expression: "nom"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "Prenom" },
-                        model: {
-                          value: _vm.prenom,
-                          callback: function($$v) {
-                            _vm.prenom = $$v
-                          },
-                          expression: "prenom"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "Pays*" },
-                        model: {
-                          value: _vm.pays,
-                          callback: function($$v) {
-                            _vm.pays = $$v
-                          },
-                          expression: "pays"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "Ville*" },
-                        model: {
-                          value: _vm.ville,
-                          callback: function($$v) {
-                            _vm.ville = $$v
-                          },
-                          expression: "ville"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "Adresse*" },
-                        model: {
-                          value: _vm.adresse,
-                          callback: function($$v) {
-                            _vm.adresse = $$v
-                          },
-                          expression: "adresse"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "Code Postal*" },
-                        model: {
-                          value: _vm.codePostal,
-                          callback: function($$v) {
-                            _vm.codePostal = $$v
-                          },
-                          expression: "codePostal"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "primary" },
-                      on: {
-                        click: function($event) {
-                          _vm.e1 = 3
-                        }
-                      }
-                    },
-                    [_vm._v("\n          Continue\n        ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { text: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.e1 = 1
-                        }
-                      }
-                    },
-                    [_vm._v("Cancel")]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-stepper-content",
-                { attrs: { step: "3" } },
-                [
                   _c("v-card", {
                     staticClass: "mb-12",
                     attrs: { color: "grey lighten-1", height: "200px" }
@@ -47726,7 +47684,7 @@ var render = function() {
                       attrs: { text: "" },
                       on: {
                         click: function($event) {
-                          _vm.e1 = 2
+                          _vm.e1 = 1
                         }
                       }
                     },

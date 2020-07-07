@@ -18,7 +18,7 @@ return [
     // 'default' => env('DB_CONNECTION', 'mysql'),
 
     'default' => env('DB_CONNECTION', 'pgsql'),
-    // 'client_encoding' => 'utf8',
+  'client_encoding' => 'utf8',
     /*
     |--------------------------------------------------------------------------
     | Database Connections
