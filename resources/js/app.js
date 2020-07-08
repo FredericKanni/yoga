@@ -8,18 +8,25 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
+import VStripeElements from 'v-stripe-elements/lib';
+
 Vue.use(VueRouter)
+Vue.use(Vuetify);
 
-import vuetify from './src/plugins/vuetify.js'
+Vue.use(VStripeElements);
 
+import LoadScript from 'vue-plugin-load-script'
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+Vue.use(LoadScript)
+    /**
+     * The following block of code may be used to automatically register your
+     * Vue components. It will recursively scan this directory for the Vue
+     * components and automatically register them with their "basename".
+     *
+     * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+     */
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -36,10 +43,20 @@ import Routes from './route.js';
 
 
 
-
 const app = new Vue({
-    vuetify,
     el: '#app',
+    vuetify: new Vuetify({}),
     router: Routes,
     components: { Layout }
-}).$mount('#app');
+})
+
+
+// const app = new Vue({
+//     vuetify: new Vuetify({}),
+
+//     el: '#app',
+//     router: Routes,
+//     components: { Layout }
+// }).$mount('#app');
+
+export default new Vuetify(app);

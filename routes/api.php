@@ -68,4 +68,11 @@ Route::prefix('users')->group(function()
 );
 
 
+Route::prefix('basket')->group(function () {
+   
+    
+    Route::post('/pay', 'CommandeController@pay'); 
+ 
+}); 
+
 

@@ -1,7 +1,11 @@
 import { panierService } from '../components/_services/panierService'
-import { apiServices } from '../components/_services/api.services'
-
+import { VStripeCard } from 'v-stripe-elements/lib'
+// import VStripeCard from 'v-stripe-elements/lib/VStripeCard'
 export default {
+    // components: { VStripeCard },
+    components: {
+        VStripeCard,
+    },
     data() {
         return {
             e1: 1,
@@ -16,6 +20,18 @@ export default {
             adresse: '',
             hidden: true,
             checkbox: false,
+
+            source: null,
+            apiKey: 'pk_test_51GubguEFBEwEutzrRD48zBSo4GaSGhtnhZmB6uIXPRHx6BFMEXtWfRwYHSVRASsPjYPkIneyRcAE4KWfpf1vry9t00LkBr0MTN',
+            intentToken: '',
+
+
+
+            commande: {
+                paiement: '',
+
+
+            },
         }
     },
 
@@ -29,7 +45,17 @@ export default {
             } else {
                 this.hidden = true;
             }
+        },
+
+        process() {
+            console.log(this.source)
+
+
+            this.commande.paiement = this.source;
+
+            panierService.paiement(this.commande)
         }
+
     },
 
     created() {
@@ -38,6 +64,8 @@ export default {
         console.log('stepper')
         console.log(panierService.getCurrentBasket())
     },
+
+
 
 
 

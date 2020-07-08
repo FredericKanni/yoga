@@ -48,20 +48,23 @@
      
 
       <v-stepper-content step="2">
-        <v-card
-          class="mb-12"
-          color="grey lighten-1"
-          height="200px"
-        ></v-card>
+    <v-stripe-card
+    v-model="source"
+    :api-key="apiKey"
+  ></v-stripe-card>
+     {{source}}   
 
         <v-btn
           color="primary"
-          @click="e1 = 1"
+          @click="process"
+          :disabled="!source"
         >
-          Continue
+          payer
         </v-btn>
 
-        <v-btn text    @click="e1 = 1">Cancel</v-btn>
+        
+
+        <v-btn text @click="e1 = 1">Cancel</v-btn>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>

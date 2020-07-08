@@ -6,6 +6,8 @@ export const panierService = {
     basketLen,
     basketSizeRecup,
     getCurrentBasket,
+    paiement
+
 }
 
 function addToPanier(prestation, placeNbr) {
@@ -91,4 +93,16 @@ function basketSizeRecup() {
     let basketSize = _.toPairs(getCurrentBasket()).length;
 
     return basketSize
+}
+
+
+
+function paiement(order) {
+
+    console.log(order)
+    return apiServices.post('/api/basket/pay', {
+
+        paiement: order.paiement
+
+    })
 }
