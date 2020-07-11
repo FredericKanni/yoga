@@ -3,6 +3,7 @@
 <div>
 
     <v-carousel
+  
       cycle
       height="90vh"
       hide-delimiter-background
@@ -24,7 +25,7 @@
             justify="center"
             height="100%"
           >
-            <!-- <div class="display-3"> Slide</div> -->
+       
 
             <v-img    :src="item.src" aspect-ratio="1.7" ></v-img>
           </v-row>

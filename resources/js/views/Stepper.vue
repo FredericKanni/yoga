@@ -37,7 +37,7 @@
 
         <v-btn
           color="primary"
-          @click="e1 = 2"
+          @click="valideCommande"
         >
           Valider la commande 
         </v-btn>

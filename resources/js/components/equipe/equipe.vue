@@ -19,7 +19,6 @@
 
 
 
-
 <v-card
 
  :input-value="active"
@@ -28,7 +27,8 @@
 >
  
  
-
+ yu
+<!-- 
 
       <v-col class="text-center mt-1" cols="12" >
         <v-avatar class="profile" color="grey" size="164">
@@ -44,7 +44,7 @@
       <v-card-text class="text-center">
         <div>lul</div>
 
-      </v-card-text>
+      </v-card-text> -->
 
 
     </v-card>

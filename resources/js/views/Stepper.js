@@ -1,5 +1,6 @@
 import { panierService } from '../components/_services/panierService'
 import { VStripeCard } from 'v-stripe-elements/lib'
+import { apiServices } from '../components/_services/api.services'
 // import VStripeCard from 'v-stripe-elements/lib/VStripeCard'
 export default {
     // components: { VStripeCard },
@@ -29,15 +30,14 @@ export default {
 
             commande: {
                 paiement: '',
-
-
+                panier: '',
             },
         }
     },
 
     methods: {
         getOrder() {
-            this.orderList = basketService.getCurrentBasket();
+            this.orderList = panierService.getCurrentBasket();
         },
         displayInputs() {
             if (this.checkbox === true) {
@@ -47,6 +47,27 @@ export default {
             }
         },
 
+        /**
+         * enregistre la commande en BDD
+         */
+        valideCommande() {
+            console.log('-----------------')
+                // console.log(panierService.getCurrentBasket())
+            this.commande.panier = panierService.getCurrentBasket()
+
+            apiServices.post('api/commandes', this.commande)
+
+            .then(response => {
+                console.log(response)
+            })
+
+
+            .catch()
+
+
+            this.e1 = 2
+        },
+
         process() {
             console.log(this.source)
 
@@ -54,7 +75,7 @@ export default {
             this.commande.paiement = this.source;
 
             panierService.paiement(this.commande)
-        }
+        },
 
     },
 

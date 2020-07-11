@@ -1,7 +1,7 @@
 <template>
    <div justify="center" class="d-inline">
     
-   <v-dialog v-model="dialog" persistent max-width="600px">
+   <v-dialog v-model="dialog" persistent >
       <template v-slot:activator="{ on }">
         <v-btn v-if="!isModification"  color="primary" dark v-on="on" class="ma-5">Creer une prestation</v-btn>
   <v-btn v-if="isModification"  @click="modifierPrestationModal(prestation)"  color="primary" dark v-on="on" class="ma-1">

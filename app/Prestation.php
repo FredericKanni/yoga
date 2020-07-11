@@ -25,6 +25,9 @@ class Prestation extends Model
 
     }
 
-    
+    function commandes()
+    {
+        return $this->belongsToMany('App\Commande', 'commandes_has_prestations', 'id_prestation','id_commande');
+    }
 
 }

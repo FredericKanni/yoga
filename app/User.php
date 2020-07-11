@@ -55,4 +55,13 @@ class User extends Authenticatable
         return $this->hasMany(Prestation::class, 'id_user');
 
     }
+
+
+    public function commandes()
+
+    {
+
+        return $this->hasMany(Commande::class, 'id_user');
+
+    }
 }
