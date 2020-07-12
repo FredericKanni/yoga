@@ -9,7 +9,6 @@
                  
              
 
-<addPrestation></addPrestation>
 <prestationTable></prestationTable>
 <editUsers></editUsers>
 

@@ -44,11 +44,13 @@
    <v-btn text class="nav-item nav-link"  v-if="isCheck"  @click="logout()">Deconnexion</v-btn>
       <v-btn text class="nav-item nav-link" v-if="!isCheck"  to="/register">S' inscrire</v-btn>
     
-
+ 
 
       </v-toolbar-items>
 
-    
+      <div class="my-auto mx-1">
+          <PanierIcone></PanierIcone>
+        </div>
     </v-app-bar>
 
 
@@ -131,7 +133,7 @@
 
           <v-list-item-content>
             <v-list-item-title class="font-weight-bold">
-              <router-link to="/">Deconnexion</router-link>
+              <router-link to="/logout">Deconnexion</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>

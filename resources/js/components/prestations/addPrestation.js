@@ -15,6 +15,8 @@ export default {
         isModification: {
             default: false
         },
+
+
     },
 
 
@@ -36,10 +38,15 @@ export default {
 
         date: new Date().toISOString().substr(0, 10),
         time: new Date(),
-        dateTime: null
+        dateTime: null,
+
+        datetime: null,
+
+
     }),
 
     methods: {
+
         datePrint() {
 
 
@@ -67,6 +74,8 @@ export default {
                 date: this.dateTime,
                 image: this.image,
 
+
+
             }
 
             if (this.isModification) {
@@ -79,7 +88,22 @@ export default {
             apiServices.post('api/prestations', this.newPrestation)
 
             .then(response => {
+
                 console.log(response)
+
+                if (this.isModification) {
+                    console.log('la prestation a été modifiée')
+
+                    this.$emit('modifPresta', response.data.data)
+
+                } else if (!this.isModification) {
+                    console.log('la prestation a été crée ')
+                    this.dialog = false;
+                    this.$emit('createPresta', response.data.data)
+                }
+
+
+
             })
 
 

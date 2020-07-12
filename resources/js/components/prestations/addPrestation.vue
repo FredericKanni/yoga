@@ -10,6 +10,11 @@
         
       </template>
 
+
+
+
+
+
       
       <v-card>
         <v-card-title>
@@ -20,13 +25,14 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12" sm="12" md="12">
+              <v-col cols="12" sm="12" md="6">
                 <v-text-field label="nom*" v-model="name"  required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="12" md="12">
+            
                 <v-text-field label="description" hint="example of helper text only on focus"  v-model="description"></v-text-field>
-              </v-col>
-              <v-col cols="6" sm="6" md="6" >
+            
+            
+            
+             
                 <v-text-field
                   label="nombre maximun*"
                   hint="example of persistent helper text"
@@ -35,12 +41,10 @@
                   v-model="nbrmax"
                 ></v-text-field>
 
-                  <v-col cols="12" sm="12" md="12">
+                
                 <v-text-field label="Places disponibles" hint="example of helper text only on focus"  v-model="places_dispo"></v-text-field>
-              </v-col>
-              </v-col>
-
-                 <v-col cols="6" sm="6" md="6" >
+             
+             
                 <v-text-field
                   label="prix*"
                   hint="example of persistent helper text"
@@ -48,20 +52,24 @@
                   required
                   v-model="prix"
                 ></v-text-field>
-              </v-col>
-
-                  <v-col cols="6" sm="6" md="6" >
+           
                 <v-file-input accept="image/*" label="File input" @change="onFileChange"></v-file-input>
 
-                  <v-img v-if="image" :src="image" :contain="true"    ></v-img>
-    
+              
+       <v-img  max-height="250px" v-if="image" :src="image" :contain="true"    ></v-img>
               </v-col>
 
-   <v-col cols="6" sm="6" md="6" >
+                   
+              
+    
+             
+
                
-              </v-col>
 
-    
+      <v-col cols="12" sm="12" md="6">
+               
+
+
     <v-date-picker
       v-model="date"
       :first-day-of-week="1"
@@ -69,9 +77,20 @@
       @change="datePrint"
     ></v-date-picker>
 
-    <v-row justify="center">
+ <v-row justify="center">
     <v-time-picker  v-model="time"  @change="datePrint"></v-time-picker>
   </v-row>
+
+              </v-col>
+
+    
+
+
+
+
+
+
+
          
             </v-row>
           </v-container>

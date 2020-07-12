@@ -11,10 +11,12 @@ import VueRouter from 'vue-router'
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import VStripeElements from 'v-stripe-elements/lib';
+import DatetimePicker from 'vuetify-datetime-picker'
+
 
 Vue.use(VueRouter)
 Vue.use(Vuetify);
-
+Vue.use(DatetimePicker)
 Vue.use(VStripeElements);
 
 import LoadScript from 'vue-plugin-load-script'

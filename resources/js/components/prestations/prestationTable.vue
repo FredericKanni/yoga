@@ -2,6 +2,8 @@
     <div >
       
 
+
+
         <v-card>
     <v-card-title>
       Prestations
@@ -15,14 +17,17 @@
       ></v-text-field>
     </v-card-title>
 
+ <addPrestation @createPresta="Prestations.push($event)"/>
 
     <v-data-table
       :headers="headers"
       :items="Prestations"
       :search="search"
     >
-     <!-- <addProduit v-on:addPrestation="Prestations.push($event)"/> -->
-       <template v-slot:item.actions="{ item }"><addPrestation :prestation="item" :isModification='true'></addPrestation>
+
+   
+
+       <template v-slot:item.actions="{ item }"><addPrestation  :prestation="item" :isModification='true'></addPrestation>
        <deletePrestation :prestation="item"></deletePrestation>
        
        </template>
