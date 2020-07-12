@@ -5,6 +5,15 @@ export default {
 
 
     props: {
+
+        prestations: {
+            default: function() {
+                return {
+
+                }
+            }
+        },
+
         prestation: {
             default: function() {
                 return {
@@ -12,6 +21,9 @@ export default {
                 }
             }
         },
+
+
+
         isModification: {
             default: false
         },
@@ -93,8 +105,18 @@ export default {
 
                 if (this.isModification) {
                     console.log('la prestation a été modifiée')
+                    this.dialog = false;
+                    if (this.id) {
 
-                    this.$emit('modifPresta', response.data.data)
+                        const index = this.prestations.indexOf(this.prestation);
+
+                        this.prestations.splice(index, 1)
+                        console.log(this.prestations)
+                        this.prestations.push(response.data.data)
+                    }
+
+
+                    // this.$emit('modifPresta', response.data.data)
 
                 } else if (!this.isModification) {
                     console.log('la prestation a été crée ')
