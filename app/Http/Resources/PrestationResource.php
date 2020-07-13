@@ -20,10 +20,10 @@ class PrestationResource extends JsonResource
         //  $user = new UserResource($this->whenLoaded('user'));
         $user = new UserResource($this->whenLoaded('user'));
         // $user = 'App\User'::find($this->id_user);
-      if(isset(  $this->created_at)){
-          $this->created_at = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',  $this->created_at)->format('Y-m-d H:i:s');
+    //   if(isset(  $this->created_at)){
+    //       $this->created_at = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',  $this->created_at)->format('Y-m-d H:i:s');
    
-      }
+    //   }
              return [
             'id' => $this->id,
             'name' => $this->name,

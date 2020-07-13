@@ -28,7 +28,7 @@
    
 
        <template v-slot:item.actions="{ item }"><addPrestation :prestations='Prestations' :prestation="item" :isModification='true'></addPrestation>
-       <deletePrestation :prestation="item"></deletePrestation>
+       <deletePrestation :prestations='Prestations'  :prestation="item"></deletePrestation>
        
        </template>
     </v-data-table>

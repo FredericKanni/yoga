@@ -48,11 +48,11 @@ export default {
 
         image: null,
 
-        date: new Date().toISOString().substr(0, 10),
-        time: new Date(),
+        date: '2022-07-13',
+        time: '12:53:00',
         dateTime: null,
 
-        datetime: null,
+        // datetime: null,
 
 
     }),
@@ -65,12 +65,16 @@ export default {
 
 
             // this.time = this.time + ':00'
-            let datetime = this.date + ' ' + this.time + ':00'
+            // let datetime = this.date + ' ' + this.time + ':00'
         },
 
         saveData() {
 
-            this.dateTime = this.date + ' ' + this.time + ':00'
+            // console.log(this.date)
+            // console.log(this.time)
+            // this.dateTime = this.date + ' ' + this.time + ':00'
+            this.dateTime = this.date + ' ' + this.time
+            console.log(this.dateTime)
                 //on passe la donne prestation qu on veut creer ou edite
             this.newPrestation = {
 
@@ -109,10 +113,15 @@ export default {
                     if (this.id) {
 
                         const index = this.prestations.indexOf(this.prestation);
-
-                        this.prestations.splice(index, 1)
                         console.log(this.prestations)
-                        this.prestations.push(response.data.data)
+                        console.log(index)
+
+                        this.prestations.splice(index, 1, response.data.data)
+
+                        // ajoute la response .data.data dans presation mais push rajoute en dernier position
+                        // this.prestations.push(response.data.data)
+
+
                     }
 
 
@@ -144,9 +153,16 @@ export default {
             this.description = prestation.description
             this.nbrmax = prestation.nbrmax
             this.prix = prestation.prix
-                // this.date = prestation.date
+            this.image = prestation.image
             this.id_user = prestation.id_user
             this.places_dispo = prestation.places_dispo
+
+            this.date = prestation.created_at.substring(0, 10);
+            this.time = prestation.created_at.substring(11, 19);
+
+
+            console.log(prestation)
+
         },
 
         onFileChange(file) {
