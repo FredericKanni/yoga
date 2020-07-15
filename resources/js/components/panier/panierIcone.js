@@ -44,7 +44,7 @@ export default {
 
     created() {
         this.getQuantityPanier();
-        console.log(panierService.getCurrentBasket())
+        // console.log(panierService.getCurrentBasket())
     },
 
 

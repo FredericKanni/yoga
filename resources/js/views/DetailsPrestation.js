@@ -6,12 +6,18 @@ export default {
 
     data() {
         return {
-            prestaInfos: {},
+            prestaInfos: { user: {} },
             placeNbr: 0,
             quantityMax: 10,
             date: '',
             heure: '',
-            text: ''
+            text: '',
+            quantityMax: 1,
+
+            rules: {
+
+                counter: '',
+            }
         }
     },
     methods: {
@@ -22,25 +28,57 @@ export default {
 
             (apiServices.get('/api/prestations/' + this.$route.params.id))
             .then(({ data }) => {
-                    this.prestaInfos = data;
-                    // return data;
+                    // console.log(data.data)
+                    this.prestaInfos = data.data;
 
-                    let d = new Date(this.prestaInfos.data.date)
+
+                    let d = new Date(this.prestaInfos.date)
                     let dAujourdhui = d
-                        // new Date();
+
                     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-                    // document.write(dAujourdhui.toLocaleDateString('fr-CA', options));
-                    // console.log(dAujourdhui.toLocaleDateString('fr-CA', options))
-                    // console.log(dAujourdhui.getHours() + 'h' + dAujourdhui.getMinutes())
+
                     this.date = dAujourdhui.toLocaleDateString('fr-CA', options)
                     this.heure = dAujourdhui.getHours() + 'h' + dAujourdhui.getMinutes()
+
+                    // console.log(this.prestaInfos);
+
+                    //definir  quantityMax
+
+                    if (this.prestaInfos.placesDispo > 10) {
+                        console.log('il reste plus de 10 places')
+                        this.quantityMax = 10;
+                        this.rules.counter = value => value <= this.quantityMax || 'pas plus de 10 places'
+
+
+                        console.log(this.quantityMax);
+                    } else if (this.prestaInfos.placesDispo == 0) {
+                        console.log('il ne reste plus de places')
+                        this.quantityMax = 0;
+                        console.log(this.quantityMax);
+
+                    } else if (this.prestaInfos.placesDispo < 10) {
+                        console.log('il reste moins de 10 places')
+                        this.quantityMax = this.prestaInfos.placesDispo;
+                        this.rules.counter = value => value <= this.quantityMax || 'places insuffisantes'
+
+                        console.log(this.quantityMax);
+                    }
+
+
+
+
+
+
+
+
+
                 })
                 .catch()
         },
         addToPanier() {
-            panierService.addToPanier(this.prestaInfos, this.placeNbr);
-
+            // console.log(this.prestaInfos)
+            panierService.addToPanier(this.prestaInfos, this.placeNbr, this.quantityMax);
 
 
 
@@ -50,9 +88,10 @@ export default {
     created() {
 
         this.getDatas();
-
+        console.log(this.prestaInfos);
 
     },
+
 
 
 

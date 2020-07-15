@@ -18,6 +18,8 @@ class PrestationController extends Controller
     public function index()
     {
         $prestations = Prestation::with(['user'])->get();
+
+        
         return PrestationResource::collection($prestations);
     }
 

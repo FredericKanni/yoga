@@ -10,12 +10,12 @@ export const panierService = {
 
 }
 
-function addToPanier(prestation, placeNbr) {
+function addToPanier(prestation, placeNbr, quantityMax) {
     // let basket = localStorage.getItem("currentBasket");
 
     //fait les modif dans localstorage
     // updateLocalStorage(product, quantity, quantityMax);
-    updateLocalStorage(prestation, placeNbr);
+    updateLocalStorage(prestation, placeNbr, quantityMax);
 
 }
 
@@ -37,11 +37,13 @@ function getCurrentBasket() {
 /**
  * modifie le local storage
  */
-function updateLocalStorage(prestation, placeNbr) {
+function updateLocalStorage(prestation, placeNbr, quantityMax) {
     let basket = getCurrentBasket()
     let qt = 0
         // console.log(prestation)
-    prestation = prestation.data
+
+
+
     if (!_.hasIn(basket, buildKey(prestation))) {
 
         basket[buildKey(prestation)] = {
@@ -58,6 +60,25 @@ function updateLocalStorage(prestation, placeNbr) {
             //qt en localstorage +  //quantite que l on veut rajouter en update
         qt = basket[buildKey(prestation)].placeNbr + parseInt(placeNbr)
     }
+
+
+    //produit en localstorage plus qrand que celui en bdd
+    if (qt > prestation.placesDispo) {
+        console.log('stock insuffisant')
+        qt = prestation.placesDispo
+        console.log(qt)
+    }
+    // 
+    //si qt plus petit que 10 ça saute le prochain if sinon ça set le quantity a 10
+    //quantite que l on veut rajouter plus grand que 10
+    if (qt > 10) {
+        console.log('pas plus de 10 produits')
+        qt = 10
+        console.log(qt)
+    }
+
+
+
 
     basket[buildKey(prestation)].placeNbr = qt
 

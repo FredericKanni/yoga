@@ -1,7 +1,8 @@
 <template>
     <div>
         contact
-    </div>
+ 
+      </div>
 </template>
 <script src='./contact.js'>
 

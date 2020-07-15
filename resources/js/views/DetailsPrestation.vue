@@ -36,14 +36,16 @@
                    d-inline
                   >
                   
-                 Cours de yoga
+                {{ prestaInfos.name}} 
 
                  </v-card-title>
 
 
 
     
-                  <v-card-subtitle >avec: Halcyon Days   <br> le {{date}} à {{heure}} </v-card-subtitle>
+                  <v-card-subtitle >avec:{{ prestaInfos.user.name}} <br> le {{date}} à {{heure}} 
+                   <br> places restantes: {{ prestaInfos.placesDispo}}</v-card-subtitle>
+                 
                   <!-- <v-card-actions  > -->
   <!-- <v-btn small text  >jour heure</v-btn> -->
 <!-- </v-card-actions> -->
@@ -69,10 +71,10 @@
     
 <div >
       <!-- <div v-if="prestaInfos.places_dispo > 0"> -->
- <v-btn  @click="addToPanier">ajouter au panier</v-btn>
+ <v-btn    :disabled=" quantityMax == 0  || placeNbr > quantityMax "  @click="addToPanier">ajouter au panier</v-btn>
 
         <v-text-field
-         :disabled=" prestaInfos.places_dispo == 0"
+         :disabled=" quantityMax == 0"
             label="places diponibles"
             type="number"
             single-line
@@ -80,12 +82,12 @@
         :max="quantityMax"
             value=""
             v-model="placeNbr"
-           
+               :rules="[rules.counter]"
           ></v-text-field>
 
    </div>
 
-   <div v-if="prestaInfos.places_dispo == 0">
+   <div v-if="quantityMax == 0">
        plus de place disponible pour ce cours 
     </div>
     </div>
