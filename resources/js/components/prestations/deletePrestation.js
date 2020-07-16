@@ -51,16 +51,18 @@ export default {
 
             // enleve la donne supprimer de Prestations
             this.prestations.forEach(element => {
-                if (element.id == this.prestation.id) {
-                    console.log(element)
-                    console.log(this.prestations.indexOf(element));
+                    if (element.id == this.prestation.id) {
+                        console.log(element)
+                            // console.log(this.prestations.indexOf(element));
 
-                    //on veut enlever element de prestations
-                    this.prestations.splice(this.prestations.indexOf(element), 1)
+                        //on veut enlever element de prestations
+                        this.prestations.splice(this.prestations.indexOf(element), 1)
+
+                    }
 
                 }
 
-            });
+            );
 
 
 

@@ -33,42 +33,61 @@ export default {
                 panier: '',
             },
 
-            headers: [{
-                    text: 'Prestation',
-                    align: 'start',
-                    value: 'name',
-                },
-
+            headers: [
+                { text: 'ID', align: 'start', value: 'id', },
+                { text: 'Prestation', align: 'start', value: 'name', },
                 { text: 'Prix unitaire', value: 'prix' },
-                { text: 'Quantité', value: 'qt' },
-                { text: 'Total', value: 'total' },
-                { text: 'Supprimer', value: 'actions' },
-            ],
-            desserts: [{
-                    name: 'Frozen Yogurt',
-                    qt: 159,
-                    prix: 6.0,
-                    carbs: 24,
-                    total: 4.0,
-                    actions: '1%',
-                },
-                {
-                    name: 'Ice cream sandwich',
-                    qt: 237,
-                    prix: 9.0,
-                    carbs: 37,
-                    total: 4.3,
-                    actions: '1%',
-                },
+                { text: 'Quantité', value: 'placeNbr' },
+                { text: 'Total', value: 'placeNbr' },
+                { text: 'Suppression', value: 'actions' },
+                //     { text: 'Total', value: 'total' },
 
             ],
+            prestations: [],
 
         }
     },
 
     methods: {
+
+        deleteItem(item) {
+            console.log(item)
+
+            // enleve la donne supprimer de Prestations
+            this.prestations.forEach(element => {
+                if (element.id == item.id) {
+                    // console.log(element)
+                    // console.log(this.prestations.indexOf(element));
+
+                    //on veut enlever element de prestations
+                    this.prestations.splice(this.prestations.indexOf(element), 1)
+
+                    //va appeler une funtion dans panierervice pour supprimer la prestation qui a pour id item.id
+                    //ou item carrement 
+                    panierService.deleteFromPanier(item)
+                }
+            });
+        },
+
+        minusItem(item) {
+
+            console.log('-------')
+            console.log(item)
+            panierService.minusItemPanier(item)
+
+        },
+
+        plusItem(item) {
+            console.log('++++++++')
+            console.log(item)
+
+
+            panierService.plusItemPanier(item)
+        },
+
         getOrder() {
             this.orderList = panierService.getCurrentBasket();
+
         },
         displayInputs() {
             if (this.checkbox === true) {
@@ -112,9 +131,17 @@ export default {
 
     created() {
         this.prestationStep = panierService.getCurrentBasket()
-        console.log(this.prestationStep)
-        console.log('stepper')
-        console.log(panierService.getCurrentBasket())
+            // this.prestations = panierService.getCurrentBasket()
+
+
+        for (var item in panierService.getCurrentBasket()) {
+            console.log(item)
+            console.log(panierService.getCurrentBasket()[item])
+            this.prestations.push(panierService.getCurrentBasket()[item])
+        }
+        // console.log(this.prestationStep)
+        // console.log('stepper')
+        // console.log(panierService.getCurrentBasket())
     },
 
 

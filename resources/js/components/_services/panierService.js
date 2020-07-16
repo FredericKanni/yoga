@@ -6,7 +6,10 @@ export const panierService = {
     basketLen,
     basketSizeRecup,
     getCurrentBasket,
-    paiement
+    paiement,
+    deleteFromPanier,
+    plusItemPanier,
+    minusItemPanier,
 
 }
 
@@ -14,7 +17,6 @@ function addToPanier(prestation, placeNbr, quantityMax) {
     // let basket = localStorage.getItem("currentBasket");
 
     //fait les modif dans localstorage
-    // updateLocalStorage(product, quantity, quantityMax);
     updateLocalStorage(prestation, placeNbr, quantityMax);
 
 }
@@ -51,6 +53,7 @@ function updateLocalStorage(prestation, placeNbr, quantityMax) {
             id: prestation.id,
             name: prestation.name,
             prix: prestation.prix,
+            quantityMax: quantityMax,
         }
 
         //quantite que l on veut rajouter en creant
@@ -115,6 +118,41 @@ function basketSizeRecup() {
 
     return basketSize
 }
+
+function deleteFromPanier(item) {
+    buildKey(item)
+    console.log(buildKey(item))
+}
+
+
+
+
+function plusItemPanier(item) {
+    buildKey(item)
+    console.log(buildKey(item))
+
+    if (item.placeNbr < item.quantityMax) {
+        item.placeNbr++;
+        updateLocalStorage(item, 1);
+    }
+
+
+
+
+}
+
+
+function minusItemPanier(item) {
+    buildKey(item)
+    console.log(buildKey(item))
+
+    item.placeNbr--;
+
+    updateLocalStorage(item, -1);
+
+}
+
+
 
 
 
