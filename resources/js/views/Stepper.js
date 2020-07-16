@@ -38,7 +38,7 @@ export default {
                 { text: 'Prestation', align: 'start', value: 'name', },
                 { text: 'Prix unitaire', value: 'prix' },
                 { text: 'Quantité', value: 'placeNbr' },
-                { text: 'Total', value: 'placeNbr' },
+                { text: 'Total', value: 'total' },
                 { text: 'Suppression', value: 'actions' },
                 //     { text: 'Total', value: 'total' },
 

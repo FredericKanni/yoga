@@ -31,6 +31,10 @@
               </v-btn>
             </template>
 
+             <template v-slot:item.total="{ item }">
+           {{ item.prix *item.placeNbr   }}
+            </template>
+
             <template v-slot:item.placeNbr="{ item }">
               <!-- <deletePrestationRecap :prestations='prestations'  :prestation="item"></deletePrestationRecap> -->
              
