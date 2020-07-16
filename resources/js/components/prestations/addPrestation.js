@@ -1,6 +1,8 @@
 import { apiServices } from '../_services/api.services'
 import { authenticationService } from '../_services/authentication.service';
-
+import moment from 'moment';
+import { DateUtils } from '../_helpers/date'
+// https://momentjs.com/
 export default {
 
 
@@ -35,24 +37,26 @@ export default {
 
     data: () => ({
         dialog: false,
-
         name: '',
         description: '',
         nbrmax: '',
         prix: '',
-
         id_user: '',
         id: '',
         places_dispo: '',
         newPrestation: {},
 
         image: null,
+        // datetime: '2022-07-13 12:53',
+        datetime: null,
 
-        date: '2022-07-13',
-        time: '12:53:00',
-        dateTime: null,
+        timeProps: {
+            format: "24hr"
+        },
 
-        // datetime: null,
+        dateProps: {
+            headerColor: 'blue'
+        },
 
 
     }),
@@ -60,22 +64,26 @@ export default {
     methods: {
 
         datePrint() {
-
-
-
-
             // this.time = this.time + ':00'
             // let datetime = this.date + ' ' + this.time + ':00'
         },
 
-        saveData() {
 
+
+
+        saveData() {
             // console.log(this.date)
             // console.log(this.time)
             // this.dateTime = this.date + ' ' + this.time + ':00'
-            this.dateTime = this.date + ' ' + this.time
-            console.log(this.dateTime)
-                //on passe la donne prestation qu on veut creer ou edite
+            // this.dateTime = this.date + ' ' + this.time
+            // console.log(this.dateTime)
+            //on passe la donne prestation qu on veut creer ou edite
+            // console.log(this.datetime)
+            // date: '2022-07-13',
+
+            // console.log(moment(String(this.datetime)).format('MM-DD-YYYY hh:mm:ss'))
+            console.log(DateUtils.formatDateTime(this.datetime));
+
             this.newPrestation = {
 
                 // id: this.id,
@@ -83,14 +91,15 @@ export default {
                 description: this.description,
                 nbrmax: this.nbrmax,
                 prix: this.prix,
-                date: this.date,
                 id_user: this.currentUser.id,
                 places_dispo: this.places_dispo,
+
+                //on lui passe une date format timestamps
+                //  date: moment(String(this.datetime)).format('YYYY-MM-DD hh:mm:ss'),
+                date: DateUtils.formatDateTime(this.datetime),
+
                 //qd on cree on lui passe une image 
-                date: this.dateTime,
                 image: this.image,
-
-
 
             }
 
@@ -99,8 +108,8 @@ export default {
                 this.newPrestation.id_user = this.id_user,
                     this.newPrestation.id = this.id
             }
-
-            //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
+            console.log(this.newPrestation)
+                //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
             apiServices.post('api/prestations', this.newPrestation)
 
             .then(response => {
@@ -155,14 +164,17 @@ export default {
             this.prix = prestation.prix
             this.image = prestation.image
             this.id_user = prestation.id_user
-            this.places_dispo = prestation.places_dispo
-
-            this.date = prestation.created_at.substring(0, 10);
-            this.time = prestation.created_at.substring(11, 19);
+            this.places_dispo = prestation.placesDispo
 
 
-            console.log(prestation)
 
+            // this.date = prestation.created_at.substring(0, 16);
+            // console.log(this.date)
+            // this.time = prestation.created_at.substring(11, 19);
+            this.datetime = prestation.date.substring(0, 16);
+
+            // console.log(prestation)
+            // console.log(this.datetime)
         },
 
         onFileChange(file) {

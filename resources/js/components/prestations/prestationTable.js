@@ -37,15 +37,18 @@ export default {
 
             authenticationService.currentUser.subscribe(x => (this.currentUser = x))
             apiServices.get('api/users/' + this.currentUser.id + '/prestations')
-                .then(({ data }) => {
 
-                    data.prestations.forEach(element => {
-                        this.Prestations.push(element)
-                            // console.log(element.created_at)
 
-                    });
+            .then((data) => {
 
-                })
+                console.log(data.data.data)
+                data.data.data.forEach(element => {
+                    this.Prestations.push(element)
+                    console.log(element)
+
+                });
+
+            })
 
 
             .catch()

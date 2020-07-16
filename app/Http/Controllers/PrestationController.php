@@ -18,8 +18,6 @@ class PrestationController extends Controller
     public function index()
     {
         $prestations = Prestation::with(['user'])->get();
-
-        
         return PrestationResource::collection($prestations);
     }
 
@@ -37,18 +35,22 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
     public function prestationsProf(Request $request)
     {
 
-        //recupere l user connecte via le middleware  doc mettre la route dans un mid auth
+       
+        // $userId = $user->id;
+        // $user = User::with(['prestations'])->find($userId);
+        // return   $user;
 
+        //recupere l user connecte via le middleware  doc mettre la route dans un mid auth
         // $prestations = Prestation::with(['user'])->get();
         $user = $request->user();
         $userId = $user->id;
-        $user = User::with(['prestations'])->find($userId);
-        // if (!$product) {
-        //     $addToDb = new Produits;
 
-        // }
+        //les utilisteurs avec des prestations  et tu trouve ... 
+        // $user = User::with(['prestations'])->find($userId);
+// recupere les prestation de l user actuel 
+$prestations = Prestation::where('id_user','=',$userId)->get();    
 
-        return   $user;
+        return PrestationResource::collection($prestations) ;
     }
 
 
@@ -71,21 +73,16 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
                 'required' => 'Le champ :attribute est requis'
             ]
         )->validate();
-       
-        //  return $validator;
         //on recherche si la prestation existe on le return grace a son id et avec son user 
         if (isset( $validator['id'])){ 
         $Prestation =  Prestation::where('id', '=', $validator['id'])->first();
-         //return $Prestation;   
     }
-   // return $validator;
         //si prestation existe alors 
         if (isset( $Prestation)){ 
     
             $dataNewPrestation = $Prestation;
-            // return  $dataNewPrestation;
         }
-        // return "toto";
+ 
         //si prestation existe pas 
         else {
             $dataNewPrestation = new Prestation;
@@ -97,17 +94,13 @@ $prestation = Prestation::with('user')->where('id', '=', $id)->first();
         $dataNewPrestation->nbrmax = $validator['nbrmax'];
         $dataNewPrestation->places_dispo = $validator['places_dispo'];
         $dataNewPrestation->created_at = $validator['date'] ;
-        // return  $dataNewPrestation;
         //si prestation existe alors son user ne change pas 
-
         //sinon on la creer alors on affrme  que c bien user connecté qui est propritaire
         if (!isset($Prestation)){ 
         // if (!$Prestation) {
             //recupere le user connecter 
             $user = $request->user();
-            // return $request;
-            // return $user->id;
-            //passe l id du user connecter dans la presation
+            // passe l id du user connecter dans la presation
             $dataNewPrestation->id_user = $user->id;
          }
 

@@ -1,11 +1,9 @@
 <template>
     <div>
-     <h1>detail de
-        <!-- {{prestaInfos}} -->
-     </h1>
+  
    
 
-   <v-row>
+   <v-row width="">
      <v-col
         cols="12"
      
@@ -24,10 +22,10 @@
                   size="25vw"
                   tile
                 >
-                  <v-img src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"></v-img>
+                  <v-img  contain :src="prestaInfos.image"></v-img>
                 </v-avatar>
                
-          
+         
                 <div
                 >
               

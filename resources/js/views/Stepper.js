@@ -32,6 +32,37 @@ export default {
                 paiement: '',
                 panier: '',
             },
+
+            headers: [{
+                    text: 'Prestation',
+                    align: 'start',
+                    value: 'name',
+                },
+
+                { text: 'Prix unitaire', value: 'prix' },
+                { text: 'Quantité', value: 'qt' },
+                { text: 'Total', value: 'total' },
+                { text: 'Supprimer', value: 'actions' },
+            ],
+            desserts: [{
+                    name: 'Frozen Yogurt',
+                    qt: 159,
+                    prix: 6.0,
+                    carbs: 24,
+                    total: 4.0,
+                    actions: '1%',
+                },
+                {
+                    name: 'Ice cream sandwich',
+                    qt: 237,
+                    prix: 9.0,
+                    carbs: 37,
+                    total: 4.3,
+                    actions: '1%',
+                },
+
+            ],
+
         }
     },
 

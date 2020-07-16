@@ -29,6 +29,9 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        // $prestations = PrestationResource::collection($this->prestations);
+
         if (isset($this->token)) {
             $role =  new RoleResource($this->role);
             return [
@@ -41,6 +44,7 @@ class UserResource extends JsonResource
                'metier' =>$this->metier,
                'description' => $this->description,
                'image' => $this->image,
+            //    'prestations'=> $prestations
             ];
         } else {
             return parent::toArray($request);
