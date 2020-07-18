@@ -10,7 +10,7 @@
              
 
 <prestationTable></prestationTable>
-<editUsers></editUsers>
+<editProfs></editProfs>
 
             
             </div>

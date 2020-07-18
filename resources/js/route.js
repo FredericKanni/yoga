@@ -11,6 +11,7 @@ import Lieu from './components/lieu/lieuView.vue';
 import contact from './views/contact.vue';
 import Register from './views/Register.vue';
 import Stepper from './views/Stepper.vue';
+import prestationsProf from './views/prestationsProf.vue';
 import { authenticationService } from './components/_services/authentication.service'
 
 import DetailsPrestation from './views/DetailsPrestation.vue';
@@ -37,6 +38,13 @@ const router = new VueRouter({
             name: 'profil',
             component: Profil,
         },
+
+        {
+            path: '/profs/:id/prestations',
+            name: 'prestationsProf',
+            component: prestationsProf,
+        },
+
 
         {
             path: '/stepper',

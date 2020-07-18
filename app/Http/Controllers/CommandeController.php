@@ -92,6 +92,8 @@ $com= $commande::where('id', '=', $commande->id)->with(['prestations'])->get();
                     'data3' => 'metadata3',
                 ],
             ]);
+
+            
             return $charge;
         } catch (Exception $e) {
             return $e;

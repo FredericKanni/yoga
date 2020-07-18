@@ -77,7 +77,7 @@ function updateLocalStorage(prestation, placeNbr, quantityMax) {
     //si qt plus petit que 10 ça saute le prochain if sinon ça set le quantity a 10
     //quantite que l on veut rajouter plus grand que 10
     if (qt > 10) {
-        console.log('pas plus de 10 produits')
+        console.log('pas plus de 10 prestations')
         qt = 10
         console.log(qt)
     }
