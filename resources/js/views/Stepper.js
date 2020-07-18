@@ -58,15 +58,17 @@ export default {
                 if (element.id == item.id) {
                     // console.log(element)
                     // console.log(this.prestations.indexOf(element));
-
                     //on veut enlever element de prestations
                     this.prestations.splice(this.prestations.indexOf(element), 1)
 
                     //va appeler une funtion dans panierervice pour supprimer la prestation qui a pour id item.id
                     //ou item carrement 
                     panierService.deleteFromPanier(item)
+
                 }
             });
+
+
         },
 
         minusItem(item) {
@@ -74,6 +76,9 @@ export default {
             console.log('-------')
             console.log(item)
             panierService.minusItemPanier(item)
+            if (item.placeNbr <= 0) {
+                this.deleteItem(item)
+            }
 
         },
 

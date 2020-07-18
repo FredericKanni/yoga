@@ -82,7 +82,7 @@ export default {
             // date: '2022-07-13',
 
             // console.log(moment(String(this.datetime)).format('MM-DD-YYYY hh:mm:ss'))
-            console.log(DateUtils.formatDateTime(this.datetime));
+            // console.log(DateUtils.formatDateTime(this.datetime));
 
             this.newPrestation = {
 
@@ -107,6 +107,7 @@ export default {
                 //si modification garde id_user d origin l admin pourra modifie mais le propriétaire restera le prof 
                 this.newPrestation.id_user = this.id_user,
                     this.newPrestation.id = this.id
+                this.newPrestation.image = this.image
             }
             console.log(this.newPrestation)
                 //////ATTENTION AU SLASH ICI SINON ERROR 301 DE MER**
@@ -185,6 +186,7 @@ export default {
 
             reader.onload = (file) => {
                 this.image = file.target.result;
+                console.log(this.image)
             };
             reader.readAsDataURL(file)
         },

@@ -58,6 +58,8 @@ function updateLocalStorage(prestation, placeNbr, quantityMax) {
 
         //quantite que l on veut rajouter en creant
         qt = parseInt(placeNbr)
+
+
     } else {
         console.log('update')
             //qt en localstorage +  //quantite que l on veut rajouter en update
@@ -84,6 +86,16 @@ function updateLocalStorage(prestation, placeNbr, quantityMax) {
 
 
     basket[buildKey(prestation)].placeNbr = qt
+        // TODO externaliser
+        //todo
+    if ((basket[buildKey(prestation)].placeNbr) == 0) {
+        _.unset(basket, buildKey(prestation))
+    }
+
+
+
+
+
 
     storeBasket(basket)
         // let text = 'le bus marche'
@@ -97,6 +109,8 @@ function storeBasket(basket) {
     basketLen(basket)
 
 }
+
+
 
 
 //construit le nom de la cle prestation
@@ -119,11 +133,24 @@ function basketSizeRecup() {
     return basketSize
 }
 
-function deleteFromPanier(item) {
-    buildKey(item)
-    console.log(buildKey(item))
+function deleteFromPanier(prestation) {
+    let basket = getCurrentBasket()
+    console.log(basket)
+    console.log(buildKey(prestation))
+    removeItem()
+        // _.unset(basket, buildKey(prestation))
+
 }
 
+
+//TODO
+// function removeItem(prestation) {
+
+//     let basket = getCurrentBasket()
+//     if ((basket[buildKey(prestation)].placeNbr) == 0) {
+//         _.unset(basket, buildKey(prestation))
+//     }
+// }
 
 
 
@@ -135,10 +162,6 @@ function plusItemPanier(item) {
         item.placeNbr++;
         updateLocalStorage(item, 1);
     }
-
-
-
-
 }
 
 
