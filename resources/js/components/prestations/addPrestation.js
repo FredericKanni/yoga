@@ -8,6 +8,9 @@ export default {
 
     props: {
 
+
+
+
         prestations: {
             default: function() {
                 return {
@@ -36,7 +39,9 @@ export default {
 
 
     data: () => ({
-
+        snackbar: false,
+        text: "loll",
+        timeout: 4000,
         valid: true,
         dialog: false,
         newPrestation: {},
@@ -184,6 +189,8 @@ export default {
                     console.log('la prestation a été crée ')
                     this.dialog = false;
                     this.$emit('createPresta', response.data.data)
+                    this.snackbar = true;
+
                 }
 
 
@@ -252,6 +259,7 @@ export default {
     created() {
         authenticationService.currentUser.subscribe(x => (this.currentUser = x));
         // console.log(this.currentUser)
+
 
     },
 

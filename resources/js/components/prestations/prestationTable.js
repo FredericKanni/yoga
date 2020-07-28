@@ -19,6 +19,9 @@ export default {
 
         isAdmin: '',
 
+
+        text: 'Hello, I\'m a snackbar',
+
     }),
 
 

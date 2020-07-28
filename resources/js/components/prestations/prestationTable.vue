@@ -4,6 +4,8 @@
 
 
 
+
+
         <v-card>
     <v-card-title>
       Prestations
@@ -30,7 +32,7 @@
 
    
 
-       <template v-slot:item.actions="{ item }"><addPrestation :prestations='Prestations' :prestation="item" :isModification='true'></addPrestation>
+       <template v-slot:item.actions="{ item }"><addPrestation  :prestations='Prestations' :prestation="item" :isModification='true'></addPrestation>
        <deletePrestation :prestations='Prestations'  :prestation="item"></deletePrestation>
        
        </template>

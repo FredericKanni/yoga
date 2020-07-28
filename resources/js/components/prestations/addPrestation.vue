@@ -1,5 +1,9 @@
 <template>
   <div justify="center" class="d-inline">
+
+
+ 
+
     <v-dialog v-model="dialog" persistent>
       <template v-slot:activator="{ on }">
         <v-btn
@@ -21,6 +25,8 @@
           <v-icon left>mdi-pencil</v-icon>
         </v-btn>
       </template>
+
+      
 
       <v-card>
         <v-container>
@@ -118,6 +124,24 @@
         </v-container>
       </v-card>
     </v-dialog>
+
+
+     <v-snackbar
+  top
+        v-model="snackbar"
+        :timeout="timeout"
+          color="orange darken-3"
+      >
+        {{ text }}
+  
+          <v-btn
+            color="white"
+            text
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+      </v-snackbar>
   </div>
 </template>
 
