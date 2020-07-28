@@ -24,7 +24,7 @@ export default {
                     name: this.user.name,
                     email: this.user.email,
                     password: this.user.password,
-                    id_role: 3
+
                 })
                 .then(response => {
                     if (response.status === 201) {}

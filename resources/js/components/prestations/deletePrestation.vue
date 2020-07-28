@@ -1,6 +1,6 @@
 <template>
   <div class="d-inline">
-    <v-btn color="danger" dark class="ma-1" @click.stop="dialog = true">
+    <v-btn text color="danger"  class="ma-1" @click.stop="dialog = true">
       <v-icon left>mdi-delete</v-icon>
     </v-btn>
 

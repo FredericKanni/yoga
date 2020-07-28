@@ -36,7 +36,10 @@ export default {
 
 
     data: () => ({
+
+        valid: true,
         dialog: false,
+        newPrestation: {},
         name: '',
         description: '',
         nbrmax: '',
@@ -44,8 +47,6 @@ export default {
         id_user: '',
         id: '',
         places_dispo: '',
-        newPrestation: {},
-
         image: null,
         // datetime: '2022-07-13 12:53',
         datetime: null,
@@ -58,6 +59,46 @@ export default {
             headerColor: 'blue'
         },
 
+        nameRules: [
+            v => !!v || 'ce champ est requis',
+            v => (v && v.length >= 3) ||
+            'Le Nom doit faire au moins 3 charactères',
+            v => (v && v.length <= 50) ||
+            'Le Nom doit faire moins de 50 charactères',
+        ],
+        descRules: [
+            v => !!v || 'ce champ est requis',
+            v => (v && v.length >= 3) ||
+            'La description doit faire au moins 10 charactères',
+            v => (v && v.length <= 250) ||
+            'La description doit faire moins de 250 charactères',
+        ],
+        intRules: [
+            v => !!v || 'ce champ est requis',
+            v => (!isNaN(parseInt(v)) && (v % 1) === 0 && v.indexOf(".") == -1) || 'un chiffre entier est requis',
+            v => (v && v <= 99) || 'pas plus de 99 places',
+        ],
+        prixRules: [
+            v => !!v || 'ce champ est requis',
+            v => (!isNaN(parseInt(v)) && parseFloat(v).toFixed(2) % v === 0) || 'un nombre avec 2 decimale est requis',
+        ],
+
+
+
+
+        // numberRule: v => {
+        //     if (!v.trim()) return true;
+
+        //     if (typeof v === 'number') return 'is number';
+        //     // // (data % 1) === 0)
+
+        //     if (!isNaN(parseInt(v)) && v >= 0 && v <= 99) return true;
+        //     return 'un nombre compris entre 0 et 99 est requis';
+        // },
+
+
+
+
 
     }),
 
@@ -69,7 +110,9 @@ export default {
         },
 
 
-
+        validate() {
+            this.$refs.form.validate()
+        },
 
         saveData() {
             // console.log(this.date)

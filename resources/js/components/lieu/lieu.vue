@@ -1,69 +1,60 @@
 <template>
     <div>
       <h1 class="text-center ma-8">
-          le lieu
+         
+   Yoga Morphose <br> Centre de bien-être
+
       </h1>
 
 
 
+<v-row class="px-10">
 
-
-
-
-<v-row>
-<v-col cols=12 md=4>
-  <v-carousel
-    cycle
-    height="200"
-    hide-delimiter-background
-    show-arrows-on-hover
-  >
-    <v-carousel-item
-       v-for="(item,i) in items"
-        :key="i"
-          :src="item.src" 
-    >
-
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <!-- <v-img   :src="item.src" aspect-ratio="1.7" ></v-img> -->
-        </v-row>
- 
-    </v-carousel-item>
-  </v-carousel>
-</v-col>
-
-
-
-
-<v-col cols=12 md=8>
-
-  <div>
-
-    <p>
-      offrez-vous un moment hors du temps rien que pour vous. 
-Venez découvrir nos cours en extérieur, sur notre nouvelle terrasse
-    </p>
-
-    <p>
- L’occasion idéale de combiner une activité bien-être et de profiter de la beauté d’un lieu exceptionnel qui vous ravira. 
+  <v-col  cols=12 md=6 lg=6>
   
-    </p>
-  
-  <p>
-   Yoga est bien plus qu'un studio de Pilates et Yoga, c'est un concept à votre image dont l'objectif est de vous amener à une harmonie du corps et de l'esprit.
-  </p>
+        <v-img  src='http://yoga.test/storage/lieu.jpg' aspect-ratio="1.7"></v-img>
    
-   <v-btn to='/lieu'>
-    voir +
-   </v-btn>
-  </div>
+  </v-col>
 
-</v-col>
+<v-col cols=12 md=6 lg=6 class="hidden-md-and-up">
+
+ <p class="text-justify "  >
+
+Chez Yoga Morphose nous vous proposons des cours de yoga  de qualité et au meilleur prix.
+Que vous souhaitiez vous tonifier, vous dépenser, bouger ou encore danser,nous sommes là pour répondre à vos besoins.
+Yoga Morphose met à votre disposition son espace spécialement dédiés à la pratique du yoga pour que chacun d'entre vous puisse retrouver la vitalité dont il avait besoin.
+ </p>
+
+ <p class="text-justify ">
+
+Débutant ou expert, en groupe ou individuel, chez Yoga morphose il existe des offres pour chaque client.
+L' équipe Yoga Morphose est passionnée et vous transmettra sa passion du yoga et du bien être au travers des cours que vous suivrez. De tous les âges, de tous les niveaux, vous êtes les bienvenus chez Yoga Morphose.
+
+ </p>
+  </v-col>
+
+
+
+  <v-col cols=12 md=6 lg=6 class="hidden-sm-and-down">
+
+ <p class="text-justify pa-10"  >
+
+Chez Yoga Morphose nous vous proposons des cours de yoga  de qualité et au meilleur prix.
+Que vous souhaitiez vous tonifier, vous dépenser, bouger ou encore danser,nous sommes là pour répondre à vos besoins.
+Yoga Morphose met à votre disposition son espace spécialement dédiés à la pratique du yoga pour que chacun d'entre vous puisse retrouver la vitalité dont il avait besoin.
+ </p>
+
+ <p class="text-justify pa-10">
+
+Débutant ou expert, en groupe ou individuel, chez Yoga morphose il existe des offres pour chaque client.
+L' équipe Yoga Morphose est passionnée et vous transmettra sa passion du yoga et du bien être au travers des cours que vous suivrez. De tous les âges, de tous les niveaux, vous êtes les bienvenus chez Yoga Morphose.
+
+ </p>
+  </v-col>
+
+
 </v-row>
+
 
 
 

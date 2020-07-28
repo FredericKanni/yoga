@@ -10,10 +10,23 @@
    <v-app-bar color="cyan darken-1" dark fullscreen class="hidden">
       <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="hidden-md-and-up">
-        <h1 class="headline font-weight-medium d-inline">Yogamorphose</h1>
+        <h1 class="headline font-weight-medium d-inline">
+           
+          Yogamorphose</h1>
       </v-toolbar-title>
       <v-toolbar-title class="hidden-sm-and-down">
-        <h2 class="headline font-weight-medium d-inline">Yogamorphose</h2>
+      
+
+
+                              <v-avatar  tile size=64>
+      <img
+        src='http://yoga.test/storage/logo.jpg'
+        alt="Logo yoga"
+       
+      >
+    </v-avatar>
+
+   YogaMorphose
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
@@ -56,14 +69,11 @@
 
     <!-- Navigation vertical -->
     <v-navigation-drawer overlay-opacity="0.9" v-model="drawer" absolute temporary >
-      <v-img
-        :aspect-ratio="16/9"
-        src="https://www.universite-rose-croix.org/wp-content/uploads/2018/12/video-informatique-et-spiritualit%C3%A9.jpg"
-      ></v-img>
+   <v-img  src='http://yoga.test/storage/lieu.jpg' aspect-ratio="1.7"></v-img>
       <v-list-item>
         <v-list-item-content color="black">
           <v-list-item-title class="font-italic">YogaMorphose</v-list-item-title>
-          <v-list-item-subtitle class="font-italic">changer votre vie</v-list-item-subtitle>
+          <v-list-item-subtitle class="font-italic">Changer Votre Vie</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 

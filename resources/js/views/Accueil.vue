@@ -5,70 +5,90 @@
 <equipe></equipe>
 
 
-    <div>
-
-      <h2 class="text-center">Nos cours</h2>
-        <!-- mes cartes de prestations -->
-<v-row>
 
 
 
 
-    <v-col cols="12" sm="6" md="4" 
-    v-for="presta in tab"
+
+
+  <div>
+       <h2 class="text-center">Nos cours</h2>
+
+
+
+
+
+
+<v-row class="px-10">
+
+  <v-col  cols="12" sm="6" md='3'
+   v-for="presta in tab"
     :key="presta.id"
     >
-    <!-- {{presta}} -->
-  <v-card
-      class="mx-auto my-12"
-      max-width="374"
-    >
+<v-card class="mx-auto my-3" >
       <v-img
         height="250"
         v-if="presta.image"
         :src="presta.image"
       ></v-img>
-  
-      <v-card-title>{{presta.name}}</v-card-title>
-  
-      <v-card-text>
-     
-  
-        <div class="my-4 subtitle-1">
-        professeur :{{presta.user.name}}
-        </div>
-              <div class="my-4 subtitle-1">
-        prix :{{presta.prix}} €
-        </div>
-  
+      <!-- <v-card-title class="justify-center">{{presta.name}}</v-card-title> -->
+      <v-card-title >{{presta.name}}</v-card-title>
+
+      <!-- <v-card-text>
+        <div class="ma-0 text-center">{{presta.metier}}</div>
+      </v-card-text> -->
+      
+      <v-card-text >
         <div>{{presta.description}}</div>
+
       </v-card-text>
-  
-      <v-card-actions>
-        <v-btn
+
+       <v-btn
           color="deep-purple lighten-2"
           text
-   
+   :to="'prestations/'+ presta.id"
         >
-          Reserver
+          Voir +
         </v-btn>
-      </v-card-actions>
     </v-card>
+
+
 </v-col>
- 
 
 
 
 
-</v-row>
-<div  class="text-center ma-5">
+</v-row >
+
+
+<div class="text-center ">
+<v-btn class="ma-10" to='/prestations' >
+  voir tous les cours
+</v-btn>
+</div>
+
+
+
+
+<div class="ma-10">
 <v-btn to='/prestations' >
   voir tous les cours
 </v-btn>
 </div>
 
-       
-    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -118,7 +138,7 @@ tab:[]
                     });
 
                     this.tab= this.Prestations;
-                     this.tab=   [this.tab[0],this.tab[1],this.tab[2]]  ;
+                     this.tab=   [this.tab[0],this.tab[1],this.tab[2],this.tab[3]]  ;
                 })
                 .catch()
         }

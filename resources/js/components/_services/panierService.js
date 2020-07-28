@@ -89,7 +89,9 @@ function updateLocalStorage(prestation, placeNbr, quantityMax) {
         // TODO externaliser
         //todo
     if ((basket[buildKey(prestation)].placeNbr) == 0) {
-        _.unset(basket, buildKey(prestation))
+        // _.unset(basket, buildKey(prestation))
+        console.log(basket)
+        console.log(buildKey(prestation))
     }
 
 
@@ -137,8 +139,8 @@ function deleteFromPanier(prestation) {
     let basket = getCurrentBasket()
     console.log(basket)
     console.log(buildKey(prestation))
-    removeItem()
-        // _.unset(basket, buildKey(prestation))
+        // removeItem()
+    _.unset(basket, buildKey(prestation))
 
 }
 
@@ -181,7 +183,7 @@ function minusItemPanier(item) {
 
 function paiement(order) {
 
-    console.log(order)
+    // console.log(order)
     return apiServices.post('/api/basket/pay', {
 
         paiement: order.paiement

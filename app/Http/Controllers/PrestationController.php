@@ -36,6 +36,8 @@ class PrestationController extends Controller
     {
 
 
+//si id pas egal a 1
+
         // $userId = $user->id;
         // $user = User::with(['prestations'])->find($userId);
         // return   $user;
@@ -45,13 +47,36 @@ class PrestationController extends Controller
         $user = $request->user();
         $userId = $user->id;
 
+      
         //les utilisteurs avec des prestations  et tu trouve ... 
         // $user = User::with(['prestations'])->find($userId);
         // recupere les prestation de l user actuel 
-        $prestations = Prestation::where('id_user', '=', $userId)->get();
+        if($userId == 1){
+            $prestations = Prestation::all();
+        }
+        else{
+            $prestations = Prestation::where('id_user', '=', $userId)->get();
+        }
+           
+        
+
 
         return PrestationResource::collection($prestations);
+
+
     }
+
+
+
+
+    
+        public function prestationsDuProf(Request $id)
+        {
+        
+            $user = User::where('id','=',$id->id)->with( ['prestations'])->get();
+            return   $user;
+         
+        }
 
 
     public function createOrUpdate(Request $request)
@@ -59,20 +84,25 @@ class PrestationController extends Controller
         $validator = Validator::make(
             $request->input(),
             [
-                "id"  => "",
-                "name" => "required",
-                "description" => "",
+                "id"  => "integer",
+                "name" => "required|min:4",
+                "description" => "required|min:3|max:250",
                 "prix" => "required|numeric",
-                "nbrmax" => "required|numeric",
-                "id_user" => "numeric",
+                "nbrmax" => "required|integer",
+                "id_user" => "integer",
                 "image"  => "",
                 "date"  => "",
                 "places_dispo"  => "required",
             ],
             [
-                'required' => 'Le champ :attribute est requis'
+                'required' => 'Le champ :attribute est requis',
+                'numeric'=> 'Le champ :attribute doit etre un nombre',
+                'integer'=> 'Le champ :attribute doit etre un nombre entier',
+                'min'=> 'Le champ :attribute doit faire :min charactères minimum',
+                'max'=> 'Le champ :attribute doit faire :max  charactères maximun',
             ]
         )->validate();
+     
         //on recherche si la prestation existe on le return grace a son id et avec son user 
         if (isset($validator['id'])) {
             $Prestation =  Prestation::where('id', '=', $validator['id'])->first();

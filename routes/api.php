@@ -29,7 +29,7 @@ Route::post('/register', 'AuthController@register');
 Route::prefix('users')->group(function () {
     // Route::post('/login' , 'AuthController@login');
     Route::middleware('auth:api')->get('/all', 'UserController@index');
-    //on lui rajoute le mi car on a besoin de recuperer les prestation en function de l user
+    //on lui rajoute le mi car on a besoin de recuperer les prestation en function de l user currentuser
     Route::middleware('auth:api')->get('/{id}/prestations', 'PrestationController@prestationsProf');
 });
 
@@ -40,11 +40,11 @@ Route::prefix('prestations')->group(function () {
     // Route::post('/' , 'PrestationController@create');
     Route::get('/', 'PrestationController@index');
 
-    Route::post('/{id}', 'PrestationController@delete');
+    Route::delete('/{id}', 'PrestationController@delete');
 });
 
 //roles = nom du middle ware ds le kernel 
-Route::middleware('auth:api')->prefix('prestations')->group(function () {
+Route::middleware('auth:api','roles:Admin|Prof')->prefix('prestations')->group(function () {
     Route::post('/', 'PrestationController@createOrUpdate');
 });
 
@@ -68,3 +68,6 @@ Route::middleware('auth:api')->prefix('commandes')->group(function () {
 
     Route::post('/', 'CommandeController@create');
 });
+
+Route::get('/profs/{id}/prestations', 'PrestationController@prestationsDuProf')->where('id','[0-9]+');
+

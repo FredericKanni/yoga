@@ -53,10 +53,10 @@ class AuthController extends Controller
             'name'=>'required',
             'email' => 'required|string|email',
             'password' => 'required|string',
-            'id_role'=>'required'
+          
         ]);   
 
-
+        $request->id_role=3;
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;

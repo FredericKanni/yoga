@@ -42,7 +42,7 @@ export default {
             }
 
             //requete 
-            apiServices.post('api/prestations/' + this.prestation.id, this.newPrestation)
+            apiServices.delete('api/prestations/' + this.prestation.id, this.newPrestation)
                 .then(({ data }) => {})
                 .catch()
 

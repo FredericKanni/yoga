@@ -16,8 +16,11 @@
         hide-details
       ></v-text-field>
     </v-card-title>
+<div class="text-center">
 
- <addPrestation @createPresta="Prestations.push($event)"/>
+   <addPrestation @createPresta="Prestations.push($event)"/>
+</div>
+
 
     <v-data-table
       :headers="headers"

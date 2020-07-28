@@ -15,18 +15,9 @@ export default {
         search: '',
 
 
-        headers: [{
-                text: 'Nom',
-                align: 'start',
-                value: 'name',
-            },
-            { text: 'Description', value: 'description' },
-            { text: 'Place Max', value: 'nbrmax' },
-            { text: 'Prix', value: 'prix' },
-            { text: "Actions", value: "actions" },
-        ],
+        headers: [],
 
-
+        isAdmin: '',
 
     }),
 
@@ -41,7 +32,7 @@ export default {
 
             .then((data) => {
 
-                console.log(data.data.data)
+                // console.log(data.data.data)
                 data.data.data.forEach(element => {
                     this.Prestations.push(element)
                     console.log(element)
@@ -54,10 +45,42 @@ export default {
             .catch()
 
 
+        },
+
+        setHeaders() {
+            if (!this.isAdmin) {
+                this.headers = [{
+                        text: 'Nom',
+                        align: 'start',
+                        value: 'name',
+                    },
+                    { text: 'Description', value: 'description' },
+                    { text: 'Place Max', value: 'nbrmax' },
+                    { text: 'Prix', value: 'prix' },
+                    { text: "Actions", value: "actions" },
+                ]
+            } else {
+                this.headers = [{
+                        text: 'Nom',
+                        align: 'start',
+                        value: 'name',
+                    },
+                    { text: 'Description', value: 'description' },
+                    { text: 'Place Max', value: 'nbrmax' },
+                    { text: 'Prix', value: 'prix' },
+                    { text: "Actions", value: "actions" },
+                    { text: "Prof", value: "user.name" },
+                ]
+            }
+
         }
     },
 
     created() {
         this.getData();
+        this.isAdmin = authenticationService.isAdmin();
+        console.log(this.isAdmin)
+        this.setHeaders();
+
     },
 }
