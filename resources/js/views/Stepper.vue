@@ -11,12 +11,13 @@
 
       <v-stepper-items>
         <v-stepper-content step="1">
-          <v-col cols="12" sm="6" md="3" v-for="presta in prestationStep" :key="presta.id">
+          <h2 class="text-center ma-10"> contenu du panier</h2>
+          <!-- <v-col cols="12" sm="6" md="3" v-for="presta in prestationStep" :key="presta.id">
             <v-card class="mb-2 pa-2 w-" color="grey lighten-1" width="100%">
               {{presta.name}}
               {{presta.placeNbr}} x {{presta.prix}} € = {{presta.placeNbr*presta.prix}}
             </v-card>
-          </v-col>
+          </v-col> -->
 
           <v-data-table
             :headers="headers"
@@ -51,6 +52,8 @@
               </v-btn>
             </template>
           </v-data-table>
+
+           <h2 class="text-center ma-10"> total:</h2>
 
           <v-btn color="primary" @click="valideCommande">Valider la commande</v-btn>
 

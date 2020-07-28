@@ -56,14 +56,12 @@ export default {
             // enleve la donne supprimer de Prestations
             this.prestations.forEach(element => {
                 if (element.id == item.id) {
-                    // console.log(element)
-                    // console.log(this.prestations.indexOf(element));
-                    //on veut enlever element de prestations
+
                     this.prestations.splice(this.prestations.indexOf(element), 1)
 
-                    //va appeler une funtion dans panierervice pour supprimer la prestation qui a pour id item.id
-                    //ou item carrement 
+
                     panierService.deleteFromPanier(item)
+                        // console.log(item)
 
                 }
             });
@@ -78,6 +76,23 @@ export default {
             panierService.minusItemPanier(item)
             if (item.placeNbr <= 0) {
                 this.deleteItem(item)
+
+
+
+
+
+                this.prestations.forEach(element => {
+                    if (element.id == item.id) {
+                        this.prestations.splice(this.prestations.indexOf(element), 1)
+                    }
+                });
+
+
+
+
+
+
+
             }
 
         },
