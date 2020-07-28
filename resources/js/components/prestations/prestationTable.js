@@ -22,10 +22,21 @@ export default {
 
         text: 'Hello, I\'m a snackbar',
 
+        snackbar: false,
+
+        timeout: 4000,
+
     }),
 
 
     methods: {
+
+        clickedShowDetailModal() {
+            console.log('rr')
+            this.snackbar = true
+            this.text = "La prestation a été supprimée"
+        },
+
         getData() {
 
 

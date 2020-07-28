@@ -21,6 +21,7 @@
 <div class="text-center">
 
    <addPrestation @createPresta="Prestations.push($event)"/>
+
 </div>
 
 
@@ -33,7 +34,7 @@
    
 
        <template v-slot:item.actions="{ item }"><addPrestation  :prestations='Prestations' :prestation="item" :isModification='true'></addPrestation>
-       <deletePrestation :prestations='Prestations'  :prestation="item"></deletePrestation>
+       <deletePrestation :prestations='Prestations'  @clickedd="clickedShowDetailModal"  :prestation="item"></deletePrestation>
        
        </template>
     </v-data-table>
@@ -41,6 +42,25 @@
 
 
   </v-card>
+     <v-snackbar
+  top
+        v-model="snackbar"
+        :timeout="timeout"
+          color="orange darken-3"
+      >
+        {{ text }}
+  
+          <v-btn
+            color="white"
+            text
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+      </v-snackbar>
+
+
+
     </div>
 </template>
 

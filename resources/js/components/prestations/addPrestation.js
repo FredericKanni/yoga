@@ -182,13 +182,15 @@ export default {
 
                     }
 
-
+                    this.text = 'La Prestation a été modifiée'
+                    this.snackbar = true;
                     // this.$emit('modifPresta', response.data.data)
 
                 } else if (!this.isModification) {
                     console.log('la prestation a été crée ')
                     this.dialog = false;
                     this.$emit('createPresta', response.data.data)
+                    this.text = 'La Prestation a été crée'
                     this.snackbar = true;
 
                 }
