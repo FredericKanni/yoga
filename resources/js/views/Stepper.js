@@ -158,10 +158,14 @@ export default {
             console.log(item)
             console.log(panierService.getCurrentBasket()[item])
             this.prestations.push(panierService.getCurrentBasket()[item])
+
+            console.log(this.prestations)
+            if (!this.prestations[0]) {
+                console.log("zero")
+            }
+
         }
-        // console.log(this.prestationStep)
-        // console.log('stepper')
-        // console.log(panierService.getCurrentBasket())
+
     },
 
 
