@@ -65,6 +65,23 @@
             </template>
           </v-data-table>
 
+
+  
+
+  <div   
+>
+   <v-card-subtitle  
+
+                       v-for="item in prestations" :key="item.id"         
+                        v-text="'Total:'+item.placeNbr * item.prix"
+                            >
+                            
+
+                            </v-card-subtitle>
+
+    </div> 
+
+
            <h2 class="text-center ma-10"> total:</h2>
 
           <v-btn color="primary" @click="valideCommande">Valider la commande</v-btn>

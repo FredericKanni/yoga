@@ -44,6 +44,7 @@ export default {
 
             ],
             prestations: [],
+            priceTotal: [],
 
         }
     },
