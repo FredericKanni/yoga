@@ -174,6 +174,7 @@ export default {
                         console.log(this.prestations)
                         console.log(index)
 
+
                         this.prestations.splice(index, 1, response.data.data)
 
                         // ajoute la response .data.data dans presation mais push rajoute en dernier position
