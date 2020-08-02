@@ -23,6 +23,11 @@
     CGV  -  mentions legales  - politiques de confidentialité
   </v-col>
   
+
+
+
+
+  
     <v-spacer></v-spacer>
     <div>&copy; {{ new Date().getFullYear() }}</div>
  

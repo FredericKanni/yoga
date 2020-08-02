@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
+import { Role } from './components/_helpers/role.js';
 import Accueil from './views/Accueil.vue';
 import Profil from './views/Profil.vue';
 import Dashboard from './views/Dashboard.vue';
@@ -11,6 +11,11 @@ import Lieu from './components/lieu/lieuView.vue';
 import contact from './views/contact.vue';
 import Register from './views/Register.vue';
 import Stepper from './views/Stepper.vue';
+
+import cgv from './views/cgv.vue';
+import Mention from './views/mentions.vue';
+import politique from './views/politique.vue';
+
 import prestationsProf from './views/prestationsProf.vue';
 import { authenticationService } from './components/_services/authentication.service'
 
@@ -29,8 +34,30 @@ const router = new VueRouter({
             path: '/dashboard',
             name: 'dashboard',
             component: Dashboard,
-            //  meta: { authorize: [Role.Admin] }
+            meta: { authorize: [Role.Admin, Role.Prof] }
             //redemande adrien ou recherche
+        },
+
+
+        {
+            path: '/CGV',
+            name: 'cgv',
+            component: cgv,
+
+        },
+
+        {
+            path: '/politique',
+            name: 'politique',
+            component: politique,
+
+        },
+
+        {
+            path: '/mentions',
+            name: 'Mention',
+            component: Mention,
+
         },
 
         {
@@ -71,6 +98,7 @@ const router = new VueRouter({
             path: '/mesprestations',
             name: 'mesprestations',
             component: MesPrestations,
+            meta: { authorize: [Role.Admin, Role.Prof] }
         },
 
         {

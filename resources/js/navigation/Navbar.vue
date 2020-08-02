@@ -59,7 +59,7 @@
    
 
    <v-btn text class="nav-item nav-link"  v-if="!isCheck" style="color:#FFD180;"  to="/login">Se Connecter</v-btn>
-    <v-btn text class="nav-item nav-link"  v-if="isCheck"  style="color:#FFD180;" to="/mesprestations">Dashboard</v-btn>
+    <v-btn text class="nav-item nav-link"  v-if="isAdmin || isProf"    style="color:#FFD180;" to="/mesprestations">Dashboard</v-btn>
    <v-btn text class="nav-item nav-link"  v-if="isCheck"  style="color:#FFD180;"  @click="logout()">Deconnexion</v-btn>
       <v-btn text class="nav-item nav-link" v-if="!isCheck"  style="color:#FFD180;" to="/register">S' inscrire</v-btn>
     
@@ -197,11 +197,45 @@ PanierIcone,
         };
     },
 
- computed:{
-       isCheck(){
+
+computed: {
+    isCheck() {
       return this.currentUser;
+    },
+
+    isAdmin() {
+      if (!_.isEmpty(this.currentUser)) {
+        return this.currentUser.role.name == "Admin";
+      }
+    },
+
+    isProf() {
+      if (!_.isEmpty(this.currentUser)) {
+        return this.currentUser.role.name == "Prof";
+      }
     }
- },
+  },
+
+
+
+
+
+
+//  computed:{
+//        isCheck(){
+//       return this.currentUser;
+//     },
+
+//      isAdmin(){
+//       return authenticationService.isAdmin();
+//     },
+
+//      isProf(){
+//       return authenticationService.isProf();
+//     },
+
+
+//  },
 
 
  methods: {
