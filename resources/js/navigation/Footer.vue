@@ -20,7 +20,7 @@
   
   </v-col>
     <v-col cols=4 class="text-center">
-    CGU  -  CGV
+    CGV  -  mentions legales  - politiques de confidentialité
   </v-col>
   
     <v-spacer></v-spacer>

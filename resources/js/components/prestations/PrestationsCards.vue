@@ -25,20 +25,18 @@
       <v-card-title  style="color:#FFD180;" >{{presta.name}}</v-card-title>
   
       <v-card-text>
-     
-  
-        <div  style="color:#FFD180;"  class="my-4 subtitle-1">
-        professeur :{{presta.user.name}}
+        <div  style="color:#FFD180;"  class=" ">
+        avec :{{presta.user.name}}
         </div>
-              <div style="color:#FFD180;"  class="my-4 subtitle-1">
-        prix :{{presta.prix}} €
-        </div>
-  
-        <div  style="color:#FFD180;" >{{presta.description}}</div>
-            <div>{{presta.id}}</div>
 
-             <div  style="color:#FFD180;" >{{presta.date}}</div>
-              <div  style="color:#FFD180;" >{{presta.heure}}</div>
+        
+        <div  style="color:#FFD180;" >{{presta.description}}</div>
+              
+  
+            <!-- <div>{{presta.id}}</div> -->
+
+           <div  style="color:#FFD180;" >   le  {{presta.date}} </div>
+              <div  style="color:#FFD180;" > à {{presta.heure}}</div>
       </v-card-text>
   
       <v-card-actions>
@@ -49,6 +47,19 @@
     >
           Voir +
         </v-btn>
+
+<v-spacer></v-spacer>
+   <v-btn
+          color="#FFD180"
+          text
+   :to="'prestations/'+ presta.id"
+    >
+        <div style="color:#FFD180;"  class=" ">
+        prix :{{presta.prix}} €
+        </div>
+        </v-btn>
+
+       
       </v-card-actions>
     </v-card>
 </v-col>
