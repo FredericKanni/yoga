@@ -20,7 +20,13 @@
   
   </v-col>
     <v-col cols=4 class="text-center">
-    CGV  -  mentions legales  - politiques de confidentialité
+   <router-link to="/CGV"   style="color:#000;" >CGV</router-link>
+
+     - 
+     <router-link to="/mentions"  style="color:#000;" >  mentions legales </router-link>
+        - 
+     <router-link to="/politique" style="color:#000;"  >  politiques de confidentialité </router-link>
+     
   </v-col>
   
 
@@ -29,7 +35,7 @@
 
   
     <v-spacer></v-spacer>
-    <div>&copy; {{ new Date().getFullYear() }}</div>
+    <div class="my-auto">&copy; {{ new Date().getFullYear() }}</div>
  
 </v-row>
 

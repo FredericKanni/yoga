@@ -70,14 +70,17 @@
 
   <div   
 >
-   <v-card-subtitle  
+  {{total}}
+   <!-- <v-card-subtitle  
 
                        v-for="item in prestations" :key="item.id"         
-                        v-text="'Total:'+item.placeNbr * item.prix"
+                   :total="item.placeNbr * item.prix"
+                   
+                      
                             >
-                            
+                          
 
-                            </v-card-subtitle>
+                            </v-card-subtitle> -->
 
     </div> 
 

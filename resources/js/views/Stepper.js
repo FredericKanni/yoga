@@ -25,7 +25,7 @@ export default {
             source: null,
             apiKey: 'pk_test_51GubguEFBEwEutzrRD48zBSo4GaSGhtnhZmB6uIXPRHx6BFMEXtWfRwYHSVRASsPjYPkIneyRcAE4KWfpf1vry9t00LkBr0MTN',
             intentToken: '',
-
+            total: 0,
 
 
             commande: {
@@ -148,16 +148,43 @@ export default {
             panierService.paiement(this.commande)
         },
 
+        getTotal() {
+            for (var item in panierService.getCurrentBasket()) {
+                // console.log(item)
+                console.log("----------")
+                console.log(panierService.getCurrentBasket()[item])
+                    // console.log(panierService.getCurrentBasket()[item].prix)
+                    // console.log(panierService.getCurrentBasket()[item].placeNbr)
+                console.log(panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix)
+                this.total += panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix
+                console.log("----------")
+                this.prestations.push(panierService.getCurrentBasket()[item])
+
+                console.log(this.prestations)
+                if (!this.prestations[0]) {
+                    console.log("zero")
+                }
+
+            }
+        }
+
     },
 
     created() {
         this.prestationStep = panierService.getCurrentBasket()
             // this.prestations = panierService.getCurrentBasket()
-
-
+            // console.log("----------")
+            // console.log(this.prestationStep)
+            // console.log("----------")
         for (var item in panierService.getCurrentBasket()) {
-            console.log(item)
+            // console.log(item)
+            console.log("----------")
             console.log(panierService.getCurrentBasket()[item])
+                // console.log(panierService.getCurrentBasket()[item].prix)
+                // console.log(panierService.getCurrentBasket()[item].placeNbr)
+            console.log(panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix)
+            this.total += panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix
+            console.log("----------")
             this.prestations.push(panierService.getCurrentBasket()[item])
 
             console.log(this.prestations)
