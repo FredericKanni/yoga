@@ -1,5 +1,9 @@
 <template>
-    <div>
+    <div >
+
+      <div >
+
+      </div>
       <h1 class="text-center ma-8">
          
    Yoga Morphose <br> Centre de bien-être
@@ -7,12 +11,11 @@
       </h1>
 
 
-
 <v-row class="px-10">
 
   <v-col  cols=12 md=6 lg=6>
   
-        <v-img  src='http://yoga.test/storage/lieu.jpg' aspect-ratio="1.7"></v-img>
+        <v-img  src='https://www.yogamorphose.fr/storage/lieu.jpg' aspect-ratio="1.7"></v-img>
    
   </v-col>
 

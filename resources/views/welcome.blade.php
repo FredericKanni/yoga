@@ -88,7 +88,8 @@
 
 
             <div id="app">
-                <layout></layout>
+                
+                <layout style="background-color: #D1C4E9; "></layout>
             </div>
 
         </div>

@@ -12,6 +12,7 @@
     >
     <!-- {{presta}} -->
   <v-card
+   color="#BA68C8"
       class="mx-auto my-12"
       max-width="374"
     >
@@ -21,31 +22,31 @@
         :src="presta.image"
       ></v-img>
   
-      <v-card-title>{{presta.name}}</v-card-title>
+      <v-card-title  style="color:#FFD180;" >{{presta.name}}</v-card-title>
   
       <v-card-text>
      
   
-        <div class="my-4 subtitle-1">
+        <div  style="color:#FFD180;"  class="my-4 subtitle-1">
         professeur :{{presta.user.name}}
         </div>
-              <div class="my-4 subtitle-1">
+              <div style="color:#FFD180;"  class="my-4 subtitle-1">
         prix :{{presta.prix}} €
         </div>
   
-        <div>{{presta.description}}</div>
+        <div  style="color:#FFD180;" >{{presta.description}}</div>
             <div>{{presta.id}}</div>
 
-             <div>{{presta.date}}</div>
-              <div>{{presta.heure}}</div>
+             <div  style="color:#FFD180;" >{{presta.date}}</div>
+              <div  style="color:#FFD180;" >{{presta.heure}}</div>
       </v-card-text>
   
       <v-card-actions>
         <v-btn
-          color="deep-purple lighten-2"
+          color="#FFD180"
           text
    :to="'prestations/'+ presta.id"
-        >
+    >
           Voir +
         </v-btn>
       </v-card-actions>

@@ -40,5 +40,5 @@
   </v-content>
 </template>
 
-<script src='./login.js'>
+<script src='./Login.js'>
 </script>

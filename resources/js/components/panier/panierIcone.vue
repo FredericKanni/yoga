@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-btn icon fab  x-small  empty class="mr-4 green"  to="/stepper">
-          <v-badge v-if='quantity!=0' color="green" :content="quantity">
+    <v-btn icon fab  x-small   empty class="mr-4 "  color="#ffae1d" to="/stepper">
+          <v-badge v-if='quantity!=0' color="#ffae1d" :content="quantity">
             <v-icon>mdi-cart</v-icon>
           </v-badge>
 
@@ -10,7 +10,7 @@
  </div>
 
 
-   
+ 
 
 
       </template>

@@ -1,7 +1,8 @@
 <template>
-<div>
+<div  >
 <galerie></galerie>
-<lieu></lieu> 
+
+<lieu ></lieu> 
 <equipe></equipe>
 
 
@@ -25,28 +26,29 @@
    v-for="presta in tab"
     :key="presta.id"
     >
-<v-card class="mx-auto my-3" >
+<v-card   color="#BA68C8" class="mx-auto my-3" >
       <v-img
         height="250"
         v-if="presta.image"
         :src="presta.image"
       ></v-img>
       <!-- <v-card-title class="justify-center">{{presta.name}}</v-card-title> -->
-      <v-card-title >{{presta.name}}</v-card-title>
+      <v-card-title style="color:#FFD180;"  >{{presta.name}}</v-card-title>
 
       <!-- <v-card-text>
         <div class="ma-0 text-center">{{presta.metier}}</div>
       </v-card-text> -->
       
       <v-card-text >
-        <div>{{presta.description}}</div>
+        <div style="color:#FFD180;" >{{presta.description}}</div>
 
       </v-card-text>
 
        <v-btn
-          color="deep-purple lighten-2"
+          color="#FFD180"
           text
    :to="'prestations/'+ presta.id"
+  
         >
           Voir +
         </v-btn>
@@ -71,9 +73,7 @@
 
 
 <div class="ma-10">
-<v-btn to='/prestations' >
-  voir tous les cours
-</v-btn>
+
 </div>
 
   </div>

@@ -1,14 +1,12 @@
 <template>
     <div>
-  
-<v-card class="px-5" style="margin-bottom:150px">
+<v-card  outlined   color="#D1C4E9" class="px-5" >
 <v-row>
   <v-col  cols="12" md=3 sm=12>
 
                   <v-img  contain :src="prestaInfos.image"></v-img>
               
   </v-col>
-
    <v-col  cols="12" md=8 sm=12>
 
 

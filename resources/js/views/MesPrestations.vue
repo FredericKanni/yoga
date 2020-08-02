@@ -22,7 +22,7 @@
 </template>
 
 
-<script src="./Mesprestations.js">
+<script src="./MesPrestations.js">
 
 
 </script>

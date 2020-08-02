@@ -13,18 +13,18 @@
     v-for="prof in equipe"
     :key="prof.id"
     >
-<v-card class="mx-auto my-3" >
+<v-card  color="#BA68C8" class="mx-auto my-3 " >
       <v-col class="text-center mt-1" cols="12" >
         <v-avatar class="profile" color="grey" size="164">
           <v-img v-if='prof.image' :src=prof.image></v-img>
         </v-avatar>
       </v-col>
-      <v-card-title class="justify-center">{{prof.name}}</v-card-title>
+      <v-card-title   style="color:#FFD180;"  class="justify-center">{{prof.name}}</v-card-title>
       <v-card-text>
-        <div class="ma-0 text-center">{{prof.metier}}</div>
+        <div   style="color:#FFD180;" class="ma-0 text-center">{{prof.metier}}</div>
       </v-card-text>
       
-      <v-card-text class="text-center">
+      <v-card-text   style="color:#FFD180;" class="text-center">
         <div>{{prof.description}}</div>
 
       </v-card-text>

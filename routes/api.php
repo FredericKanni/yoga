@@ -26,11 +26,16 @@ Route::get('/logout', 'AuthController@logout')->middleware('auth:api');
 Route::post('/register', 'AuthController@register');
 
 // users
+// Route::prefix('users')->group(function () {
+//     // Route::post('/login' , 'AuthController@login');
+//     Route::middleware('auth:api')->get('/all', 'UserController@index');
+//     //on lui rajoute le mi car on a besoin de recuperer les prestation en function de l user currentuser
+//     Route::middleware('auth:api')->get('/{id}/prestations', 'PrestationController@prestationsProf');
+// });
+
 Route::prefix('users')->group(function () {
-    // Route::post('/login' , 'AuthController@login');
-    Route::middleware('auth:api')->get('/all', 'UserController@index');
-    //on lui rajoute le mi car on a besoin de recuperer les prestation en function de l user currentuser
-    Route::middleware('auth:api')->get('/{id}/prestations', 'PrestationController@prestationsProf');
+    Route::get('/all', 'UserController@index')->middleware('auth:api');
+    Route::get('/{id}/prestations', 'PrestationController@prestationsProf')->middleware('auth:api');
 });
 
 //prestation

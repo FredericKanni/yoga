@@ -18,16 +18,27 @@ export default {
             ],
 
             items: [{
-                    src: 'http://yoga.test/storage/y1.jpg',
+                    src: 'https://www.yogamorphose.fr/storage/images/x.jpg',
                 },
                 {
-                    src: 'http://yoga.test/storage/y2.jpg',
+                    src: 'https://www.yogamorphose.fr/storage/images/y.jpg',
                 },
                 {
-                    src: 'http://yoga.test/storage/y3.jpg',
+                    src: 'https://www.yogamorphose.fr/storage/images/z.jpg',
+                },
+
+
+            ],
+
+            itemsBis: [{
+                    src: 'https://www.yogamorphose.fr/storage/images/k.jpg',
+                },
+
+                {
+                    src: 'https://www.yogamorphose.fr/storage/images/m.jpg',
                 },
                 {
-                    src: 'http://yoga.test/storage/y4.jpg',
+                    src: 'https://www.yogamorphose.fr/storage/images/j.jpg',
                 },
 
             ],

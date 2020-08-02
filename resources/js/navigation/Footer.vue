@@ -1,5 +1,5 @@
 <template>
-   <v-footer absolute>
+   <v-footer absolute  color="#BA68C8">
 <v-row>
   <v-col cols=4 class="text-center">
     <p>
@@ -11,9 +11,11 @@
     
 
     </p>
-    <p>      <router-link to="/mesprestations" class="my-auto mx-1">
+    <p>    
+        <!-- <router-link to="/mesprestations" class="my-auto mx-1">
           <v-btn depressed small>Dashbord</v-btn>
-        </router-link></p>
+        </router-link> -->
+        </p>
   
   
   </v-col>

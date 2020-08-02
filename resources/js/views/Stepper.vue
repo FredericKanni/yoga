@@ -3,8 +3,8 @@
 
 
     
-    <v-stepper v-model="e1">
-      <v-stepper-header>
+    <v-stepper  v-model="e1">
+      <v-stepper-header  style="background-color: #D1C4E9; " >
 
 
 
@@ -15,8 +15,8 @@
         <v-stepper-step step="2">Moyen de Paiment</v-stepper-step>
       </v-stepper-header>
 
-      <v-stepper-items>
-        <v-stepper-content step="1">
+      <v-stepper-items  style="background-color: #D1C4E9; ">
+        <v-stepper-content  class="elavation-0" step="1">
 
         
 
@@ -31,15 +31,15 @@
 
 <div v-if="prestations[0]">
 
-          <v-data-table
+          <v-data-table  style="background-color:#BA68C8; "
             :headers="headers"
             :items="prestations"
             hide-default-footer
-            class="elevation-1"
+            class=""
           >
             <template v-slot:item.actions="{ item }">
               <!-- <deletePrestationRecap :prestations='prestations'  :prestation="item"></deletePrestationRecap> -->
-              <v-btn color="danger" class="ma-1" @click="deleteItem(item)">
+              <v-btn text small color="danger" class="ma-1" @click="deleteItem(item)">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
             </template>
@@ -51,7 +51,7 @@
             <template v-slot:item.placeNbr="{ item }">
               <!-- <deletePrestationRecap :prestations='prestations'  :prestation="item"></deletePrestationRecap> -->
              
-              <v-btn  :disabled="item.placeNbr  <= 0" color="danger" class="ma-1" @click="minusItem(item)">
+              <v-btn text small :disabled="item.placeNbr  <= 0" color="danger" class="ma-1" @click="minusItem(item)">
                 <v-icon>mdi-minus</v-icon>
               </v-btn>
 
@@ -59,7 +59,7 @@
                 {{ item.placeNbr}}
               <!-- </v-text-field> -->
 
-              <v-btn :disabled="item.placeNbr >=  item.quantityMax"  color="danger" class="ma-1" @click="plusItem(item)">
+              <v-btn  text small :disabled="item.placeNbr >=  item.quantityMax"  color="danger" class="ma-1" @click="plusItem(item)">
                 <v-icon>mdi-plus</v-icon>
               </v-btn>
             </template>
@@ -84,7 +84,7 @@
 
            <h2 class="text-center ma-10"> total:</h2>
 
-          <v-btn color="primary" @click="valideCommande">Valider la commande</v-btn>
+          <v-btn  color="primary" @click="valideCommande">Valider la commande</v-btn>
 
           <v-btn text>Cancel</v-btn>
           </div>
@@ -102,6 +102,10 @@
       </v-stepper-items>
 
     </v-stepper>
+
+    <div class="ma-10">
+.
+    </div>
   </div>
 </template>
 <script src='./Stepper.js'>

@@ -42,7 +42,7 @@
 
 
   </v-card>
-     <v-snackbar
+     <!-- <v-snackbar
   top
         v-model="snackbar"
         :timeout="timeout"
@@ -57,7 +57,7 @@
           >
             Close
           </v-btn>
-      </v-snackbar>
+      </v-snackbar> -->
 
 
 

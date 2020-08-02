@@ -2,6 +2,7 @@ import { apiServices } from '../_services/api.services'
 import { authenticationService } from "../_services/authentication.service";
 import addPrestation from './addPrestation.vue';
 import deletePrestation from './deletePrestation.vue';
+import Axios from 'axios';
 export default {
     components: {
         addPrestation,
@@ -41,12 +42,18 @@ export default {
 
 
             authenticationService.currentUser.subscribe(x => (this.currentUser = x))
-            apiServices.get('api/users/' + this.currentUser.id + '/prestations')
+
+            console.log(this.currentUser)
+
+            apiServices.get('api/users/' + this.currentUser.id + '/prestations',
+                //   { headers: { 'Authorization': 'Bearer ' + this.currentUser.token } }
+
+            )
 
 
             .then((data) => {
 
-                // console.log(data.data.data)
+                console.log(data.data.data)
                 data.data.data.forEach(element => {
                     this.Prestations.push(element)
                     console.log(element)
