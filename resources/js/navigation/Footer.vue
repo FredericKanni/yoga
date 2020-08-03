@@ -1,6 +1,26 @@
 <template>
+<div>
+
+
    <v-footer absolute  color="#BA68C8">
-<v-row>
+<v-row class="	d-flex d-md-none text-center">
+
+  <v-col cols=12>
+    <router-link to="/CGV"   style="color:#000;" >CGV</router-link>
+  </v-col>
+
+    <v-col cols=12>
+ <router-link to="/mentions"  style="color:#000;" >  mentions legales </router-link>
+  </v-col>
+
+    <v-col cols=12>
+     <router-link to="/politique" style="color:#000;"  >  politiques de confidentialité </router-link>
+  </v-col>
+
+
+
+</v-row>
+  <v-row class="hidden-sm-and-down">
   <v-col cols=4 class="text-center">
     <p>
 
@@ -18,8 +38,8 @@
         </p>
   
   
-  </v-col>
-    <v-col cols=4 class="text-center">
+  </v-col  >
+    <v-col cols=4 class="text-center  ">
    <router-link to="/CGV"   style="color:#000;" >CGV</router-link>
 
      - 
@@ -41,6 +61,7 @@
 
   
   </v-footer>
+  </div>
 </template>
 
 

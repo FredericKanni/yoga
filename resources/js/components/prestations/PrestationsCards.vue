@@ -62,6 +62,7 @@
        
       </v-card-actions>
     </v-card>
+
 </v-col>
  
 
@@ -69,6 +70,9 @@
 
 
 </v-row>
+<div class="ma-10">
+
+</div>
        
     </div>
 </template>

@@ -68,12 +68,16 @@
   voir tous les cours
 </v-btn>
 </div>
-
-
-
-
 <div class="ma-10">
+ 
+</div>
 
+<div class=" 	d-flex d-md-nonema-10">
+.
+</div>
+
+<div class=" 	d-flex d-md-none ma-10">
+.
 </div>
 
   </div>

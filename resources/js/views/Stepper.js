@@ -67,7 +67,7 @@ export default {
                 }
             });
 
-
+            this.getTotal()
         },
 
         minusItem(item) {
@@ -95,7 +95,7 @@ export default {
 
 
             }
-
+            this.getTotal()
         },
 
         plusItem(item) {
@@ -104,6 +104,7 @@ export default {
 
 
             panierService.plusItemPanier(item)
+            this.getTotal()
         },
 
         getOrder() {
@@ -149,21 +150,12 @@ export default {
         },
 
         getTotal() {
-            for (var item in panierService.getCurrentBasket()) {
-                // console.log(item)
-                console.log("----------")
-                console.log(panierService.getCurrentBasket()[item])
-                    // console.log(panierService.getCurrentBasket()[item].prix)
-                    // console.log(panierService.getCurrentBasket()[item].placeNbr)
-                console.log(panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix)
-                this.total += panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix
-                console.log("----------")
-                this.prestations.push(panierService.getCurrentBasket()[item])
+            let t = panierService.getCurrentBasket()
+            this.total = 0;
+            for (var item in t) {
+                console.log(item)
 
-                console.log(this.prestations)
-                if (!this.prestations[0]) {
-                    console.log("zero")
-                }
+                this.total += panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix
 
             }
         }
@@ -178,16 +170,17 @@ export default {
             // console.log("----------")
         for (var item in panierService.getCurrentBasket()) {
             // console.log(item)
-            console.log("----------")
-            console.log(panierService.getCurrentBasket()[item])
-                // console.log(panierService.getCurrentBasket()[item].prix)
-                // console.log(panierService.getCurrentBasket()[item].placeNbr)
-            console.log(panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix)
-            this.total += panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix
-            console.log("----------")
+            // console.log("----------")
+            // console.log(panierService.getCurrentBasket()[item])
+            //     // console.log(panierService.getCurrentBasket()[item].prix)
+            //     // console.log(panierService.getCurrentBasket()[item].placeNbr)
+            // console.log(panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix)
+            // this.total += panierService.getCurrentBasket()[item].placeNbr * panierService.getCurrentBasket()[item].prix
+            this.getTotal();
+            // console.log("----------")
             this.prestations.push(panierService.getCurrentBasket()[item])
 
-            console.log(this.prestations)
+            // console.log(this.prestations)
             if (!this.prestations[0]) {
                 console.log("zero")
             }

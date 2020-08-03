@@ -2,8 +2,10 @@
     
 <div>
 <!-- telephone -->
-    <v-carousel
-   class="hidden-sm-and-up  "
+
+   <div   class="d-flex d-sm-none  ">
+   <v-carousel
+ 
       cycle
       height="90vh"
       hide-delimiter-background
@@ -18,9 +20,11 @@
     ></v-carousel-item>
     </v-carousel>
 
-
+   </div>
+ 
+<div class="d-none d-sm-flex">
 <v-carousel
-   class="hidden-sm-and-down"
+   
       cycle
       height="90vh"
       hide-delimiter-background
@@ -37,6 +41,8 @@
 
 
     </v-carousel>
+</div>
+
 
 
 </div>

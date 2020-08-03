@@ -67,9 +67,11 @@
 
       </v-toolbar-items>
 
-      <div class="my-auto mx-1">
+      <div v-if="!isAdmin && !isProf" class="my-auto mx-1">
           <PanierIcone></PanierIcone>
         </div>
+
+
     </v-app-bar>
 
 
